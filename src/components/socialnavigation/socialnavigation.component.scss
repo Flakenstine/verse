@@ -1,0 +1,32 @@
+@import '../../styles/theme';
+.socialMenu {
+    position: relative;
+    float: right;
+    width: 75px;
+    height: 100vh;
+    border-left: 1px solid $color-borders-main;
+    .socialMenu__icon {
+        height: 60px;
+        width: 100%;
+        border-bottom: 1px solid $color-borders-main;
+        padding: 12px 20px;
+        span {
+            font-size: 27px;
+            color: $typography-1;
+        }
+    }
+    .socialMenu__friendslist {
+        display: block;
+        padding: 7px 11px;
+        margin: 0 auto;
+        height: 100%;
+        .friend {
+            margin: 10px auto;
+            height: 40px;
+            width: 40px;
+            background-color: $typography-2;
+            border-radius: 50%;
+            border: 1px solid $color-borders-alt;
+        }
+    }
+}

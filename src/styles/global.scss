@@ -1,0 +1,120 @@
+@import './theme';
+@import 'bootstrap/scss/bootstrap.scss';
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+body {
+    line-height: 1.5;
+    max-width: 100%;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient( 90deg, rgb(21, 13, 31) 0%, rgb(21,13,54) 100%);
+    color: $typography-1;
+    overflow: hidden;
+    font-family: 'Ubuntu', sans-serif;
+    h1 {
+        font-size: 30px;
+        padding: 1em;
+    }
+    p {
+        font-size: 15px;
+        padding: 0em 2em;
+    }
+    a {
+        text-decoration: none;
+        color: $palace-gold;
+        font-weight: bold;
+        &:hover {
+            text-shadow: 1px 1px 4px $palace-gold;
+        }
+    }
+    button:focus {
+        outline: 0;
+    }
+}
+// .app__wrapper {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     left: 0;
+//     bottom: 0;
+//     height: 100vh;
+//     width: 100%;
+//     display: flex;
+//     .app__sideNav__left {
+//         float: left;
+//         max-width: 100%;
+//     }
+//     .app__container {
+//         position: relative;
+//         left: 15px;
+//         top: 0;
+//         display: flex;
+//         width: 100%;
+//     }
+// }
+
+
+
+
+// .container {
+// 	position: relative;
+// 	overflow: hidden;
+// 	width: 100%;
+// 	height: 100%;
+// 	padding: 0;
+// 	margin: 0;
+// }
+
+// .app__sidebar-left {
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+// 	overflow: hidden;
+// 	display: flex;
+// 	width: 78px;
+// 	flex-direction: column;
+// 	flex-shrink: 0;
+// 	color: #777777;
+// }
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+
+.app__sidebar-left {
+    max-width: 275px;
+    padding-right: 0px;
+    display: block;
+}
+
+.app__sidebar-left--alt {
+    max-width: 90px;
+    padding-right: 0px;
+    margin-right: -4px;
+}
+
+.app__sidebar-right {
+    max-width: 90px;
+    padding-left: 0px;
+}
+.app__main {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.draggableTop {
+    height: 77px;
+    max-width: 100%;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    -webkit-app-region: drag;
+}
+// TODO: Make the search bar responsive

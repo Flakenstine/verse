@@ -1,0 +1,351 @@
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';
+@import './theme';
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+body {
+    line-height: 1.5;
+    max-width: 100%;
+    max-height: 100%;
+    background: linear-gradient( 90deg, rgb(21, 13, 31) 0%, rgb(21,13,54) 100%);
+    color: $typography-1;
+    overflow: hidden;
+}
+
+.container-fluid {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.app-sidebar-left {
+    max-width: 80px;
+    padding-right: 0px;
+}
+.app-sidebar-right {
+    max-width: 100px;
+    padding-left: 0px;
+}
+.app-main {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+/** Header Styling **/
+.header {
+    position: relative;
+    display: inline-flex;
+    margin: 0 auto;
+    max-width: 100%;
+    width: 100%;
+    height: 60px;
+    border-bottom: 2px solid $color-borders-main;
+    .header-nav {
+        position: relative;
+        float: right;
+        margin-top: 9px;
+        nav {
+            max-width: 100%;
+            ul {
+                display: inline-flex;
+                li {
+                    list-style-type: none;
+                    text-align: center;
+                    font-size: 17px;
+                    font-weight: bold;
+                    a {
+                        text-decoration: none;
+                        color: $typography-1;
+                        cursor: pointer;
+                        &:hover {
+                            color: $palace-gold;
+                            text-shadow: 1px 1px 4px $palace-gold;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .header-search-bar {
+        position: relative;
+        margin: 15px auto;
+        height: 30px;
+        border: 2px solid $color-borders-main;
+        width: 400px;
+        max-width: 400px;
+        font-size: 12px;
+        color: $typography-2;
+        padding: 5px 15px;
+        border-radius: 8px;
+    }
+    .header-user-options {
+        position: relative;
+        display: inline-flex;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+// .header {
+//     position: relative;
+//     max-width: 100%;
+//     width: 100%;
+//     display: inline-flex;
+//     align-content: space-between;
+//     align-items: flex-start;
+//     height: 60px;
+//     border-bottom: 2px solid $color-borders-main;
+//     .header-nav {
+//         position: relative;
+//         float: right;
+//         margin-top: 9px;
+//         nav {
+//             max-width: 100%;
+//             ul {
+//                 display: inline-flex;
+//                 li {
+//                     list-style-type: none;
+//                     text-align: center;
+//                     font-size: 18px;
+//                     font-weight: bold;
+//                     a {
+//                         text-decoration: none;
+//                         color: $typography-1;
+//                         cursor: pointer;
+//                     }
+//                     a:hover {
+//                         color: $palace-gold;
+//                         text-shadow: 1px 1px 4px $palace-gold;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .header-search-bar {
+//         position: relative;
+//         margin: 15px auto;
+//         height: 30px;
+//         border: 2px solid $color-borders-main;
+//         width: 400px;
+//         font-size: 12px;
+//         color: $typography-2;
+//         padding: 5px 15px;
+//         border-radius: 8px;
+//     }
+//     .header-user-options {
+//         position: relative;
+//         display: inline-flex;
+//         max-width: 100%;
+//         button {
+//             height: 60px;
+//             width: 75px;
+//             background: none;
+//             border-top: none; border-bottom: none;
+//             border-left: 2px solid $color-borders-main;
+//             border-right: 2px solid $color-borders-main;
+//         }
+//         button:nth-child(n+2) {
+//             margin-left: -2px;
+//         }
+//         a {
+//             font-size: 20px;
+//             color: $typography-1;
+//         }
+//     }
+//     .header-user-menu {
+//         display: inline-flex;
+//         position: relative;
+//         padding: 10px 4px;
+//         max-width: 100%;
+//         .avatar {
+//             position: relative;
+//             top: 3px;
+//             left: 13px;
+//             height: 34px;
+//             width: 34px;
+//             border-radius: 50%;
+//             border: 1px solid $color-borders-alt;
+//         }
+//         .username {
+//             margin: 12px 21px;
+//             font-size: 12px;
+//             font-weight: bold;
+//             span {
+//                 font-weight: 300;
+//             }
+//             .dd-menu-icon {
+//                 position: relative;
+//                 top: -1px;
+//                 left: 1px;
+//                 font-size: 9px;
+//             }
+//         }
+//     }
+// }
+
+/** Server Browser Styling **/
+.server-browser {
+    position: relative;
+    float: left;
+    max-height: 100%;
+    height: 100vh;
+    width: 80px;
+    border-right: 2px solid $color-borders-main;
+    .server-icon {
+        margin: 0 auto;
+        height: 60px;
+        width: 100%;
+        padding: 12px 14px;
+        border-bottom: 2px solid $color-borders-main;
+        span {
+            margin-left: 11px;
+            margin-bottom: 10px;
+            font-size: 30px;
+            transform: scaleX(-1);
+            text-align: center;
+            color: $typography-2;
+        }
+    }
+    .server-list {
+        display: block;
+        margin: 0 auto;
+        height: 100%;
+        .server {
+            margin: 12px auto;
+            padding: 5px 10px;
+            height: 46px;
+            width: 46px;
+            background-color: $palace-purple;
+            border-radius: 6px;
+            a {
+                img {
+                    position: relative;
+                    top: -3px;
+                    right: 12px;
+                    height: 41px;
+                    width: 51px;
+                }
+            }
+        }
+    }
+}
+
+/** Server Navigation Styling **/
+.server-navigation {
+    float: left;
+    border-right: 2px solid $color-borders-main;
+    max-height: 100%;
+    height: 100vh;
+    max-width: 100%;
+    .server-header {
+        margin: 0 auto;
+        height: 60px;
+        border-bottom: 2px solid $color-borders-main;
+        color: $typography-1;
+        padding: 20px 19px;
+        font-weight: 300;
+        span {
+            position: relative;
+            top: -2px;
+            left: 5px;
+            font-size: 9px;
+        }
+    }
+}
+
+/** Social Navigation Styling **/
+.social-navigation {
+    float: right;
+    width: 85px;
+    max-height: 100%;
+    height: 100vh;
+    border-left: 2px solid $color-borders-main;
+    .social-icon {
+        height: 60px;
+        width: 100%;
+        border-bottom: 2px solid $color-borders-main;
+        padding: 12px 25px;
+        span {
+            font-size: 27px;
+            color: $typography-2;
+        }
+    }
+    .friends-list {
+        display: block;
+        padding: 7px 11px;
+        margin: 0 auto;
+        height: 100%;
+        .friend {
+            margin: 10px auto;
+            height: 40px;
+            width: 40px;
+            background-color: $typography-2;
+            border-radius: 50%;
+            border: 2px solid $color-borders-alt;
+        }
+    }
+}
+/** Chat Styles **/
+.chat-input-container {
+    position: relative;
+    border-top: 2px solid $color-borders-main;
+    margin: 0 auto;
+    max-width: 1700px;
+    width: 1700px;
+    height: 100px;
+    bottom: 0;
+    left: 76px;
+    right: -116px;
+}
+
+/** Profile Page Styles **/
+
+.profile {
+    .profile_header {
+        height: 335px;
+        border-bottom: 2px solid orange;
+        position: relative;
+        .profile_header_top {
+            width: 100%;
+            height: 195px;
+            border-bottom: 2px solid red;
+            background: url(../images/app-background.png);
+            .user_info {
+                position: absolute;
+                border: 2px solid yellow;
+                width: 750px;
+                height: 200px;
+                margin-top: 95px;
+                margin-left: 50px;
+                background: blue;
+            }
+        }
+        .profile_header_bottom {
+            width: 100%;
+            display: inline-flex;
+            height: 140px;
+            .stats {
+                position: absolute;
+                border: 2px dashed pink;
+                height: 70px;
+                width: 1180px;
+                margin: 35px 100px 35px 200px;
+                right: 0;
+                background: green;
+            }
+        }
+
+    }
+    .profile_content {
+        width: 100%;
+        height: 403px;;
+        border: 2px dotted lightblue;
+        margin-top: 25px;
+        .row {
+            margin: 10px;
+            .col {
+                border: 2px dashed blue;
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}

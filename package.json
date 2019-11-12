@@ -1,20 +1,78 @@
 {
-  "name": "connect",
+  "name": "palace-connect",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-brands-svg-icons": "^5.10.1",
+    "@fortawesome/pro-light-svg-icons": "^5.10.1",
+    "@fortawesome/pro-regular-svg-icons": "^5.10.1",
+    "@fortawesome/pro-solid-svg-icons": "^5.10.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
-    "node-sass": "^4.13.0",
-    "react": "^16.11.0",
-    "react-bootstrap": "^1.0.0-beta.14",
-    "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "electron": "^6.0.12",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "foreman": "^3.0.1",
+    "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.11",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.0.1"
   },
+  "homepage": "./",
+  "main": "src/start.js",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nf start -p 3000",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-start": "node src/start-react",
+    "react-start": "BROWSER=none react-scripts start",
+    "pack": "electron-builder --dir",
+    "dist": "npm run build && electron-builder",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "app.palaceconnect.palaceconnectapp",
+    "productName": "Palace Connect",
+    "dmg": {
+      "background": "./src/images/installer.png",
+      "iconSize": 50,
+      "contents": [
+        {
+          "x": "128",
+          "y": "160"
+        },
+        {
+          "x": "358",
+          "y": "160",
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 480,
+        "height": 310
+      }
+    },
+    "mac": {
+      "category": "your.app.category.type",
+      "icon": "./src/images/AppIcon.icns"
+    },
+    "files": [
+      "./build/**/*",
+      "./node_modules/**/*",
+      "./public/electron.js"
+    ],
+    "directories": {
+      "buildResources": "public"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,5 +88,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-pro": "^5.10.1",
+    "electron-builder": "^21.2.0"
   }
 }

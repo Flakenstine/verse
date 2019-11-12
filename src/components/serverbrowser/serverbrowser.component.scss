@@ -1,0 +1,53 @@
+ @import '../../styles/theme';
+
+.serverBrowser {
+    position: relative;
+    float: left;
+    max-height: 100%;
+    height: 100vh;
+    width: 70px;
+    border-right: 1px solid #3b2f61;
+    background-color: #2a1c47;
+    .serverBrowser__icon {
+        margin: 7px auto;
+        height: 60px;
+        width: 100%;
+        padding: 10px 8px;
+        border-bottom: 1px solid #38304F;
+        span {
+            margin-left: 11px;
+            margin-bottom: 10px;
+            font-size: 30px;
+            transform: scaleX(-1);
+            text-align: center;
+            color: $typography-1;
+        }
+    }
+    .serverBrowser__serverlist {
+        display: block;
+        margin: 0px auto;
+        height: 100%;
+        .server {
+            margin: 10px auto;
+            padding: 1px 9px;
+            height: 45px;
+            width: 45px;
+            background-color: #342a54;
+            border-radius: 50%;
+            border: 2px solid $color-borders-main;
+            a {
+                img {
+                    position: relative;
+                    top: 0px;
+                    right: 12px;
+                    height: 38px;
+                    width: 48px;
+                }
+            }
+            &:hover {
+                border: 1px solid $palace-gold;
+                box-shadow: 0px 1px 10px rgb(255, 232, 36);
+            }
+        }
+    }
+}
