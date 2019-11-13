@@ -11,6 +11,7 @@ import Friends from '../pages/friends/friends.component'
 import ServerBrowser from '../components/serverbrowser/serverbrowser.component'
 import SocialNavigation from '../components/socialnavigation/socialnavigation.component'
 import ServerNavigation from '../components/servernavigation/servernavigation.component'
+import Footer from '../components/footer/footer.component'
 
 class AppContainer extends React.Component {
   /**
@@ -70,6 +71,7 @@ class AppContainer extends React.Component {
             <SocialNavigation />
           </div>
         </div>
+        <Footer />
       </div>
     )
   }
