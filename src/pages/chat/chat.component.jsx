@@ -3,6 +3,7 @@ import React from 'react'
 import ServerNavigation from '../../components/servernavigation/servernavigation.component'
 
 class Chat extends React.Component {
+
   render() {
     return (      
       <div>
