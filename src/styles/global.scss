@@ -13,7 +13,7 @@ body {
     max-height: 100%;
     height: 100%;
     width: 100%;
-    background: linear-gradient( 90deg, rgb(21, 13, 31) 0%, rgb(21,13,54) 100%);
+    background: url('../images/bg-transparent.png'), linear-gradient(#150D1F, #150D36);
     color: $typography-1;
     overflow: hidden;
     font-family: 'Ubuntu', sans-serif;
@@ -89,8 +89,8 @@ body {
 }
 
 
-.app__sidebar-left {
-    max-width: 275px;
+.app__sidebarLeft {
+    max-width: 85px;
     padding-right: 0px;
     display: block;
 }
@@ -101,7 +101,7 @@ body {
     margin-right: -4px;
 }
 
-.app__sidebar-right {
+.app__sidebarRight {
     max-width: 90px;
     padding-left: 0px;
 }
@@ -110,7 +110,7 @@ body {
     padding-right: 0px;
 }
 .draggableTop {
-    height: 77px;
+    height: 66px;
     max-width: 100%;
     width: 100%;
     top: 0;

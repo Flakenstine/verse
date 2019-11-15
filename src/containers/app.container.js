@@ -49,9 +49,8 @@ class AppContainer extends React.Component {
       <div className="container-fluid-clearfix">
         <div className="draggableTop" />
         <div className="row flex-nowrap">
-          <div className={`col-sm-4 clearfix ${this.hideChatSidebar(location.pathname)}`}>
+          <div className={`col-sm-4 clearfix app__sidebarLeft`}>
             <ServerBrowser />
-            <Route path="/" exact component={ServerNavigation} />
           </div>
           <div className="col app__main">
             <Header />
@@ -66,7 +65,7 @@ class AppContainer extends React.Component {
               ))}
             </Switch>
           </div>
-          <div className="col clearfix app__sidebar-right" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
+          <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
             <SocialNavigation />
           </div>
         </div>

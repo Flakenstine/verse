@@ -35,13 +35,6 @@ class Header extends React.Component {
             <li className="nav-item">
               <NavLink className="nav-link" to="/clubs">Friends</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink className="nav-link" to="/friends">
-                More
-                {' '}
-                <FontAwesomeIcon icon={faChevronDown} />
-              </NavLink>
-            </li>
           </ul>
         </nav>
         <div className="header__search">

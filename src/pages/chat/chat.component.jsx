@@ -1,10 +1,12 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import ServerNavigation from '../../components/servernavigation/servernavigation.component'
 
 class Chat extends React.Component {
   render() {
-    return (
+    return (      
       <div>
+        <ServerNavigation />
         <p>
             This is the default view,
             we will present it to the user everytime they login.
