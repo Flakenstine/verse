@@ -40,7 +40,7 @@ class Header extends React.Component {
         <div className="header__search">
           <FontAwesomeIcon icon={faSearch} />
           {' '}
-Search...
+          <span>Search</span>
         </div>
         <div className="header__subnav">
           <button type="button">
