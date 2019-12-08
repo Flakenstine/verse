@@ -21,7 +21,7 @@ function createWindow() {
     title: 'Palace Connect',
     center: true,
     show: false,
-    frame: false,
+    // frame: false, REDUNDENT DUE TO titleBarStyle set to hidden
     autoHideMenuBar: true,
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
