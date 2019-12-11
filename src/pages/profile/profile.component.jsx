@@ -1,11 +1,15 @@
 /* eslint-disable react/prefer-stateless-function */
 import React from 'react'
+import './profile.style.scss';
 
 class Profile extends React.Component {
   render() {
     return (
-      <div>
-        <p>Profile will go here.</p>
+      <div className="profile">
+        <div className="profile_header">
+          <div className="profile_header_top">
+          </div>
+        </div>
       </div>
     )
   }
