@@ -8,6 +8,64 @@
         .profile_header_top {
             height: 100px;
             border-bottom: 2px solid red;
+            .user_info {
+                border: 2px solid yellow;
+                width: 500px;
+                height: 100px;
+                position: absolute;
+                margin-top: 50px;
+                margin-left: 50px;
+                .avatar {
+                    float: left;
+                    img {
+                        width: 90px;
+                        height: 90px;
+                        float: inherit;
+                        border-radius: 100%;
+                        border: 2px solid $palace-gold;
+                        box-shadow: 0px 0px 20px 1px $palace-purple;
+                    }
+                }
+                .info {
+                    width: 100%;
+                    float: left;
+                    position: absolute;
+                    h1 {
+                        font-size: 40px;
+                        font-family: "Ubuntu";
+                        color: rgb(245, 245, 245);
+                        font-weight: bold;
+                        position: absolute;
+                        padding: 0px;
+                        left: 100px;
+                    }
+                    .rank_area {
+                        left: 220px;
+                        position: relative;
+                        margin-top: 5px;
+                        p.rank {
+                            height: 20px;
+                            line-height: 20px;
+                            color: #fff;
+                            font-size: 12px;
+                            text-shadow: 0 1px 1px rgba(0 ,0, 0, 0.4);
+                            padding: 0 12px;
+                            margin: 10px 5px 0 5px;
+                            background: #00AAAA;
+                            float: left;
+                            border-radius: 5px;
+                        }
+                    }
+                    p.member_since {
+                        height: 20px;
+                        line-height: 33px;
+                        float: left;
+                        position: absolute;
+                        margin-top: 33px;
+                        left: 70px;
+                    }
+                }
+            }
         }
     }
 }
