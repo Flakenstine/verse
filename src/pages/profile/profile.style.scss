@@ -77,7 +77,7 @@
                 position: absolute;
                 //border: 2px dashed pink;
                 height: 60px;
-                width: 1000px;
+                width: 900px;
                 left: -60px;
                 margin: 18px 0 18px 220px;
                // background: green;
@@ -91,15 +91,15 @@
                         //border: 2px solid white;
                         border-radius: 25px;
                         background-color: rgba(14, 9, 37, 0.38);
-                        width: 125px;
-                        height: 60px;
+                        width: 100px;
+                        height: 40px;
                         .stats-image {
-                            font-size: 20px;
+                            font-size: 14px;
                             font-weight: normal;
                             letter-spacing: -1px;
                             color: blue;
                             position: relative;
-                            top: 15px;
+                            top: 8px;
                             left: 10px;
                             &.friends { //Add className to all stats shit
                                 color: rgb(57, 205, 227);
@@ -118,27 +118,27 @@
                             }
                         }
                         .stats-info {
-                            width: 125px;
-                            height: 60px;
+                            width: 100px;
+                            height: 40px;
                             position: absolute;
-                            bottom: 0;
+                            bottom: 23px;
                             .stats-data {
-                                font-size: 16px;
+                                font-size: 12px;
                                 font-family: "Ubuntu";
                                 color: rgb(245, 245, 245);
                                 font-weight: bold;
                                 margin-left: 10px;
-                                bottom: 10px;
+                                top: 10px;
                                 position: absolute;
                             }
                             .stats-text {
-                                font-size: 9px;
+                                font-size: 7px;
                                 font-family: "Ubuntu";
                                 color: rgb(159, 159, 159);
                                 text-align: left;
                                 position: relative;
-                                margin-left: 25px;
-                                top: 33px;
+                                margin-left: 20px;
+                                top: 25px;
                                 overflow: hidden;
                                 white-space: nowrap;
                             } 
@@ -149,23 +149,23 @@
                         position: relative;
                         .status-mark {
                             color: rgb(80, 223, 232);
-                            font-size: 20px;
+                            font-size: 14px;
                             font-weight: normal;
                             letter-spacing: -1px;
                             position: relative;
-                            top: 15px;
+                            top: 8px;
                             left: 10px;
                         }
                         .status-edit {
                             color: rgb(48, 24, 120);
                             position: inherit;
-                            font-size: 20px;
-                            left: 25px;
+                            font-size: 14px;
+                            left: 60px;
                             bottom: 51px;
 
                         }
                         .status-current {
-                            font-size: 13px;
+                            font-size: 12px;
                             font-family: "Ubuntu";
                             color: rgb(80, 223, 232);
                             font-weight: bold;
@@ -174,11 +174,11 @@
                             margin-left: 10px;
                         }
                         span.status-text {
-                            font-size: 10px;
+                            font-size: 8px;
                             position: relative;
                             font-family: "Ubuntu";
                             color: rgb(245, 245, 245);
-                            bottom: 45px;
+                            bottom: 48px;
                             margin-left: 35px;
                         }
                     }
