@@ -117,23 +117,30 @@
                                 color: rgb(222, 193, 91);
                             }
                         }
-                        div.stats-info {
+                        .stats-info {
+                            width: 125px;
+                            height: 60px;
+                            position: absolute;
+                            bottom: 0;
                             .stats-data {
                                 font-size: 16px;
                                 font-family: "Ubuntu";
                                 color: rgb(245, 245, 245);
                                 font-weight: bold;
-                                line-height: 0.1;
                                 margin-left: 10px;
+                                bottom: 10px;
+                                position: absolute;
                             }
                             .stats-text {
                                 font-size: 9px;
                                 font-family: "Ubuntu";
                                 color: rgb(159, 159, 159);
                                 text-align: left;
-                                position: absolute;
-                                margin-left: 20px;
-                                top: 40px;
+                                position: relative;
+                                margin-left: 25px;
+                                top: 33px;
+                                overflow: hidden;
+                                white-space: nowrap;
                             } 
                         }
                     }
@@ -163,16 +170,16 @@
                             color: rgb(80, 223, 232);
                             font-weight: bold;
                             position: relative;
-                            bottom: 15px;
-                            margin-left: 15px;
+                            bottom: 20px;
+                            margin-left: 10px;
                         }
                         span.status-text {
                             font-size: 10px;
                             position: relative;
                             font-family: "Ubuntu";
                             color: rgb(245, 245, 245);
-                            bottom: 40px;
-                            margin-left: 40px;
+                            bottom: 45px;
+                            margin-left: 35px;
                         }
                     }
                 }
@@ -180,16 +187,5 @@
         }
     }
 }
-  .Looking_for_a_group_to_play_Fortnite_ {
-    font-size: 16px;
-    font-family: "Ubuntu";
-    color: rgb(245, 245, 245);
-    line-height: 0.539;
-    text-align: justifyLeft;
-    position: absolute;
-    left: 1329.562px;
-    top: 399.193px;
-    z-index: 166;
-  }
   
   
