@@ -9,27 +9,28 @@
             height: 100px;
             border-bottom: 2px solid red;
             .user_info {
-                border: 2px solid yellow;
+                //border: 2px solid yellow;
                 width: 500px;
                 height: 100px;
                 position: absolute;
-                margin-top: 50px;
+                margin-top: 30px;
                 margin-left: 50px;
                 .avatar {
                     float: left;
                     img {
-                        width: 90px;
-                        height: 90px;
+                        width: 120px;
+                        height: 120px;
                         float: inherit;
                         border-radius: 100%;
                         border: 2px solid $palace-gold;
-                        box-shadow: 0px 0px 20px 1px $palace-purple;
+                        box-shadow: 0px 0px 20px 1px rgb(0, 0, 0);
                     }
                 }
                 .info {
                     width: 100%;
                     float: left;
                     position: absolute;
+                    margin-left: 50px;
                     h1 {
                         font-size: 40px;
                         font-family: "Ubuntu";
@@ -67,5 +68,128 @@
                 }
             }
         }
+        .profile_header_bottom {
+            width: 100%;
+            display: inline-flex;
+            height: 96px;
+            //border: 2px dashed yellow;
+            .stats_area {
+                position: absolute;
+                //border: 2px dashed pink;
+                height: 60px;
+                width: 1000px;
+                left: -60px;
+                margin: 18px 0 18px 220px;
+               // background: green;
+                .stats {
+                    list-style: none;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: space-around;
+                    align-content: center;
+                    li {
+                        //border: 2px solid white;
+                        border-radius: 25px;
+                        background-color: rgba(14, 9, 37, 0.38);
+                        width: 125px;
+                        height: 60px;
+                        .stats-image {
+                            font-size: 20px;
+                            font-weight: normal;
+                            letter-spacing: -1px;
+                            color: blue;
+                            position: relative;
+                            top: 15px;
+                            left: 10px;
+                            &.friends { //Add className to all stats shit
+                                color: rgb(57, 205, 227);
+                            }
+                            &.servers {
+                                color: rgb(57, 227, 121);
+                            }
+                            &.clubs {
+                                color: rgb(232, 134, 80);
+                            }
+                            &.awards {
+                                color: rgb(222, 91, 91);
+                            }
+                            &.matches {
+                                color: rgb(222, 193, 91);
+                            }
+                        }
+                        div.stats-info {
+                            .stats-data {
+                                font-size: 16px;
+                                font-family: "Ubuntu";
+                                color: rgb(245, 245, 245);
+                                font-weight: bold;
+                                line-height: 0.1;
+                                margin-left: 10px;
+                            }
+                            .stats-text {
+                                font-size: 9px;
+                                font-family: "Ubuntu";
+                                color: rgb(159, 159, 159);
+                                text-align: left;
+                                position: absolute;
+                                margin-left: 20px;
+                                top: 40px;
+                            } 
+                        }
+                    }
+                    li.status-area {
+                        width: 258px;
+                        position: relative;
+                        .status-mark {
+                            color: rgb(80, 223, 232);
+                            font-size: 20px;
+                            font-weight: normal;
+                            letter-spacing: -1px;
+                            position: relative;
+                            top: 15px;
+                            left: 10px;
+                        }
+                        .status-edit {
+                            color: rgb(48, 24, 120);
+                            position: inherit;
+                            font-size: 20px;
+                            left: 25px;
+                            bottom: 51px;
+
+                        }
+                        .status-current {
+                            font-size: 13px;
+                            font-family: "Ubuntu";
+                            color: rgb(80, 223, 232);
+                            font-weight: bold;
+                            position: relative;
+                            bottom: 15px;
+                            margin-left: 15px;
+                        }
+                        span.status-text {
+                            font-size: 10px;
+                            position: relative;
+                            font-family: "Ubuntu";
+                            color: rgb(245, 245, 245);
+                            bottom: 40px;
+                            margin-left: 40px;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
+  .Looking_for_a_group_to_play_Fortnite_ {
+    font-size: 16px;
+    font-family: "Ubuntu";
+    color: rgb(245, 245, 245);
+    line-height: 0.539;
+    text-align: justifyLeft;
+    position: absolute;
+    left: 1329.562px;
+    top: 399.193px;
+    z-index: 166;
+  }
+  
+  
