@@ -24,11 +24,11 @@ class Profile extends React.Component {
                 <div className="info">
                   <h1>Brant</h1>
                   <div className="rank_area">
-                    <p className="rank">ONLINE</p>
-                    <p className="rank">ADMIN</p>
-                    <p className="rank">STAFF</p>
-                    <p className="rank">GUARDIAN</p>
-                    <p className="rank">PREMIUM</p>
+                    <p className="rank online">ONLINE</p>
+                    <p className="rank admin">ADMIN</p>
+                    <p className="rank staff">STAFF</p>
+                    <p className="rank watchdog">WATCHDOG</p>
+                    <p className="rank premium">PREMIUM</p>
                   </div>
                   <p className="member_since">Member Since November 6, 2016</p>
                 </div>
@@ -77,11 +77,30 @@ class Profile extends React.Component {
                   <a className="status-mark"><FontAwesomeIcon icon={faCommentAltDots}></FontAwesomeIcon></a>
                   <p className="status-current">Current Status</p>
                   <span className="status-text">Looking for a group to play Fortnite</span>
-                  <a className="status-edit"><FontAwesomeIcon icon={faEdit}></FontAwesomeIcon></a>
+                  <a className="status-edit" ><FontAwesomeIcon icon={faEdit}></FontAwesomeIcon></a>
                 </li>
               </ul>
             </div>
-          </div>
+            <div className="user_tools_area">
+              <ul className="user_tools">
+                <li className="tool_addFriend">
+                  <div className="tool">
+                    <a className="tool_addFriend_text">Add Friend</a>
+                  </div>
+                </li>
+                <li className="tool_message">
+                  <div className="tool">
+                    <a className="tool_message_text">Message</a>
+                  </div>
+                </li>
+                <li className="tool_report">
+                  <div className="tool">
+                    <a className="tool_report_text">Report</a>
+                  </div>
+                </li>
+              </ul>
+            </div> {/* End user_tools_area*/}
+          </div> {/* End profile_header_bottom*/}
         </div>
       </div>
     )
