@@ -4,9 +4,13 @@ import './profile.style.scss';
 
 import profilePicture from '../../images/unknown-profile.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUsers, faCommentAltDots } from '@fortawesome/pro-solid-svg-icons';
-import { faServer } from '@fortawesome/pro-light-svg-icons'
-import { faSwords, faGamepad, faAward, faEdit } from '@fortawesome/pro-regular-svg-icons'
+import { faUsers, faCommentAltDots, faChevronDoubleUp } from '@fortawesome/pro-solid-svg-icons';
+import { faAward, faEdit, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
+
+{/* Icons for Moderation Top Right
+  faTools, faShieldAlt from pro-regular-svg
+  faSword from '@fortawesome/pro-light-svg-icons'
+*/}
 
 class Profile extends React.Component {
   render() {
@@ -46,17 +50,10 @@ class Profile extends React.Component {
                   </div>
                 </li>
                 <li>
-                  <a className="stats-image servers"><FontAwesomeIcon icon={faServer}></FontAwesomeIcon></a>
+                  <a className="stats-image servers"><FontAwesomeIcon icon={faBullhorn}></FontAwesomeIcon></a>
                   <div className="stats-info">
                     <p className="stats-data">21</p>
-                    <p className="stats-text">Servers Joined</p>
-                  </div>
-                </li>
-                <li>
-                  <a className="stats-image clubs"><FontAwesomeIcon icon={faSwords}></FontAwesomeIcon></a>
-                  <div className="stats-info">
-                    <p className="stats-data">3</p>
-                    <p className="stats-text">Clubs Joined</p>
+                    <p className="stats-text">Communities Joined</p>
                   </div>
                 </li>
                 <li>
@@ -67,10 +64,10 @@ class Profile extends React.Component {
                   </div>
                 </li>
                 <li>
-                  <a className="stats-image matches"><FontAwesomeIcon icon={faGamepad}></FontAwesomeIcon></a>
+                  <a className="stats-image matches"><FontAwesomeIcon icon={faChevronDoubleUp}></FontAwesomeIcon></a>
                   <div className="stats-info">
-                    <p className="stats-data">20</p>
-                    <p className="stats-text">Matches Played</p>
+                    <p className="stats-data accountLevel">150</p>
+                    <p className="stats-text">Account Level</p>
                   </div>
                 </li>
                 <li className="status-area">

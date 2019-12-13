@@ -101,7 +101,7 @@
                 position: absolute;
                 //border: 2px dashed pink;
                 height: 60px;
-                width: 840px;
+                width: 780px;
                 left: -60px;
                 margin: 28px 0 28px 220px;
                // background: green;
@@ -115,31 +115,16 @@
                         //border: 2px solid white;
                         border-radius: 25px;
                         background-color: rgba(14, 9, 37, 0.38);
-                        width: 100px;
+                        width: 110px;
                         height: 40px;
                         .stats-image {
                             font-size: 14px;
                             font-weight: normal;
                             letter-spacing: -1px;
-                            color: blue;
+                            color: rgb(57, 205, 227);
                             position: relative;
                             top: 8px;
                             left: 10px;
-                            &.friends { //Add className to all stats shit
-                                color: rgb(57, 205, 227);
-                            }
-                            &.servers {
-                                color: rgb(57, 227, 121);
-                            }
-                            &.clubs {
-                                color: rgb(232, 134, 80);
-                            }
-                            &.awards {
-                                color: rgb(222, 91, 91);
-                            }
-                            &.matches {
-                                color: rgb(222, 193, 91);
-                            }
                         }
                         .stats-info {
                             width: 100px;
@@ -154,6 +139,9 @@
                                 margin-left: 10px;
                                 top: 10px;
                                 position: absolute;
+                                &.accountLevel {
+                                    color: rgb(255 ,215 ,0);
+                                }
                             }
                             .stats-text {
                                 font-size: 7px;
@@ -181,7 +169,7 @@
                             left: 10px;
                         }
                         .status-edit {
-                            color: rgb(48, 24, 120);
+                            color: rgb(57, 205, 227);
                             position: inherit;
                             font-size: 14px;
                             left: 60px;
@@ -213,7 +201,7 @@
                 //border: 2px dashed pink;
                 height: 60px;
                 width: 400px;
-                left: 745px;
+                left: 700px;
                 margin: 28px 0 28px 220px;
                 // background: green;
                 .user_tools {
