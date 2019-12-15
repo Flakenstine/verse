@@ -174,7 +174,7 @@
                             font-size: 14px;
                             left: 60px;
                             bottom: 51px;
-
+                            cursor: pointer;
                         }
                         .status-current {
                             font-size: 12px;
@@ -256,4 +256,104 @@
             }
         }
     }
+    .profile-content {
+        margin-top: 50px;
+        .card {
+            border: rgba(46, 38, 70, 0.8);
+            margin-top: 10px;
+            .card-header {
+                background-color: rgba(46, 38, 70, 0.8);
+                font-family: "Ubuntu";
+                font-size: 14px;
+                color: white;
+                .card-dropdown {
+                    position: relative;
+                    left: 300px;
+                }
+            }
+            .card-body {
+                background: rgba(22, 4, 51, 0.85);
+                .card-text {
+                    font-family: "Ubuntu";
+                    font-size: 12px;
+                    padding: 0;
+                }
+                .social-btns {
+                    font-size: 22px;
+                    list-style: none;
+                    padding: 0;
+                    li {
+                        margin-bottom: 5px;
+                        margin-left: 10px;;
+                        .btn-spotify {
+                            background-color: #1ed761;
+                            border-color: #19b452;
+                            color: #ffffff;
+                            min-width: 300px;
+                            &:hover {
+                                color: #ffffff;
+                                background-color: #19b452;
+                            }
+                        }
+                        .btn-twitter {
+                            background-color: #00a8fa;
+                            border-color: #048cce;
+                            color: #ffffff;
+                            min-width: 300px;
+                            &:hover {
+                                color: #ffffff;
+                                background-color: #048cce;
+                            }
+                        }
+                        .btn-github {
+                            background-color: #444;
+                            border-color: #333333;
+                            color: #ffffff;
+                            min-width: 300px;
+                            &:hover {
+                                color: #ffffff;
+                                background-color: #333333;
+                            }
+                        }
+                        .btn {
+                            text-align: center;
+                            line-height: 1;
+                            padding-top: 8px;
+                            padding-bottom: 6px;
+                            i {
+                                font-size: 22px;
+                                float: left;
+                            }
+                        }
+                    }
+                }
+            }
+            .awards-area {
+                max-width: 350px;
+                .awards {
+                    //background: url("../../images/blank-award.png")#f0f0f0;
+                    padding: 0;
+                    margin: 0 0 15px 0;
+                    width: 100%;
+                    border-radius: 20px;
+                    float: left;
+                    list-style: none;
+                    left: 5px;
+                    li {
+                        background-color: #9e1d8d;
+                        width: 65px;
+                        height: 65px;
+                        line-height: 65px;
+                        text-align: center;
+                        font-size: 42px;
+                        margin: 10px 0 0 10px;
+                        border-radius: 10px;
+                        position: relative;
+                        float: left;
+                    }
+                }
+            }
+        }
+    }
 }
+  

@@ -3,9 +3,11 @@ import React from 'react'
 import './profile.style.scss';
 
 import profilePicture from '../../images/unknown-profile.png';
+import recentlyPlayed from '../../images/recently-played.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faCommentAltDots, faChevronDoubleUp } from '@fortawesome/pro-solid-svg-icons';
-import { faAward, faEdit, faBullhorn } from '@fortawesome/pro-regular-svg-icons';
+import { faAward, faEdit, faBullhorn, faAngleDown, faMedal } from '@fortawesome/pro-regular-svg-icons';
+import { faSpotify, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
 
 {/* Icons for Moderation Top Right
   faTools, faShieldAlt from pro-regular-svg
@@ -98,6 +100,85 @@ class Profile extends React.Component {
               </ul>
             </div> {/* End user_tools_area*/}
           </div> {/* End profile_header_bottom*/}
+        </div>
+        <div className="profile-content">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <div className="card">
+                  <div className="card-header">
+                    <a className="card-dropdown"><FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></a>
+                    ABOUT ME
+                  </div>
+                  <div className="card-body">
+                    <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum sapien vitae lacus congue, sed fermentum ipsum eleifend. Proin vitae venenatis magna. Ut imperdiet magna ut volutpat ultricies. In luctus fringilla ex id pellentesque. Ut ex ex, aliquet in diam vel, posuere bibendum orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="row">
+                  <div className="col mini-box">
+                    <div className="card">
+                      <div className="card-header">
+                        <a className="card-dropdown"><FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></a>
+                        JOINED COMMUNITIES
+                      </div>
+                      <div className="card-body">
+                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="row">
+                  <div className="col mini-box">
+                    <div className="card">
+                      <div className="card-header">
+                        <a className="card-dropdown"><FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></a>
+                        AWARDS
+                      </div>
+                      <div className="card-body">
+                        <div className="awards-area">
+                          <ul className="awards">
+                            <li className="award1">
+                              <i className="award1Logo"><FontAwesomeIcon icon={faMedal}></FontAwesomeIcon></i>
+                            </li>
+                            <li className="award1">
+                              <i className="award1Logo"><FontAwesomeIcon icon={faMedal}></FontAwesomeIcon></i>
+                            </li>
+                            <li className="award1">
+                              <i className="award1Logo"><FontAwesomeIcon icon={faMedal}></FontAwesomeIcon></i>
+                            </li>
+                            <li className="award1">
+                              <i className="award1Logo"><FontAwesomeIcon icon={faMedal}></FontAwesomeIcon></i>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col mini-box">
+                    <div className="card">
+                      <div className="card-header">
+                        <a className="card-dropdown"><FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon></a>
+                        CONNECTIONS
+                      </div>
+                      <div className="card-body">
+                        <ul className="social-btns">
+                          <li><button className="btn btn-spotify"><i className="pull-left"><FontAwesomeIcon icon={faSpotify}></FontAwesomeIcon></i>Listen along on Spotify</button></li>
+                          <li><button className="btn btn-twitter"><i className="pull-left"><FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon></i>Follow me on Twitter</button></li>
+                          <li><button className="btn btn-github"><i className="pull-left"><FontAwesomeIcon icon={faGithub}></FontAwesomeIcon></i>Follow me on GitHub</button></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
