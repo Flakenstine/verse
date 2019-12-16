@@ -124,7 +124,18 @@ class Profile extends React.Component {
                         JOINED COMMUNITIES
                       </div>
                       <div className="card-body">
-                        <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        <div className="communitites-area">
+                          <div className="row">
+                            <div className="communitites">
+                              <ul className="communities-list">
+                                <li><a><img src={recentlyPlayed}></img></a></li>
+                                <li><a><img src={recentlyPlayed}></img></a></li>
+                                <li><a><img src={recentlyPlayed}></img></a></li>
+                              </ul>
+                            </div>
+                          </div>
+
+                        </div>
                       </div>
                     </div>
                   </div>

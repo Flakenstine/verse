@@ -273,6 +273,8 @@
             }
             .card-body {
                 background: rgba(22, 4, 51, 0.85);
+                display: flex;
+                align-items: center;
                 .card-text {
                     font-family: "Ubuntu";
                     font-size: 12px;
@@ -327,29 +329,45 @@
                         }
                     }
                 }
-            }
-            .awards-area {
-                max-width: 350px;
-                .awards {
-                    //background: url("../../images/blank-award.png")#f0f0f0;
-                    padding: 0;
-                    margin: 0 0 15px 0;
-                    width: 100%;
-                    border-radius: 20px;
-                    float: left;
-                    list-style: none;
-                    left: 5px;
-                    li {
-                        background-color: #9e1d8d;
-                        width: 65px;
-                        height: 65px;
-                        line-height: 65px;
-                        text-align: center;
-                        font-size: 42px;
-                        margin: 10px 0 0 10px;
-                        border-radius: 10px;
-                        position: relative;
+                .awards-area {
+                    max-width: 350px;
+                    .awards {
+                        //background: url("../../images/blank-award.png")#f0f0f0;
+                        padding: 0;
+                        width: 100%;
+                        border-radius: 20px;
                         float: left;
+                        list-style: none;
+                        li {
+                            background-color: #9e1d8d;
+                            width: 65px;
+                            height: 65px;
+                            text-align: center;
+                            font-size: 42px;
+                            margin: 10px 0 0 10px;
+                            border-radius: 10px;
+                            position: relative;
+                            float: left;
+                        }
+                    }
+                }
+                .communitites-area {
+                    .communitites {
+                        display: table;
+                        margin: 0 auto;
+                        .communities-list {
+                            list-style: none;
+                            li {
+                                display: inline;
+                                margin-left: 10px;
+                                img {
+                                    width: 75px;
+                                    height: 75px;
+                                    border-radius: 50%;
+                                    overflow: hidden;
+                                }
+                            }
+                        }
                     }
                 }
             }
