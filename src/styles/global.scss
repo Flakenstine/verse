@@ -111,10 +111,12 @@ body {
 .app__sidebarRight {
     max-width: 90px;
     padding-left: 0px;
+    top: 66px;
 }
 .app__main {
     padding-left: 0px;
     padding-right: 0px;
+    max-width: 100%;
 }
 .draggableTop {
     height: 66px;
