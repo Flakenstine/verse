@@ -10,6 +10,7 @@ import Tooltip from 'react-bootstrap/Tooltip'
 import palacelogo from '../../images/palace-logo.png'
 
 import './serverbrowser.component.scss'
+import '../../styles/_theme.scss'
 
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -19,9 +20,16 @@ class ServerBrowser extends React.Component {
 
     return (
       <div className="serverBrowser">
+        <div class="macButtons">
+          <div class="traffic-lights">
+            <button class="traffic-light traffic-light-close" id="close"></button>
+            <button class="traffic-light traffic-light-minimize" id="minimize"></button>
+            <button class="traffic-light traffic-light-maximize" id="maximize"></button>
+          </div>
+        </div>
         <div className="serverBrowser__icon">
           <span>
-            <FontAwesomeIcon icon={faComments } />
+            <FontAwesomeIcon icon={faComments} />
           </span>
         </div>
         <div className="serverBrowser__serverlist">
