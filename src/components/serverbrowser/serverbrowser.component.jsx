@@ -12,9 +12,29 @@ import palacelogo from '../../images/palace-logo.png'
 import './serverbrowser.component.scss'
 import '../../styles/_theme.scss'
 
+import { remote } from 'electron'
+
 
 // eslint-disable-next-line react/prefer-stateless-function
 class ServerBrowser extends React.Component {
+
+  macButtonsMinimize = () => {
+    remote.getCurrentWindow().minimize();
+  };
+
+  macButtonsMaximise = () => {
+    const currentWindow = remote.getCurrentWindow()
+    if (currentWindow.isMaximized()) {
+      currentWindow.unmaximize()
+    } else {
+      currentWindow.maximize()
+    }
+  };
+
+  macButtonsClose = () => {
+    remote.app.quit()
+  };
+
   render() {
     const servers = ['Palace Interactive 1', 'Palace Interactive 2', 'Palace Interactive 3', 'Palace Interactive 4', 'Palace Interactive 5']
 
@@ -22,12 +42,12 @@ class ServerBrowser extends React.Component {
       <div className="serverBrowser">
         <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
           <div className="traffic-lights">
-            <button className="traffic-light traffic-light-close" id="close"></button>
-            <button className="traffic-light traffic-light-minimize" id="minimize"></button>
-            <button className="traffic-light traffic-light-maximize" id="maximize"></button>
+            <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
+            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
+            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximise}></button>
           </div>
         </div>
-        <div className="serverBrowser__icon" style={{marginTop: window.navigator.platform === 'Win32' ? '7px' : '-16px' }}>
+        <div className="serverBrowser__icon" style={{ marginTop: window.navigator.platform === 'Win32' ? '7px' : '-16px' }}>
           <span>
             <FontAwesomeIcon icon={faComments} />
           </span>
