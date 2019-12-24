@@ -20,11 +20,11 @@ class ServerBrowser extends React.Component {
 
     return (
       <div className="serverBrowser">
-        <div class="macButtons">
-          <div class="traffic-lights">
-            <button class="traffic-light traffic-light-close" id="close"></button>
-            <button class="traffic-light traffic-light-minimize" id="minimize"></button>
-            <button class="traffic-light traffic-light-maximize" id="maximize"></button>
+        <div className="macButtons">
+          <div className="traffic-lights">
+            <button className="traffic-light traffic-light-close" id="close"></button>
+            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonMinimize}></button>
+            <button className="traffic-light traffic-light-maximize" id="maximize"></button>
           </div>
         </div>
         <div className="serverBrowser__icon">
