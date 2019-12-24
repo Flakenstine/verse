@@ -20,14 +20,14 @@ class ServerBrowser extends React.Component {
 
     return (
       <div className="serverBrowser">
-        <div className="macButtons" style={{ display: process.platform === 'darwin' ? 'none' : 'block' }}>
+        <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
           <div className="traffic-lights">
             <button className="traffic-light traffic-light-close" id="close"></button>
             <button className="traffic-light traffic-light-minimize" id="minimize"></button>
             <button className="traffic-light traffic-light-maximize" id="maximize"></button>
           </div>
         </div>
-        <div className="serverBrowser__icon">
+        <div className="serverBrowser__icon" style={{marginTop: window.navigator.platform === 'Win32' ? '7px' : '-16px' }}>
           <span>
             <FontAwesomeIcon icon={faComments} />
           </span>
