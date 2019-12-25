@@ -12,27 +12,29 @@ import palacelogo from '../../images/palace-logo.png'
 import './serverbrowser.component.scss'
 import '../../styles/_theme.scss'
 
-import { remote } from 'electron'
+const electron = window.require('electron')
 
 
 // eslint-disable-next-line react/prefer-stateless-function
 class ServerBrowser extends React.Component {
 
   macButtonsMinimize = () => {
-    remote.getCurrentWindow().minimize();
+    electron.remote.getCurrentWindow().minimize();
   };
 
-  macButtonsMaximise = () => {
-    const currentWindow = remote.getCurrentWindow()
+  macButtonsMaximize = () => {
+    const currentWindow = electron.remote.getCurrentWindow()
     if (currentWindow.isMaximized()) {
-      currentWindow.unmaximize()
+      currentWindow.setFullScreen(true)
     } else {
-      currentWindow.maximize()
+      currentWindow.setFullScreen(false)
     }
+    //not going back to a normal window size when in fullscreen
   };
 
   macButtonsClose = () => {
-    remote.app.quit()
+    electron.remote.app.hide()
+    //add a double click to quit()
   };
 
   render() {
@@ -44,7 +46,7 @@ class ServerBrowser extends React.Component {
           <div className="traffic-lights">
             <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
             <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
-            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximise}></button>
+            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximize}></button>
           </div>
         </div>
         <div className="serverBrowser__icon" style={{ marginTop: window.navigator.platform === 'Win32' ? '7px' : '-16px' }}>

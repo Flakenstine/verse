@@ -26,6 +26,9 @@ function createWindow() {
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
     titleBarStyle: 'hidden',
+    webPreferences: {
+      nodeIntegration: true,
+    },
   })
 
   mainWindow.setWindowButtonVisibility(false);
