@@ -10,13 +10,12 @@
     "@fortawesome/pro-solid-svg-icons": "^5.10.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "bootstrap": "^4.3.1",
-    "electron": "^6.0.12",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "foreman": "^3.0.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.11",
@@ -33,7 +32,7 @@
     "eject": "react-scripts eject",
     "electron": "electron .",
     "electron-start": "node src/start-react",
-    "react-start": "BROWSER=none react-scripts start",
+    "react-start": "react-scripts start",
     "pack": "electron-builder --dir",
     "dist": "npm run build && electron-builder",
     "postinstall": "electron-builder install-app-deps"
@@ -91,6 +90,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "^5.10.1",
+    "electron": "^6.0.12",
     "electron-builder": "^21.2.0"
   }
 }
