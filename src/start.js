@@ -40,7 +40,7 @@ function createWindow() {
   mainWindow.openDevTools()
 
   mainWindow.webContents.on('did-finish-load', () => {
-    if (loadingScreen) {
+    if (!loadingScreen.isDestroyed()) {
       loadingScreen.setResizable(true);
       loadingScreen.setBounds({
         width: 1435,
