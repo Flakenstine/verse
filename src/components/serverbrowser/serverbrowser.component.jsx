@@ -24,10 +24,10 @@ class ServerBrowser extends React.Component {
 
   macButtonsMaximize = () => {
     const currentWindow = electron.remote.getCurrentWindow()
-    if (currentWindow.isMaximized()) {
-      currentWindow.setFullScreen(true)
-    } else {
+    if (currentWindow.isFullScreen()) {
       currentWindow.setFullScreen(false)
+    } else {
+      currentWindow.setFullScreen(true)
     }
     //not going back to a normal window size when in fullscreen
   };
