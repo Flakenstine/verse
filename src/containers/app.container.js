@@ -54,6 +54,10 @@ class AppContainer extends React.Component {
     return (
       <div className="container-fluid-clearfix">
         <div className="draggableTop" />
+        <div className="windowsTitleBar">
+          <div className="appTitle">Verse</div>
+          <div className="windowControls"></div>
+        </div>
         <div className="row flex-nowrap">
           <div className={`col-sm-4 clearfix app__sidebarLeft`}>
             <ServerBrowser />
