@@ -2,6 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Route, Switch } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faSquareFull, faTimes } from '@fortawesome/pro-light-svg-icons';
 
 import Header from '../components/header/header.component'
 import Chat from '../pages/chat/chat.component'
@@ -52,34 +54,41 @@ class AppContainer extends React.Component {
     ]
 
     return (
-      <div className="container-fluid-clearfix">
-        <div className="draggableTop" />
+      <div className="wrapper">
         <div className="windowsTitleBar">
-          <div className="appTitle">Verse</div>
-          <div className="windowControls"></div>
-        </div>
-        <div className="row flex-nowrap">
-          <div className={`col-sm-4 clearfix app__sidebarLeft`}>
-            <ServerBrowser />
-          </div>
-          <div className="col app__main">
-            <Header />
-            <Switch>
-              {routes.map((route) => (
-                <Route
-                  key={route}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              ))}
-            </Switch>
-          </div>
-          <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
-            <SocialNavigation />
+          <div className="windowControls">
+            <ul>
+              <li><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
+              <li><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
+              <li><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
+            </ul>
           </div>
         </div>
-        <Footer />
+        <div className="container-fluid-clearfix">
+          <div className="draggableTop" />
+          <div className="row flex-nowrap">
+            <div className={`col-sm-4 clearfix app__sidebarLeft`}>
+              <ServerBrowser />
+            </div>
+            <div className="col app__main">
+              <Header />
+              <Switch>
+                {routes.map((route) => (
+                  <Route
+                    key={route}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                  />
+                ))}
+              </Switch>
+            </div>
+            <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
+              <SocialNavigation />
+            </div>
+          </div>
+          <Footer />
+        </div>
       </div>
     )
   }
