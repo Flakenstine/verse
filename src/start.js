@@ -18,7 +18,7 @@ function createWindow() {
     height: 850,
     minHeight: 500,
     minWidth: 950,
-    title: 'Palace Connect',
+    title: 'Connect',
     center: true,
     show: false,
     // frame: false, REDUNDENT DUE TO titleBarStyle set to hidden
@@ -52,7 +52,7 @@ function createWindow() {
         mainWindow.setBounds({
           width: 1435,
           height: 850,
-          title: 'Palace Connect',
+          title: 'Connect',
           center: true,
           show: true,
           frame: false,

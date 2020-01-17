@@ -5,7 +5,7 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 
 import Header from '../components/header/header.component'
 import Chat from '../pages/chat/chat.component'
-import Clubs from '../pages/clubs/clubs.component'
+import Communities from '../pages/communities/communities.component';
 import Games from '../pages/games/games.component'
 import Friends from '../pages/friends/friends.component'
 import ServerBrowser from '../components/serverbrowser/serverbrowser.component'
@@ -38,8 +38,8 @@ class AppContainer extends React.Component {
         component: Games,
       },
       {
-        path: '/clubs',
-        component: Clubs,
+        path: '/discover',
+        component: Communities,
       },
       {
         path: '/friends',

@@ -1,14 +1,11 @@
-/* eslint-disable react/prefer-stateless-function */
 import React from 'react'
 
-class Games extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>Games component will go here</p>
-      </div>
-    )
-  }
+function Games() {
+  return(
+    <div>
+      <p>Discover new and existing communities from all connect users.</p>
+    </div>
+  )
 }
 
 export default Games
