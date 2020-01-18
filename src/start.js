@@ -21,12 +21,17 @@ function createWindow() {
     title: 'Connect',
     center: true,
     show: false,
-    // frame: false, REDUNDENT DUE TO titleBarStyle set to hidden
+    frame: false,
     autoHideMenuBar: true,
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
     titleBarStyle: 'hidden',
+    webPreferences: {
+      nodeIntegration: true,
+    },
   })
+
+  mainWindow.setWindowButtonVisibility(false);
 
   mainWindow.loadURL(
     process.env.ELECTRON_START_URL
