@@ -42,8 +42,6 @@ function createWindow() {
       }),
   )
 
-  mainWindow.openDevTools()
-
   mainWindow.webContents.on('did-finish-load', () => {
     if (!loadingScreen.isDestroyed()) {
       loadingScreen.setResizable(true);
