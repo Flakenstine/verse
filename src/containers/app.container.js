@@ -9,8 +9,6 @@ import Clubs from '../pages/clubs/clubs.component'
 import Games from '../pages/games/games.component'
 import Friends from '../pages/friends/friends.component'
 import ServerBrowser from '../components/serverbrowser/serverbrowser.component'
-import SocialNavigation from '../components/socialnavigation/socialnavigation.component'
-import ServerNavigation from '../components/servernavigation/servernavigation.component'
 import Footer from '../components/footer/footer.component'
 import Profile from '../pages/profile/profile.component'
 
@@ -52,7 +50,7 @@ class AppContainer extends React.Component {
     ]
 
     return (
-      <div className="container-fluid-clearfix">
+      <div className="container-fluid">
         <div className="draggableTop" />
         <div className="row flex-nowrap">
           <div className={`col-sm-4 clearfix app__sidebarLeft`}>
@@ -60,19 +58,18 @@ class AppContainer extends React.Component {
           </div>
           <div className="col app__main">
             <Header />
-            <Switch>
-              {routes.map((route) => (
-                <Route
-                  key={route}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              ))}
-            </Switch>
-          </div>
-          <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
-            <SocialNavigation />
+            <div class="mainContainer">
+              <Switch>
+                {routes.map((route) => (
+                  <Route
+                    key={route}
+                    path={route.path}
+                    exact={route.exact}
+                    component={route.component}
+                  />
+                ))}
+              </Switch>
+            </div>
           </div>
         </div>
         <Footer />

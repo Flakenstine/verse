@@ -90,15 +90,11 @@ body {
 // 	color: #777777;
 // }
 
-.container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 
 .app__sidebarLeft {
-    max-width: 85px;
+    max-width: 70px;
     padding-right: 0px;
+    padding-left: 0px;
     display: block;
 }
 
@@ -125,5 +121,9 @@ body {
     top: 0;
     position: absolute;
     -webkit-app-region: drag;
+}
+
+.mainContainer {
+    height: 100%;
 }
 // TODO: Make the search bar responsive
