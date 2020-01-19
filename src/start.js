@@ -17,7 +17,7 @@ function createWindow() {
     width: 1435,
     height: 850,
     minHeight: 500,
-    minWidth: 950,
+    minWidth: 1200,
     title: 'Palace Connect',
     center: true,
     show: false,
