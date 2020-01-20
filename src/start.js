@@ -31,7 +31,9 @@ function createWindow() {
     },
   })
 
-  mainWindow.setWindowButtonVisibility(false);
+  if (process.platform == 'darwin') {
+    mainWindow.setWindowButtonVisibility(false);
+  }
 
   mainWindow.loadURL(
     process.env.ELECTRON_START_URL
@@ -68,12 +70,6 @@ function createWindow() {
         mainWindow.show()
       }, 1000)
     }
-  })
-
-
-
-  mainWindow.on('maximize', () => {
-    mainWindow.setMenuBarVisibility(visible)
   })
 
   mainWindow.on('close', (event) => {
