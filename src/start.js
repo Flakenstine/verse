@@ -6,6 +6,15 @@ const { BrowserWindow } = electron
 const path = require('path')
 const url = require('url')
 
+const Store = require('./storage/store.js')
+
+const settingsStore = new Store({
+  configName: 'settings',
+  defaults: {
+    windowBounds: { x: -1, y: -1, width: 1435, height: 850 }
+  }
+});
+
 let mainWindow
 let loadingScreen
 
@@ -13,13 +22,22 @@ let willQuitApp = false;
 
 
 function createWindow() {
+  let { x, y, width, height } = settingsStore.get('windowBounds');
+  var center = false;
+
+  if (x == -1 || y == -1) {
+    x = 0;
+    y = 0;
+    center = true;
+  }
+
   mainWindow = new BrowserWindow({
-    width: 1435,
-    height: 850,
+    width,
+    height,
     minHeight: 500,
     minWidth: 1200,
-    title: 'Palace Connect',
-    center: true,
+    title: 'Connect',
+    center,
     show: false,
     frame: false,
     autoHideMenuBar: true,
@@ -31,45 +49,58 @@ function createWindow() {
     },
   })
 
+  if (!center) {
+    mainWindow.setPosition(x, y)
+  }
+
   if (process.platform == 'darwin') {
     mainWindow.setWindowButtonVisibility(false);
   }
 
   mainWindow.loadURL(
-    process.env.ELECTRON_START_URL
-      || url.format({
-        pathname: path.join(__dirname, '/../public/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      }),
+    process.env.ELECTRON_START_URL || url.format({
+      pathname: path.join(__dirname, '/../public/index.html'),
+      protocol: 'file:',
+      slashes: true,
+    })
   )
 
   mainWindow.webContents.on('did-finish-load', () => {
-    if (!loadingScreen.isDestroyed()) {
-      loadingScreen.setResizable(true);
+    if (loadingScreen.isDestroyed()) return;
+
+    loadingScreen.setResizable(true);
+    if (center) {
       loadingScreen.setBounds({
-        width: 1435,
-        height: 850,
-        center: true
+        width,
+        height
       })
       loadingScreen.center()
-      setTimeout(() => {
-        mainWindow.setBounds({
-          width: 1435,
-          height: 850,
-          title: 'Connect',
-          center: true,
-          show: true,
-          frame: false,
-          autoHideMenuBar: true,
-          alwaysOnTop: false,
-          icon: '../src/images/AppIcon.icns',
-          titleBarStyle: 'hidden'
-        })
-        loadingScreen.close()
-        mainWindow.show()
-      }, 1000)
+    } else {
+      loadingScreen.setBounds({
+        x,
+        y,
+        width,
+        height,
+        center: false
+      })
     }
+    
+    setTimeout(() => {
+      mainWindow.setBounds({
+        width,
+        height,
+        title: 'Connect',
+        center: true,
+        show: true,
+        frame: false,
+        autoHideMenuBar: true,
+        alwaysOnTop: false,
+        icon: '../src/images/AppIcon.icns',
+        titleBarStyle: 'hidden'
+      })
+      loadingScreen.close()
+      mainWindow.show()
+    }, 1000)
   })
 
   mainWindow.on('close', (event) => {
@@ -83,11 +114,11 @@ function createWindow() {
   })
 }
 
-function createLoadingScreen() {
+function createLoadingWindow() {
   loadingScreen = new BrowserWindow({
     width: 300,
     height: 300,
-    title: 'Palace Connect',
+    title: 'Connect',
     center: true,
     show: true,
     frame: false,
@@ -105,7 +136,7 @@ function createLoadingScreen() {
 
 
 app.on('ready', () => {
-  createLoadingScreen()
+  createLoadingWindow()
   createWindow()
 })
 
@@ -127,4 +158,10 @@ app.on('activate', () => {
   }
 })
 
-app.on('before-quit', () => willQuitApp = true);
+app.on('before-quit', () => {
+  willQuitApp = true;
+
+  let { width, height } = mainWindow.getBounds();
+  let pos = mainWindow.getPosition();
+  settingsStore.set('windowBounds', { x: pos[0], y: pos[1], width, height });
+});
