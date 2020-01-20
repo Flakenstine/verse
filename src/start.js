@@ -120,18 +120,6 @@ function createLoadingScreen() {
 app.on('ready', () => {
   createLoadingScreen()
   createWindow()
-
-  mainWindow.on('resize', () => {
-    let { width, height } = mainWindow.getBounds();
-    let pos = mainWindow.getPosition();
-    store.set('windowBounds', { x: pos[0], y: pos[1], width, height });
-  });
-
-  mainWindow.on('move', () => {
-    let { width, height } = mainWindow.getBounds();
-    let pos = mainWindow.getPosition();
-    store.set('windowBounds', { x: pos[0], y: pos[1], width, height });
-  });
 })
 
 app.on('toggle-popwindow', () => {
@@ -152,4 +140,10 @@ app.on('activate', () => {
   }
 })
 
-app.on('before-quit', () => willQuitApp = true);
+app.on('before-quit', () => {
+  willQuitApp = true;
+  
+  let { width, height } = mainWindow.getBounds();
+  let pos = mainWindow.getPosition();
+  store.set('windowBounds', { x: pos[0], y: pos[1], width, height });
+});
