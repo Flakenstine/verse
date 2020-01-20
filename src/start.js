@@ -6,6 +6,15 @@ const { BrowserWindow } = electron
 const path = require('path')
 const url = require('url')
 
+const Store = require('./storage/store.js')
+
+const store = new Store({
+  configName: 'settings',
+  defaults: {
+    windowBounds: { x: 0, y: 0, width: 1435, height: 850 }
+  }
+});
+
 let mainWindow
 let loadingScreen
 
@@ -13,9 +22,12 @@ let willQuitApp = false;
 
 
 function createWindow() {
+    let { x, y, width, height } = store.get('windowBounds');
   mainWindow = new BrowserWindow({
-    width: 1435,
-    height: 850,
+    x,
+    y,
+    width,
+    height,
     minHeight: 500,
     minWidth: 1200,
     title: 'Palace Connect',
@@ -48,15 +60,16 @@ function createWindow() {
     if (!loadingScreen.isDestroyed()) {
       loadingScreen.setResizable(true);
       loadingScreen.setBounds({
-        width: 1435,
-        height: 850,
+        x,
+        y,
+        width,
+        height,
         center: true
       })
-      loadingScreen.center()
       setTimeout(() => {
         mainWindow.setBounds({
-          width: 1435,
-          height: 850,
+          width,
+          height,
           title: 'Connect',
           center: true,
           show: true,
@@ -107,6 +120,18 @@ function createLoadingScreen() {
 app.on('ready', () => {
   createLoadingScreen()
   createWindow()
+
+  mainWindow.on('resize', () => {
+    let { width, height } = mainWindow.getBounds();
+    let pos = mainWindow.getPosition();
+    store.set('windowBounds', { x: pos[0], y: pos[1], width, height });
+  });
+
+  mainWindow.on('move', () => {
+    let { width, height } = mainWindow.getBounds();
+    let pos = mainWindow.getPosition();
+    store.set('windowBounds', { x: pos[0], y: pos[1], width, height });
+  });
 })
 
 app.on('toggle-popwindow', () => {
