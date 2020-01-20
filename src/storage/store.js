@@ -15,10 +15,12 @@ class Store {
 
   // This will just return the property on the `data` object
   get(key) {
+    if (this.data == undefined) return null;
     return this.data[key];
   }
 
   has(key) {
+    if (this.data == undefined) return false;
     return this.data[key] !== undefined;
   }
 
