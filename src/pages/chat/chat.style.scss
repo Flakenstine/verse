@@ -1,6 +1,11 @@
+.chat {
+    height: 100%;
+    width: 100%;
+}
+
 .chatBox {
     position: relative;
-    border-top: 2px solid $color-borders-main;
+    border-top: 2px solid red;
     margin: 0 auto;
     max-width: 1700px;
     width: 1700px;
