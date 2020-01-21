@@ -15,13 +15,11 @@ const settingsStore = new Store({
   }
 });
 
-let mainWindow
-let loadingScreen
+let mainWindow, loadingScreen
 
 let willQuitApp = false;
 
-
-function createWindow() {
+function createMainWindow() {
   let { x, y, width, height } = settingsStore.get('windowBounds');
   var center = false;
 
@@ -66,23 +64,23 @@ function createWindow() {
   )
 
   mainWindow.webContents.on('did-finish-load', () => {
-    if (loadingScreen.isDestroyed()) return;
-
-    loadingScreen.setResizable(true);
-    if (center) {
-      loadingScreen.setBounds({
-        width,
-        height
-      })
-      loadingScreen.center()
-    } else {
-      loadingScreen.setBounds({
-        x,
-        y,
-        width,
-        height,
-        center: false
-      })
+    if (!loadingScreen.isDestroyed()) {
+      loadingScreen.setResizable(true);
+      if (center) {
+        loadingScreen.setBounds({
+          width,
+          height
+        })
+        loadingScreen.center()
+      } else {
+        loadingScreen.setBounds({
+          x,
+          y,
+          width,
+          height,
+          center: false
+        })
+      }
     }
     
     setTimeout(() => {
@@ -98,7 +96,7 @@ function createWindow() {
         icon: '../src/images/AppIcon.icns',
         titleBarStyle: 'hidden'
       })
-      loadingScreen.close()
+      if (!loadingScreen.isDestroyed()) loadingScreen.close()
       mainWindow.show()
     }, 1000)
   })
@@ -134,10 +132,9 @@ function createLoadingWindow() {
   })
 }
 
-
 app.on('ready', () => {
   createLoadingWindow()
-  createWindow()
+  createMainWindow();
 })
 
 app.on('toggle-popwindow', () => {
@@ -152,7 +149,7 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow()
+    createMainWindow()
   } else {
     mainWindow.show();
   }
@@ -160,6 +157,8 @@ app.on('activate', () => {
 
 app.on('before-quit', () => {
   willQuitApp = true;
+
+  if (mainWindow == undefined) return;
 
   let { width, height } = mainWindow.getBounds();
   let pos = mainWindow.getPosition();

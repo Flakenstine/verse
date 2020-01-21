@@ -42,7 +42,11 @@ function parseDataFile(filePath, defaults) {
     return JSON.parse(fs.readFileSync(filePath));
   } catch (error) {
     // if there was some kind of error, return the passed in defaults instead.
-    return defaults;
+    if (defaults == null) {
+      return JSON.parse("{}");
+    } else {
+      return defaults;
+    }
   }
 }
 
