@@ -1,5 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react'
+
 import PropTypes from 'prop-types'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +17,8 @@ import ServerNavigation from '../components/servernavigation/servernavigation.co
 import Footer from '../components/footer/footer.component'
 import Profile from '../pages/profile/profile.component'
 
+const electron = window.require('electron')
+
 class AppContainer extends React.Component {
   /**
    * Hide the server navigation menu when we aren't at the root location
@@ -25,6 +28,18 @@ class AppContainer extends React.Component {
   hideChatSidebar = (location) => (location === '/' ? 'app__sidebar-left' : 'app__sidebar-left--alt')
 
   hideFriendSidebar = (location) => (location === '/' ? '' : 'none')
+
+  controlButtonsClose = () => {
+    electron.remote.getCurrentWindow().close();
+  }
+
+  controlButtonsMinimize = () => {
+    electron.remote.getCurrentWindow().minimize();
+  }
+
+  controlButtonsMaximize = () => {
+    electron.remote.getCurrentWindow().maximize();
+  }
 
   render() {
     const { location } = this.props
@@ -55,12 +70,12 @@ class AppContainer extends React.Component {
 
     return (
       <div className="wrapper">
-        <div className="windowsTitleBar">
+        <div className="windowsTitleBar" style={{display: window.navigator.platform === 'Win32' ? 'block': 'none'}}>
           <div className="windowControls">
             <ul>
-              <li><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
-              <li><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
-              <li><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
+              <li onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
+              <li onClick={this.controlButtonsMaximize}><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
+              <li onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
             </ul>
           </div>
         </div>
