@@ -67,14 +67,8 @@ function getMainRender() {
 
 function getLoginRender() {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-4" />
-        <div className="col-4">
+    <div className="container">
           <LoginForm />
-        </div>
-        <div className="col-4" />
-      </div>
     </div>
   );
 }
