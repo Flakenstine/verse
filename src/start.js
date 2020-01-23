@@ -26,6 +26,9 @@ function createWindow() {
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
     titleBarStyle: 'hidden',
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
 
   mainWindow.loadURL(
@@ -95,6 +98,9 @@ function createLoadingScreen() {
     autoHideMenuBar: true,
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
+    webPreferences: {
+      nodeIntegration: true
+    }
   })
   loadingScreen.setResizable(false);
   loadingScreen.loadURL(`file://${__dirname}/../public/loading.html`)
