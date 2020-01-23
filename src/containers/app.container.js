@@ -22,8 +22,9 @@ class AppContainer extends React.Component {
     if (userAuthStore.has("authToken")) {
       return getMainRender();
     } else {
-      const BrowserWindow  = window.require('electron').remote.getCurrentWindow();
-      BrowserWindow.setWindowButtonVisibility(true);
+      if (process.platform == 'darwin') {
+        electron.remote.getCurrentWindow().setWindowButtonVisibility(true);
+      }
       return getLoginRender();
     }
   }
