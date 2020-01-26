@@ -25,7 +25,7 @@ function createWindow() {
     autoHideMenuBar: true,
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
-    titleBarStyle: 'hidden',
+    titleBarStyle: 'none',
     webPreferences: {
       nodeIntegration: true
     }
