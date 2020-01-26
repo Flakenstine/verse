@@ -70,7 +70,7 @@ class AppContainer extends React.Component {
 
     return (
       <div className="wrapper">
-        <div className="windowsTitleBar" style={{display: window.navigator.platform === 'Win32' ? 'block': 'none'}}>
+        <div className="windowsTitleBar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
           <div className="windowControls">
             <ul>
               <li onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
