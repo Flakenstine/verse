@@ -74,44 +74,40 @@ class AppContainer extends React.Component {
     ]
 
     return (
-      <div className="wrapper">
-        <div className="windowsTitlebar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
-          <div className="windowControls">
-            <button className="controlButton" onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
-            <button className="controlButton" onClick={this.controlButtonsMinMax}><FontAwesomeIcon style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></button>
-            <button className="controlButton" onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></button>
-            {/* <ul>
-              <li onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
-              <li onClick={this.controlButtonsMinMax}><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
-              <li onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
-            </ul> */}
-          </div>
-        </div>
-        <div className="container-fluid-clearfix">
-          <div className="draggableTop" />
-          <div className="row flex-nowrap">
-            <div className={`col-sm-4 clearfix app__sidebarLeft`}>
-              <ServerBrowser />
-            </div>
-            <div className="col app__main">
-              <Header />
-              <Switch>
-                {routes.map((route) => (
-                  <Route
-                    key={route}
-                    path={route.path}
-                    exact={route.exact}
-                    component={route.component}
-                  />
-                ))}
-              </Switch>
-            </div>
-            <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
-              <SocialNavigation />
+      <div className="container-fluid-clearfix">
+        <div className="row">
+          <div className="wrapper">
+            <div className="windowsTitlebar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
+              <div className="windowControls">
+                <button className="controlButton" onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
+                <button className="controlButton" onClick={this.controlButtonsMinMax}><FontAwesomeIcon style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></button>
+                <button className="controlButton" onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></button>
+              </div>
             </div>
           </div>
-          <Footer />
         </div>
+        <div className="row flex-nowrap">
+          <div className={`col-sm-4 clearfix app__sidebarLeft`}>
+            <ServerBrowser />
+          </div>
+          <div className="col app__main">
+            <Header />
+            <Switch>
+              {routes.map((route) => (
+                <Route
+                  key={route}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.component}
+                />
+              ))}
+            </Switch>
+          </div>
+          <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
+            <SocialNavigation />
+          </div>
+        </div>
+        <Footer />
       </div>
     )
   }

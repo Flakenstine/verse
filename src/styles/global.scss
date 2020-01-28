@@ -47,9 +47,11 @@ body {
     padding: 0px !important;
     height: 30px;
     background-color: rgb(29, 19, 68);
+    -webkit-app-region: drag;
     .windowControls {
         margin-left: auto;
         display: inline-flex;
+        -webkit-app-region: no-drag;
         .controlButton {
             padding: 4px 15px;
             font-size: 15px;
