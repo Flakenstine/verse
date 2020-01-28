@@ -17,7 +17,7 @@ import ServerNavigation from '../components/servernavigation/servernavigation.co
 import Footer from '../components/footer/footer.component'
 import Profile from '../pages/profile/profile.component'
 
-const { remote } = window.require('electron');
+const electron = window.require('electron');
 
 class AppContainer extends React.Component {
   /**
@@ -30,15 +30,15 @@ class AppContainer extends React.Component {
   hideFriendSidebar = (location) => (location === '/' ? '' : 'none')
 
   controlButtonsClose = () => {
-    remote.getCurrentWindow().close();
+    electron.remote.getCurrentWindow().close();
   }
 
   controlButtonsMinimize = () => {
-    remote.getCurrentWindow().minimize();
+    electron.remote.getCurrentWindow().minimize();
   }
 
   controlButtonsMinMax = () => {
-    const currentWindow = remote.getCurrentWindow();
+    const currentWindow = electron.remote.getCurrentWindow();
     if (currentWindow.isMaximized()) {
       currentWindow.unmaximize();
     } else { 
@@ -79,7 +79,7 @@ class AppContainer extends React.Component {
           <div className="windowControls">
             <ul>
               <li onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
-              <li onClick={this.controlButtonsMinMax}><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
+              <li onClick={this.controlButtonsMaximize}><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
               <li onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
             </ul>
           </div>
