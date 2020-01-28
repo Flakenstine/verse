@@ -50,6 +50,7 @@ body {
     -webkit-app-region: drag;
     .windowControls {
         margin-left: auto;
+        margin-right: 15px;
         display: inline-flex;
         -webkit-app-region: no-drag;
         .controlButton {
@@ -58,6 +59,14 @@ body {
             background-color: transparent;
             border-color: transparent;
             color: rgb(150, 150, 150);
+            &:hover {
+                background-color: rgb(35, 33, 49);
+            }
+            &:nth-child(3) {
+                &:hover {
+                    background-color: rgb(255, 66, 66);
+                }
+            }
         }
     }
     // .windowControls {
