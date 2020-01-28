@@ -4,7 +4,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faSquareFull, faTimes } from '@fortawesome/pro-light-svg-icons';
+import { faMinus, faSquareFull, faTimes, faSquare } from '@fortawesome/pro-light-svg-icons';
 
 import Header from '../components/header/header.component'
 import Chat from '../pages/chat/chat.component'
@@ -77,11 +77,14 @@ class AppContainer extends React.Component {
       <div className="wrapper">
         <div className="windowsTitleBar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
           <div className="windowControls">
-            <ul>
+            <button className="controlButton" onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
+            <button className="controlButton" onClick={this.controlButtonsMinMax}><FontAwesomeIcon style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></button>
+            <button className="controlButton" onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></button>
+            {/* <ul>
               <li onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></li>
               <li onClick={this.controlButtonsMinMax}><FontAwesomeIcon  style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></li>
               <li onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></li>
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className="container-fluid-clearfix">
