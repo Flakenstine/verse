@@ -17,7 +17,7 @@ import ServerNavigation from '../components/servernavigation/servernavigation.co
 import Footer from '../components/footer/footer.component'
 import Profile from '../pages/profile/profile.component'
 
-const { remote } = require('electron');
+const { remote } = window.require('electron');
 
 class AppContainer extends React.Component {
   /**
