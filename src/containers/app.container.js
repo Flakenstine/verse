@@ -75,7 +75,7 @@ class AppContainer extends React.Component {
 
     return (
       <div className="wrapper">
-        <div className="windowsTitleBar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
+        <div className="windowsTitlebar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
           <div className="windowControls">
             <button className="controlButton" onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
             <button className="controlButton" onClick={this.controlButtonsMinMax}><FontAwesomeIcon style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></button>
