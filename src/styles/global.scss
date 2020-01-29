@@ -59,11 +59,13 @@ body {
             border-color: transparent;
             color: rgb(150, 150, 150);
             &:hover {
-                background-color: rgb(35, 33, 49);
+                background-color: rgb(44, 30, 100);
+                color: #fff;
             }
             &:nth-child(3) {
                 &:hover {
                     background-color: rgb(255, 66, 66);
+                    color: #fff;
                 }
             }
         }
