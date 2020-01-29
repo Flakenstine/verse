@@ -1,118 +1,48 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react'
-
-import PropTypes from 'prop-types'
-import { withRouter, Route, Switch } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faSquareFull, faTimes, faSquare } from '@fortawesome/pro-light-svg-icons';
-
-import Header from '../components/header/header.component'
-import Chat from '../pages/chat/chat.component'
-import Communities from '../pages/communities/communities.component';
-import Games from '../pages/games/games.component'
-import Friends from '../pages/friends/friends.component'
-import ServerBrowser from '../components/serverbrowser/serverbrowser.component'
-import SocialNavigation from '../components/socialnavigation/socialnavigation.component'
-import ServerNavigation from '../components/servernavigation/servernavigation.component'
-import Footer from '../components/footer/footer.component'
-import Profile from '../pages/profile/profile.component'
+/* Login Form */
+import WindowsBar from '../components/windowsbar/windowsbar.component';
+import MainApp from '../components/main/main.component';
+import LoginForm from '../components/loginform/loginform.component';
 
 const electron = window.require('electron');
+const Store = electron.remote.require('./storage/store.js');
+const userAuthStore = new Store({ configName: 'auth' });
 
 class AppContainer extends React.Component {
-  /**
-   * Hide the server navigation menu when we aren't at the root location
-   *
-   * @memberof AppContainer
-   */
-  hideChatSidebar = (location) => (location === '/' ? 'app__sidebar-left' : 'app__sidebar-left--alt')
 
-  hideFriendSidebar = (location) => (location === '/' ? '' : 'none')
+  constructor(props, context){
+    super(props, context);
 
-  controlButtonsClose = () => {
-    electron.remote.getCurrentWindow().close();
-  }
+    this.isUserLoggedIn = this.isUserLoggedIn.bind(this);
+    this.logUserIn = this.logUserIn.bind(this);
 
-  controlButtonsMinimize = () => {
-    electron.remote.getCurrentWindow().minimize();
-  }
-
-  controlButtonsMinMax = () => {
-    const currentWindow = electron.remote.getCurrentWindow();
-    if (currentWindow.isMaximized()) {
-      currentWindow.unmaximize();
-    } else { 
-      currentWindow.maximize();
-    }
+    this.state = {
+      userLoggedIn: this.isUserLoggedIn()
+    };
   }
 
   render() {
-    const { location } = this.props
-
-    const routes = [
-      {
-        path: '/',
-        component: Chat,
-        exact: true,
-      },
-      {
-        path: '/games',
-        component: Games,
-      },
-      {
-        path: '/discover',
-        component: Communities,
-      },
-      {
-        path: '/friends',
-        component: Friends,
-      },
-      {
-        path: '/profile',
-        component: Profile,
-      },
-    ]
-
     return (
-      <div className="container-fluid-clearfix">
-        <div className="row">
-          <div className="windowsTitlebar" style={{display: window.navigator.platform === 'Win32' ? 'inline-flex': 'none'}}>
-            <div className="windowControls">
-              <button className="controlButton" onClick={this.controlButtonsMinimize}><FontAwesomeIcon icon={faMinus}></FontAwesomeIcon></button>
-              <button className="controlButton" onClick={this.controlButtonsMinMax}><FontAwesomeIcon style={{fontSize: `11px`, marginBottom: `1px`}} icon={faSquareFull}></FontAwesomeIcon></button>
-              <button className="controlButton" onClick={this.controlButtonsClose}><FontAwesomeIcon icon={faTimes}></FontAwesomeIcon></button>
-            </div>
-          </div>
-        </div>
-        <div className="row flex-nowrap">
-          <div className={`col-sm-4 clearfix app__sidebarLeft`}>
-            <ServerBrowser />
-          </div>
-          <div className="col app__main">
-            <Header />
-            <Switch>
-              {routes.map((route) => (
-                <Route
-                  key={route}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              ))}
-            </Switch>
-          </div>
-          <div className="col clearfix app__sidebarRight" style={{ display: `${this.hideFriendSidebar(location.pathname)}` }}>
-            <SocialNavigation />
-          </div>
-        </div>
-        <Footer />
+      <div className="container-fluid">
+        <WindowsBar />
+        <MainApp visible={this.state.userLoggedIn} />
+        <LoginForm visible={!this.state.userLoggedIn} logUserIn={this.logUserIn} />
       </div>
-    )
+    );
+  }
+
+  isUserLoggedIn() {
+    console.log(userAuthStore);
+    return userAuthStore.has("authToken");
+  }
+
+  logUserIn() {
+    userAuthStore.set("authToken", "abcde");
+    if (window.navigator.platform === 'darwin') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
+    this.setState({
+      userLoggedIn: true
+    });
   }
 }
 
-AppContainer.propTypes = {
-  location: PropTypes.object.isRequired,
-}
-
-export default withRouter(AppContainer)
+export default AppContainer

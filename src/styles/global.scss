@@ -50,7 +50,6 @@ body {
     -webkit-app-region: drag;
     .windowControls {
         margin-left: auto;
-        margin-right: 15px;
         display: inline-flex;
         -webkit-app-region: no-drag;
         .controlButton {
@@ -141,15 +140,11 @@ body {
 // 	color: #777777;
 // }
 
-.container-fluid {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
 
 .app__sidebarLeft {
-    max-width: 85px;
+    max-width: 70px;
     padding-right: 0px;
+    padding-left: 0px;
     display: block;
 }
 
@@ -162,10 +157,12 @@ body {
 .app__sidebarRight {
     max-width: 90px;
     padding-left: 0px;
+    top: 66px;
 }
 .app__main {
     padding-left: 0px;
     padding-right: 0px;
+    max-width: 100%;
 }
 .draggableTop {
     height: 66px;
@@ -174,5 +171,9 @@ body {
     top: 0;
     position: absolute;
     -webkit-app-region: drag;
+}
+
+.mainContainer {
+    height: 100%;
 }
 // TODO: Make the search bar responsive

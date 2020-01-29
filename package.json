@@ -66,8 +66,7 @@
     },
     "files": [
       "./build/**/*",
-      "./node_modules/**/*",
-      "./public/electron.js"
+      "./node_modules/**/*"
     ],
     "directories": {
       "buildResources": "public"

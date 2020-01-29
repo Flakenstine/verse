@@ -1,13 +1,19 @@
 import React from 'react'
+import ChatMenu from '../../components/chatmenu/chatmenu.component'
 import ServerNavigation from '../../components/servernavigation/servernavigation.component'
+import SocialNavigation from '../../components/socialnavigation/socialnavigation.component'
+import './chat.style.scss';
 
-function Chat () {
-  return (
-    <div>
-    <ServerNavigation></ServerNavigation>
-    <p>Default view - Eventually state will be preserved to display last view content on app load.</p>
-    </div>
-  )
+class Chat extends React.Component {
+  render() {
+      return (
+          <div className="chat">
+            <ServerNavigation />
+            <ChatMenu />
+            <SocialNavigation />
+          </div>
+      )
+  }
 }
 
 export default Chat

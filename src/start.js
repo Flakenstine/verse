@@ -6,74 +6,99 @@ const { BrowserWindow } = electron
 const path = require('path')
 const url = require('url')
 
-let mainWindow
-let loadingScreen
+const Store = require('./storage/store.js')
+
+const settingsStore = new Store({
+  configName: 'settings',
+  defaults: {
+    windowBounds: { x: -1, y: -1, width: 1435, height: 850 }
+  }
+});
+
+let mainWindow, loadingScreen
 
 let willQuitApp = false;
 
+function createMainWindow() {
+  let { x, y, width, height } = settingsStore.get('windowBounds');
+  var center = false;
 
-function createWindow() {
+  if (x == -1 || y == -1) {
+    x = 0;
+    y = 0;
+    center = true;
+  }
+
   mainWindow = new BrowserWindow({
-    width: 1435,
-    height: 850,
+    width,
+    height,
     minHeight: 500,
-    minWidth: 950,
+    minWidth: 1200,
     title: 'Connect',
-    center: true,
+    center,
     show: false,
     frame: false,
-    // frame: false, REDUNDENT DUE TO titleBarStyle set to hidden
     autoHideMenuBar: true,
     alwaysOnTop: false,
     icon: '../src/images/AppIcon.icns',
+    titleBarStyle: 'hidden',
     webPreferences: {
-      nodeIntegration: true
-    }
+      nodeIntegration: true,
+    },
   })
+
+  if (!center) {
+    mainWindow.setPosition(x, y)
+  }
+
+  if (process.platform == 'darwin') {
+    mainWindow.setWindowButtonVisibility(false);
+  }
 
   mainWindow.loadURL(
-    process.env.ELECTRON_START_URL
-      || url.format({
-        pathname: path.join(__dirname, '/../public/index.html'),
-        protocol: 'file:',
-        slashes: true,
-      }),
+    process.env.ELECTRON_START_URL || url.format({
+      pathname: path.join(__dirname, '/../public/index.html'),
+      protocol: 'file:',
+      slashes: true,
+    })
   )
 
-  mainWindow.openDevTools()
-
   mainWindow.webContents.on('did-finish-load', () => {
-    if (loadingScreen) {
+    if (!loadingScreen.isDestroyed()) {
       loadingScreen.setResizable(true);
-      loadingScreen.setBounds({
-        width: 1435,
-        height: 850,
-        center: true
-      })
-      loadingScreen.center()
-      setTimeout(() => {
-        mainWindow.setBounds({
-          width: 1435,
-          height: 850,
-          title: 'Connect',
-          center: true,
-          show: true,
-          frame: false,
-          autoHideMenuBar: true,
-          alwaysOnTop: false,
-          icon: '../src/images/AppIcon.icns',
-          titleBarStyle: 'hidden'
+      if (center) {
+        loadingScreen.setBounds({
+          width,
+          height
         })
-        loadingScreen.close()
-        mainWindow.show()
-      }, 1000)
+        loadingScreen.center()
+      } else {
+        loadingScreen.setBounds({
+          x,
+          y,
+          width,
+          height,
+          center: false
+        })
+      }
     }
-  })
-
-
-
-  mainWindow.on('maximize', () => {
-    mainWindow.setMenuBarVisibility(visible)
+    
+    setTimeout(() => {
+      mainWindow.setBounds({
+        width,
+        height,
+        title: 'Connect',
+        center: true,
+        show: true,
+        frame: false,
+        autoHideMenuBar: true,
+        alwaysOnTop: false,
+        icon: '../src/images/AppIcon.icns',
+        titleBarStyle: 'hidden'
+      })
+      if (!loadingScreen.isDestroyed()) loadingScreen.close()
+      mainWindow.show()
+    }, 1000)
   })
 
   mainWindow.on('close', (event) => {
@@ -87,11 +112,11 @@ function createWindow() {
   })
 }
 
-function createLoadingScreen() {
+function createLoadingWindow() {
   loadingScreen = new BrowserWindow({
     width: 300,
     height: 300,
-    title: 'Palace Connect',
+    title: 'Connect',
     center: true,
     show: true,
     frame: false,
@@ -110,10 +135,9 @@ function createLoadingScreen() {
   })
 }
 
-
 app.on('ready', () => {
-  createLoadingScreen()
-  createWindow()
+  createLoadingWindow()
+  createMainWindow();
 })
 
 app.on('toggle-popwindow', () => {
@@ -128,10 +152,18 @@ app.on('window-all-closed', () => {
 
 app.on('activate', () => {
   if (mainWindow === null) {
-    createWindow()
+    createMainWindow()
   } else {
     mainWindow.show();
   }
 })
 
-app.on('before-quit', () => willQuitApp = true);
+app.on('before-quit', () => {
+  willQuitApp = true;
+
+  if (mainWindow == undefined) return;
+
+  let { width, height } = mainWindow.getBounds();
+  let pos = mainWindow.getPosition();
+  settingsStore.set('windowBounds', { x: pos[0], y: pos[1], width, height });
+});

@@ -1,12 +1,8 @@
 @import '../../styles/theme';
 .serverNavigation {
-    position: fixed;
-    left: 70px;
     float: left;
     border-right: 1px solid $color-borders-main;
-    max-height: 100%;
     height: 100vh;
-    max-width: 100%;
     width: 200px;
     .serverNavigation__header {
         margin: 0 auto;
