@@ -1,5 +1,6 @@
 import React from 'react'
 /* Login Form */
+import WindowsBar from '../components/windowsbar/windowsbar.component';
 import MainApp from '../components/main/main.component';
 import LoginForm from '../components/loginform/loginform.component';
 
@@ -21,9 +22,9 @@ class AppContainer extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div className="container-fluid">
-        <div className="draggableTop" />
+        <WindowsBar />
         <MainApp visible={this.state.userLoggedIn} />
         <LoginForm visible={!this.state.userLoggedIn} logUserIn={this.logUserIn} />
       </div>
@@ -37,7 +38,7 @@ class AppContainer extends React.Component {
 
   logUserIn() {
     userAuthStore.set("authToken", "abcde");
-    electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
+    if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
     this.setState({
       userLoggedIn: true
     });

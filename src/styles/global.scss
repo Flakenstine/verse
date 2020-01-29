@@ -39,6 +39,61 @@ body {
         outline: 0;
     }
 }
+.windowsTitlebar {
+    display: inline-flex;
+    width: 100%;
+    z-index: 999;
+    position: relative !important;
+    padding: 0px !important;
+    height: 30px;
+    background-color: rgb(29, 19, 68);
+    -webkit-app-region: drag;
+    .windowControls {
+        margin-left: auto;
+        display: inline-flex;
+        -webkit-app-region: no-drag;
+        .controlButton {
+            padding: 4px 15px;
+            font-size: 15px;
+            background-color: transparent;
+            border-color: transparent;
+            color: rgb(150, 150, 150);
+            &:hover {
+                background-color: rgb(35, 33, 49);
+            }
+            &:nth-child(3) {
+                &:hover {
+                    background-color: rgb(255, 66, 66);
+                }
+            }
+        }
+    }
+    // .windowControls {
+    //     margin-left: auto;
+    //     ul {
+    //         display: inline-flex;
+    //         li {
+    //             list-style-type: none;
+    //             padding: 4px 15px;
+    //             font-size: 15px;
+    //             &:hover {
+    //                 background-color: rgb(35, 33, 49);
+    //             }
+    //             &:nth-child(3) {
+    //                 &:hover {
+    //                     background-color: rgb(255, 66, 66);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}
+.wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 // .app__wrapper {
 //     position: absolute;
 //     top: 0;
