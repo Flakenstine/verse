@@ -38,7 +38,7 @@ class AppContainer extends React.Component {
 
   logUserIn() {
     userAuthStore.set("authToken", "abcde");
-    if (window.navigator.platform === 'darwin') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
+    if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
     this.setState({
       userLoggedIn: true
     });

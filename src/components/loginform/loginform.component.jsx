@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
     render() {
         if (!this.props.visible) return '';
 
-        if (window.navigator.platform === 'darwin') {
+        if (window.navigator.platform === 'MacIntel') {
             window.require('electron').remote.getCurrentWindow().setWindowButtonVisibility(true);
         }
 
