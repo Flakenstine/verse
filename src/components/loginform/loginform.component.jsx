@@ -12,6 +12,8 @@ const LoginForm = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [hasError, setHasError] = useState(false);
 
     const handleLogin = () => {
         axios.post("https://api.palaceinteractive.com/users/login", {
@@ -26,16 +28,16 @@ const LoginForm = () => {
             }
         }).catch((error) => {
             if (error.response) {
-                console.log(error.response.data.errors[0].message);
+                setErrorMessage(error.response.data.errors[0].message);
+                setHasError(true);
             }
         });
     }
 
-    //todo implement login logic completely
-
     return (
         // temporary html, this is all to test the logic of the login.
         <div style={{margin: "1rem 2rem", textAlign: "center"}}>
+            { hasError &&<div className="alert alert-danger" role="alert">{errorMessage}</div> }
             <form onSubmit={e => {e.preventDefault(); handleLogin()}}>
                 <h4>VERSE</h4>
                 <div>
