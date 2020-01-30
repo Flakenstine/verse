@@ -36,7 +36,6 @@ function getMainRender() {
     { path: '/friends', component: Friends },
     { path: '/profile', component: Profile },
   ]
-
   return (
     <div className="container-fluid">
       <div className="draggableTop" />
@@ -46,7 +45,7 @@ function getMainRender() {
         </div>
         <div className="col app__main">
           <Header />
-          <div class="mainContainer">
+          <div className="mainContainer">
             <Switch>
               {routes.map((route) => (
                 <Route

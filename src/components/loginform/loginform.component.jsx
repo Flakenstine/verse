@@ -1,24 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+
+import './loginform.component.scss';
+import '../../styles/_theme.scss';
+
+const electron = window.require('electron');
+const Store = electron.remote.require('./storage/store.js');
+const userAuthStore = new Store({ configName: 'auth'});
 
 const LoginForm = () => {
 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = () => {
+        axios.post("https://api.palaceinteractive.com/users/login", {
+            email,
+            password
+        }).then(result => {
+            if (result.status === 200) {
+                userAuthStore.set("authToken", result.data.user.authToken);
+                const app = electron.remote.app;
+                app.relaunch();
+                app.exit();
+            }
+        }).catch((error) => {
+            if (error.response) {
+                console.log(error.response.data.errors[0].message);
+            }
+        });
+    }
+
     //todo implement login logic completely
-    const handleLogin = () => {}
 
     return (
         // temporary html, this is all to test the logic of the login.
         <div style={{margin: "1rem 2rem", textAlign: "center"}}>
-            <form onSubmit={e => {e.preventDefault(); this.handleLogin()}}>
+            <form onSubmit={e => {e.preventDefault(); handleLogin()}}>
                 <h4>VERSE</h4>
                 <div>
                     <h5>Email</h5>
-                    <input style={{width: "250px"}} name="" type="email" placeholder="" aria-label="Email" autoComplete="off" maxLength="999" spellCheck="false" />
+                    <input style={{width: "250px"}} type="email" value={email} aria-label="Email" autoComplete="off" maxLength="999" spellCheck="false" noValidate onChange={e => { setEmail(e.target.value); }} />
                 </div>
                 <div>
                     <h5>Password</h5>
-                    <input style={{width: "250px"}} name="" type="password" placeholder="" aria-label="Password" autoComplete="off" maxLength="999" spellCheck="false"/>
+                    <input style={{width: "250px"}} type="password" value={password} aria-label="Password" autoComplete="off" maxLength="999" spellCheck="false" noValidate onChange={e => { setPassword(e.target.value); }} />
                 </div>
-                <button style={{marginTop: "15px", width: "200px"}} class="btn btn-primary btn-lg" type="submit">Login</button>
+                <button style={{marginTop: "15px", width: "200px"}} className="btn btn-primary btn-lg" type="submit">Login</button>
             </form>
         </div>
     );
