@@ -20,8 +20,8 @@ const LoginForm = () => {
             email,
             password
         }).then(result => {
-            if (result.status === 200) {
-                userAuthStore.set("authToken", result.data.user.authToken);
+            if (result.data.success === true) {
+                userAuthStore.set("authToken", result.data.authToken);
                 const app = electron.remote.app;
                 app.relaunch();
                 app.exit();
