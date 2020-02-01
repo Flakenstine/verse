@@ -16,6 +16,7 @@ const LoginForm = () => {
     const [hasError, setHasError] = useState(false);
 
     const handleLogin = () => {
+        setHasError(false);
         axios.post("https://api.palaceinteractive.com/users/login", {
             email,
             password
@@ -25,6 +26,9 @@ const LoginForm = () => {
                 const app = electron.remote.app;
                 app.relaunch();
                 app.exit();
+            } else {
+                setErrorMessage(result.data);
+                setHasError(true);
             }
         }).catch((error) => {
             if (error.response) {
@@ -46,7 +50,7 @@ const LoginForm = () => {
                 </div>
                 <div>
                     <h5>Password</h5>
-                    <input style={{width: "250px"}} type="password" value={password} aria-label="Password" autoComplete="off" maxLength="999" spellCheck="false" noValidate onChange={e => { setPassword(e.target.value); }} />
+                    <input style={{width: "250px", border: hasError ? '1px solid red' : 'none'}} type="password" value={password} aria-label="Password" autoComplete="off" maxLength="999" spellCheck="false" noValidate onChange={e => { setPassword(e.target.value); }} />
                 </div>
                 <button style={{marginTop: "15px", width: "200px"}} className="btn btn-primary btn-lg" type="submit">Login</button>
             </form>
