@@ -1,0 +1,26 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import { validate } from 'isemail';
+import FormField from './FormField';
+
+const EmailField = (props) => {
+
+    const { type, validator, ...restProps } = props;
+
+    const validateEmail = (value) => {
+        if (!validate(value)) throw new Error('Email is invalid');
+    }
+
+    return <FormField type="text" validator={validateEmail} {...restProps} />
+}
+
+EmailField.propTypes = {
+    label: PropTypes.string.isRequired,
+    fieldID: propTypes.string.isRequired,
+    placeholder: propTypes.string.isRequired,
+    require: PropTypes.bool,
+    children: PropTypes.node,
+    onStateChanged: PropTypes.func
+}
+
+export default EmailField
