@@ -45,6 +45,17 @@
 // 		width: 400px;
 // 	}
 // }
+.windowsTitleBar {
+    display: inline-flex;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 5px 10px;
+    height: 30px;
+    background-color: #1C1148;
+}
 .header {
     display: inline-flex;
     margin: 0 auto;
