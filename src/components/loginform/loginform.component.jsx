@@ -26,15 +26,9 @@ const LoginForm = () => {
                 const app = electron.remote.app;
                 app.relaunch();
                 app.exit();
-            } else {
-                setErrorMessage(result.data);
-                setHasError(true);
             }
         }).catch((error) => {
-            if (error.response) {
-                setErrorMessage(error.response.data.errors[0].message);
-                setHasError(true);
-            }
+            console.log(error.response);
         });
     }
 
