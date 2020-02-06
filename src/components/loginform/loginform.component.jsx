@@ -1,5 +1,5 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 
 import './loginform.component.scss'
 import '../../styles/_theme.scss'
@@ -44,7 +44,9 @@ class LoginForm extends React.Component {
                             </button>
                         </form>
 
-                        <form style={Object.assign({margin:'auto'})} onSubmit={e => {e.preventDefault(); this.handleRegister()}}>
+                        <p>New to Verse? <Redirect to="/register">Register</Redirect></p>
+
+                        {/* <form style={Object.assign({margin:'auto'})} onSubmit={e => {e.preventDefault(); this.handleRegister()}}>
                             <h4>Register</h4>
                             <div>
                                 <h5>Email</h5>
@@ -67,7 +69,7 @@ class LoginForm extends React.Component {
                             <button type="submit">
                                 <div>Register</div>
                             </button>
-                        </form>
+                        </form> */}
                     </div>
                 </div>
                 <div className="col-4" />

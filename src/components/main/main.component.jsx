@@ -11,6 +11,7 @@ import Profile from '../../pages/profile/profile.component';
 
 import './main.component.scss';
 import '../../styles/_theme.scss';
+import RegistrationForm from '../registration/RegistrationForm/RegistrationForm.component';
 
 class MainApp extends React.Component {
 
@@ -22,6 +23,7 @@ class MainApp extends React.Component {
             { path: '/discover', component: Communities },
             { path: '/friends', component: Friends },
             { path: '/profile', component: Profile },
+            { path: '/register', component: RegistrationForm }
         ]
 
         return (
