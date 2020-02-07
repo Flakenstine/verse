@@ -4,6 +4,7 @@ const { app } = electron
 const { BrowserWindow } = electron
 
 const path = require('path')
+const os = require('os');
 const url = require('url')
 
 const Store = require('./storage/store.js')
@@ -19,6 +20,8 @@ let mainWindow, loadingScreen
 
 let willQuitApp = false;
 
+
+
 function createMainWindow() {
   let { x, y, width, height } = settingsStore.get('windowBounds');
   var center = false;
@@ -28,6 +31,10 @@ function createMainWindow() {
     y = 0;
     center = true;
   }
+
+  BrowserWindow.addDevToolsExtension(
+    path.join(os.homedir(), '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0')
+  )
 
   mainWindow = new BrowserWindow({
     width,
@@ -46,6 +53,7 @@ function createMainWindow() {
       nodeIntegration: true,
     },
   })
+  
 
   if (!center) {
     mainWindow.setPosition(x, y)
@@ -62,6 +70,9 @@ function createMainWindow() {
       slashes: true,
     })
   )
+
+
+
 
   mainWindow.webContents.on('did-finish-load', () => {
     if (!loadingScreen.isDestroyed()) {
@@ -134,6 +145,8 @@ function createLoadingWindow() {
     loadingScreen.show()
   })
 }
+
+
 
 app.on('ready', () => {
   createLoadingWindow()
