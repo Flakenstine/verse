@@ -32,10 +32,6 @@ function createMainWindow() {
     center = true;
   }
 
-  BrowserWindow.addDevToolsExtension(
-    path.join(os.homedir(), '/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0')
-  )
-
   mainWindow = new BrowserWindow({
     width,
     height,
