@@ -9,6 +9,7 @@ const EmailField = (props) => {
   const { type, validator, ...restProps } = props;
 
   const validateEmail = (value) => {
+
 		if (!validate(value)) throw new Error('Email is invalid');
 	}
 	
