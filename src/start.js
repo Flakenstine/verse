@@ -4,6 +4,7 @@ const { app } = electron
 const { BrowserWindow } = electron
 
 const path = require('path')
+const os = require('os');
 const url = require('url')
 
 const Store = require('./storage/store.js')
@@ -18,6 +19,8 @@ const settingsStore = new Store({
 let mainWindow, loadingScreen
 
 let willQuitApp = false;
+
+
 
 function createMainWindow() {
   let { x, y, width, height } = settingsStore.get('windowBounds');
@@ -46,6 +49,7 @@ function createMainWindow() {
       nodeIntegration: true,
     },
   })
+  
 
   if (!center) {
     mainWindow.setPosition(x, y)
@@ -62,6 +66,9 @@ function createMainWindow() {
       slashes: true,
     })
   )
+
+
+
 
   mainWindow.webContents.on('did-finish-load', () => {
     if (!loadingScreen.isDestroyed()) {
@@ -134,6 +141,8 @@ function createLoadingWindow() {
     loadingScreen.show()
   })
 }
+
+
 
 app.on('ready', () => {
   createLoadingWindow()

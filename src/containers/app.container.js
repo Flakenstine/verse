@@ -32,7 +32,6 @@ class AppContainer extends React.Component {
   }
 
   isUserLoggedIn() {
-    console.log(userAuthStore);
     return userAuthStore.has("authToken");
   }
 
