@@ -31,7 +31,7 @@ class MainApp extends React.Component {
                 </div>
                 <div className="col app__main">
                     <Header />
-                    <div class="mainContainer">
+                    <div className="mainContainer">
                     <Switch>
                         {routes.map((route) => (
                         <Route
