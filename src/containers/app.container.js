@@ -3,6 +3,7 @@ import React from 'react'
 import WindowsBar from '../components/windowsbar/windowsbar.component';
 import MainApp from '../components/main/main.component';
 import LoginForm from '../components/loginform/loginform.component';
+import LoginComponent from '../pages/login/login.component';
 
 const electron = window.require('electron');
 const Store = electron.remote.require('./storage/store.js');
@@ -26,13 +27,12 @@ class AppContainer extends React.Component {
       <div className="container-fluid">
         <WindowsBar />
         <MainApp visible={this.state.userLoggedIn} />
-        <LoginForm visible={!this.state.userLoggedIn} logUserIn={this.logUserIn} />
+        <LoginComponent visible={!this.state.userLoggedIn} />
       </div>
     );
   }
 
   isUserLoggedIn() {
-    console.log(userAuthStore);
     return userAuthStore.has("authToken");
   }
 

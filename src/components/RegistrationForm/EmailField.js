@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { validate } from 'isemail';
-import FormField from './FormField';
+import FormField from '../FormField';
 
 const EmailField = (props) => {
 
@@ -16,8 +16,8 @@ const EmailField = (props) => {
 
 EmailField.propTypes = {
     label: PropTypes.string.isRequired,
-    fieldID: propTypes.string.isRequired,
-    placeholder: propTypes.string.isRequired,
+    fieldId: PropTypes.string.isRequired,
+    placeholder: PropTypes.string.isRequired,
     require: PropTypes.bool,
     children: PropTypes.node,
     onStateChanged: PropTypes.func
