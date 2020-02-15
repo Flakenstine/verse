@@ -5,6 +5,7 @@ import '../../styles/_theme.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/pro-solid-svg-icons'
+import { Label } from 'react-bootstrap'
 
 const electron = window.require('electron');
 const Store = electron.remote.require('./storage/store.js');
@@ -12,114 +13,46 @@ const userAuthStore = new Store({ configName: 'auth' });
 
 class LoginForm extends React.Component {
 
-    handleLogin = () => {
-        userAuthStore.set("authToken", "abcde");
-        const app = electron.remote.app;
-        app.relaunch();
-        app.exit();
-    };
-
-    handleRegister = () => {
-    };
-
     render() {
 
         return (
-            <div>
-                <div className="container-fluid">
-                    <div className="row">
-                        <div className="col-sm-10 login-box">
-                            <div className="row">
-                                <div className="col-lg-8 col-md-7 login-form">
-                                    <h2>Sign In</h2>
-                                    <form style={Object.assign({ margin: 'auto' })} onSubmit={e => { e.preventDefault(); this.handleLogin() }}>
-                                        <div className="text-box-cont">
-                                            <div className="input-group mb-3">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                </div>
-                                                <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"></input>
-                                            </div>
-                                            <div className="input-group mb-3">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                </div>
-                                                <input type="password" className="form-control" placeholder="Password"></input>
-                                            </div>
-                                            <div className="row">
-                                                <p className="forget-p">Forgot Password?</p>
-                                            </div>
-                                            <div className="input-group center mb-3">
-                                                <button className="btn btn-success btn-round">Sign In</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div className="col-lg-4 col-md-5 side-box">
-                                    <div className="no-account">
-                                        <h2 className="w-100">Don't have an Account?</h2>
-                                        <p>Simply create your account by clicking the Signup Button</p>
-                                        <a href="#">
-                                            <button type="button" class="btn btn-outline-light">Sign Up</button>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
+            <div className="container">
+                <div className="side-left">
+                    <div className="row side-row">
+                        <div className="about">
+                            <h2>Verse App</h2>
+                            <p>Connect to the better Discord powered by Palace Interactive</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="container-fluid">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-sm-10 login-box">
-                                <div className="row">
-                                    <div className="col-lg-4 col-md-5 side-box">
-                                        <div className="no-account">
-                                            <h2 className="w-100">Already have an Account?</h2>
-                                            <p>Simply login to your account by clicking the Login Button</p>
-                                            <a href="#"><button type="button" className="btn btn-outline-light">Sign In</button></a>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-8 col-md-7 login-form">
-                                        <h2>Create Account</h2>
-                                        <form style={Object.assign({ margin: 'auto' })} onSubmit={e => { e.preventDefault(); this.handleRegister() }}>
-                                            <div className="text-box-cont">
-                                                <div className="input-group mb-3">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                    </div>
-                                                    <input type="text" className="form-control" placeholder="Username" aria-describedby="basic-addon1"></input>
-                                                </div>
-                                                <div className="input-group mb-3">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                    </div>
-                                                    <input type="email" className="form-control" placeholder="Email Address" aria-describedby="basic-addon1"></input>
-                                                </div>
-                                                <div className="input-group mb-3">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                    </div>
-                                                    <input type="password" className="form-control" placeholder="Password" aria-describedby="basic-addon1"></input>
-                                                </div>
-                                                <div className="input-group mb-3">
-                                                    <div className="input-group-prepend">
-                                                        <span className="input-group-text" id="basic-addon1"><i><FontAwesomeIcon icon={faUsers} /></i></span>
-                                                    </div>
-                                                    <input type="password" className="form-control" placeholder="Confirm Password" aria-describedby="basic-addon1"></input>
-                                                </div>
-                                                <div className="input-group center palacec mb-3">
-                                                    <button className="btn btn-success btn-round">Sign In</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                <div className="side-right">
+                    <img src="" alt="" className="logo" />
 
-                                    </div>
-                                </div>
+                    <h2>Log into Verse</h2>
+
+                    <div className="form-row">
+                        <label>Email</label>
+                        <input type="email" placeholder="yourname@verse.com" className="form-control form-control-sm"></input>
+                    </div>
+
+                    <div className="form-row">
+                        <label>Password</label>
+                        <input type="password" placeholder="Password" className="form-control form-control-sm"></input>
+                    </div>
+
+                    <div className="form-row row remember">
+                        <div className="col-7 left no-padding">
+                            <input type="checkbox" />Remember me
                             </div>
+
+                        <div className="col-5">
+                            <span><a href="">Forget Password?</a></span>
                         </div>
+                    </div>
+
+                    <div className="form-row login-button">
+                        <button className="btn btn-sm btn-success">Login</button>
                     </div>
                 </div>
             </div>
