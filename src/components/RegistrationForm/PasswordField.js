@@ -42,8 +42,9 @@ class PasswordField extends Component {
         const passwordStrong = strength >= this.minStrength;
         const passwordLong = passwordLength > this.thresholdLength;
 
-        const counterClass = ['badge badge-pill', passwordLength ? passwordStrong ? 'badge-sucess' : 'badge-warning' : 'badge-danger'].join(' ').trim();
-        const strengthClass = ['strength-meter-2', passwordLength > 0 ? 'visible': 'invisible'].join(' ').trim();
+        const counterClass = ['badge badge-pill', passwordLong ? passwordStrong ? 'badge-success' : 'badge-warning' : 'badge-danger'].join(' ').trim();
+        const strengthClass = ['strength-meter mt-2', passwordLength > 0 ? 'visible' : 'invisible'].join(' ').trim();
+
 
         return (
             <Fragment>
@@ -55,8 +56,9 @@ class PasswordField extends Component {
                             <div className="strength-meter-fill" data-strength={strength}></div>
                         </div>
                     </FormField>
+
                     <div className="position-absolute password-count mx-3">
-                        <span className={counterClass}>{passwordLength ? passwordLong ? `${this.thresholdLength}+`: passwordLength : ''}</span>
+                        <span className={counterClass}>{ passwordLength ? passwordLong ? `${this.thresholdLength}+` : passwordLength : '' }</span>
                     </div>
                 </div>
             </Fragment>

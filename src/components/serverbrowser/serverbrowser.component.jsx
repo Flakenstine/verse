@@ -49,7 +49,7 @@ class ServerBrowser extends React.Component {
             <FontAwesomeIcon icon={faComments} />
           </span>
         </div>
-        <span className="separator--horizontal"></span>
+        {/* <span className="separator--horizontal"></span> */}
         <div className="serverBrowser__serverlist">
 
 
