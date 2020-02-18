@@ -16,38 +16,37 @@ class RegistrationForm extends Component {
     passwordStateChanged = (field) => {
         this.setState({ passwordValid: field.errors.length === 0, passwordValue: field.value});
     }
-t
 
      
     handleRegister = (e) => {
-        // prevent the form from executing the default action when user submits
         e.preventDefault();
+        this.setState({ hasError: false });
 
         const email = this.state.emailValue;
         const password = this.state.passwordValue;
 
-        console.log(email);
-        console.log(password);
+        axios.post('https://api.verseapp.co/v1/users/create', {
+            email,
+            password
+        })
+        .then((response) => {
+            if (response.status.success) {
+                this.setState({ hasSuccess: true });
+            }
+        }, (error) => {
+            const errorCode = error.response.data.errors[0].code;
 
-        // prevent the user from submitting if the form inputs are empty
-        if (email.length !== 0 && password.length !== 0) {
-            axios.post('https://api.verseapp.co/v1/users/create', {
-                email,
-                password
-            })
-            .then((response) => {
-                if (response.status.success) {
-                    console.log(response);
-                } else {
-                    // error checking will go here
-                    console.log("An error occured!");
-                }
-            }, (error) => {
-                console.log(error);
-            });
-        } else {
-            this.setState({hasError: true, error: "A username and password are required to make an account!"});
-        }
+            switch(errorCode) {
+                case 2004:
+                    this.setState({ hasError: true, error: error.response.data.errors[0].message});
+                    break;
+                case 2006:
+                    this.setState({ hasError: true, error: error.response.data.errors[0].message});
+                    break;
+                default:
+                    this.setState({hasError: true, error: "An unknown error occured while creating an account!"});
+            }
+        });
     } 
 
     render() {
@@ -56,7 +55,8 @@ t
 
         return(
             <div className="form-container d-table-cell position-relative align-middle">
-                {/* { && "You have successfully created a verse account! In order to use verse, we will need to verify your account. Please check your registered email for further instructions!"} */}
+                { this.state.hasError && <div className="alert alert-danger">{ this.state.error }</div> }
+                { this.state.hasSuccess && "You have successfully created a verse account! In order to use verse, we will need to verify your account. Please check your registered email for further instructions!" }
                 <form onSubmit={this.handleRegister} noValidate>
                     <div className="d-flex flex-row justify-content-between align-items-center px-3 mb-5">
                         <legend className="form-label mb-0">Create an Account</legend>
@@ -65,7 +65,7 @@ t
                     <div className="py-5 border-gray border-top border-bottom">
                         <EmailField fieldId="email" label="Email" placeholder="" onStateChanged={this.emailStateChanged} required />
                         <PasswordField fieldId="password" label="Password" placeholder="" onStateChanged={this.passwordStateChanged} thresholdLength={7} minStrength={3} required />
-                        <button type="submit"  className="btn btn-primary text-uppercase px-3 py2">Register</button>
+                        <button type="submit" disabled={!formValidated}  className="btn btn-primary text-uppercase px-3 py2">Register</button>
                     </div>
                 </form>
             </div>
