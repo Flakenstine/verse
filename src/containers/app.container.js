@@ -67,9 +67,7 @@ function getMainRender() {
 
 function getLoginRender() {
   return (
-    <div className="container">
           <LoginForm />
-    </div>
   );
 }
 

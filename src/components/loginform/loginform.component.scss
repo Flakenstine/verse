@@ -1,106 +1,145 @@
-.no-padding {
-    padding: 0px;
-}
-::placeholder {
-    color: #747f8a;
-    font-size: 13px;
-    opacity: .5;
-}
+.user-login {
+  min-height: 100vh;
 
-.btn-success{
-	background-color: #863dd9;
-	border-color: #863dd9;
-	&:hover{
-		background-color: #863dd9;
-		border-color: #863dd9;
-	}
-	&:active{
-		background-color: #863dd9;
-		border-color: #863dd9;
-	}
-	&:focus{
-		background-color: #863dd9;
-		border-color: #863dd9;
-		box-shadow: none;
-	}
-}
-.form-control{
-	&:focus{
-		box-shadow: none;
-		border:2px solid  #863dd9;
-	}
+  .bs-reset {
+    margin: 0;
+    padding: 0;
+  }
 
-}
+  .text-right {
+    text-align: right;
+  }
 
-.form-control:focus{
-	box-shadow: none;
-	border: 2px solid #863dd9;
-}
-.form-control{
-	background-color: #F8F8F8;
-	margin-bottom: 20px;
-	&:focus{
-		background-color: #FFF;
-		border-color: #CCC;
-	}
-}
+  .login-bg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+  }
 
-.side-left{
-    height: 100%;
-    width: calc(100% - 340px);
-    float: left;
-    background: url("../../images/login-background.jpeg");
-    background-size: 100%;
-    .side-row{
-        padding: 70px;
-        color: #FFF;
-        position: absolute;
-        bottom: 0px;
-       
-        p{
-            font-size: .9rem;
-            padding-bottom: 20px;
-             border-bottom: 1px solid #cccccc70;
+  .login-logo {
+    position: absolute;
+    top: 2.5em;
+    left: 2.5em;
+
+    &.login-logo-alt {
+      top: 80px;
+      left: 80px;
+    }
+  }
+
+  .login-container {
+    position: relative;
+    min-height: 100vh;
+
+    > {
+      .login-content {
+        margin-top: 50%;
+        padding: 0 80px;
+
+        .user-input {
+          width: 50%;
+          position: relative;
         }
+
+        .left-padding {
+          padding-left: 5px;
+        }
+
+        > .login-form {
+          margin-top: 80px;
+          color: #ffffff;
+          font-size: 13px;
+
+          .form-control {
+            font-size: 15px;
+            color: #ffffff;
+            position: relative;
+            height: 40px;
+            background: none;
+            border: 0;
+            border-bottom: 1px solid #c2cad8;
+            border-radius: 0;
+
+            &:focus {
+                box-shadow: none;
+            }
+            &::placeholder {
+              color: #ffffff;
+              opacity: 0.8;
+            }
+          }
+
+          .forgot-password, .login-button {
+            display: inline-block;
+          }
+
+          .forgot-password {
+            margin-right: 1em;
+
+            > a {
+              color: #ffffff;
+
+              &:focus {
+                color: #a4aab2;
+                text-decoration: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1365px) {
+  .user-login {
+    .login-logo {
+      top: 40px;
+      left: 40px;
     }
 
+    .login-container {
+      > .login-content {
+        padding: 0 40px;
+      }
+    }
+  }
 }
-.side-right{
-    background-color: #FFF;
-    height: 100%;
-    width: 340px;
-    float: right;
-    padding: 80px 30px;
-    text-align: center;
-    vertical-align: middle;
-    transform: translateY(25%);
-    .logo{
-        width: 200px;
+
+@media (max-width: 1023px) {
+  .user-login {
+    min-height: 50vh;
+
+    .login-bg {
+      min-height: 50vh;
     }
-    h2{
-        font-size: .8rem;
-        padding: 20px 10px;
+
+    .login-logo {
+      position: relative;
+      margin: 0 0 40px 0;
     }
-    .form-row{
-        label{
-            font-size: .8rem;
+
+    .login-container {
+      min-height: 50vh;
+
+      > .login-content {
+        margin-top: 60px;
+
+        .login-form {
+          margin-top: 40px;
         }
+      }
     }
-    .remember{
-        font-size: .8rem;
-        span{
-            float: right;
-        }
-    }
+  }
 }
-.login-button{
-    padding: 35px 10px;
-    text-align: center;
-    .btn{
-        padding: 5px 40px;
-        border-radius: 50px;
-        float: none;
-        margin: auto;
-    }
-   
+
+@media (max-width: 640px) {
+  .user-login .login-container > .login-content .text-right {
+    text-align: left;
+  }
+}
+
+.login-bg {
+  background-image: url(../../images/login-background.jpeg);
 }
