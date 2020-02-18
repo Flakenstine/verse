@@ -32,7 +32,25 @@ class AppContainer extends React.Component {
   }
 
   isUserLoggedIn() {
-    return userAuthStore.has("authToken");
+    if (userAuthStore.has("authToken")) {
+			Axios.post('https://api.verseapp.co/v1/users/verify', {
+				email,
+				password
+			}).then((result) => {
+				if (result.data.success) {
+					userAuthStore.set("authToken", result.data.authToken)
+					const app = electron.remote.app
+					app.relaunch();
+					app.exit();
+				} else {
+					this.setState({hasError: true, error: "Login credentials are invalid"})
+				}
+			}).catch((error) => {
+				this.setState({hasError: true, error: error.result});
+			})
+      return true;
+    }
+    return false;
   }
 
   logUserIn() {
