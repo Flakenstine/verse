@@ -20,7 +20,7 @@ const Header = () => {
     const authToken = userAuthStore.get("authToken");
 
     Axios.get(
-      'https://api.palaceinteractive.com/users/me', 
+      'https://api.verseapp.co/v1/users/me', 
         { headers: {
           "Authorization": `Bearer ${authToken}`
         }
