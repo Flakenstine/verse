@@ -20,7 +20,7 @@ const Header = () => {
     const authToken = userAuthStore.get("authToken");
 
     Axios.get(
-      'https://api.palaceinteractive.com/users/me', 
+      'https://api.verseapp.co/v1/users/me', 
         { headers: {
           "Authorization": `Bearer ${authToken}`
         }
@@ -35,7 +35,7 @@ const Header = () => {
 
   useEffect(() => {
     getAuthedUser()
-  }, [])
+  }, []);
 
   const Avatar = (props) => {
     return (
@@ -88,8 +88,9 @@ const Header = () => {
         <button type="button">
           <NavLink to="/"><FontAwesomeIcon icon={faBell} /></NavLink>
         </button>
-        </div>
-        <User user={authedUser} />
+      </div>
+      <span className="separator"></span>
+      <User user={authedUser} />
     </header>
   );
 }
