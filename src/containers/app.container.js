@@ -3,6 +3,7 @@ import React from 'react'
 import WindowsBar from '../components/windowsbar/windowsbar.component';
 import MainApp from '../components/main/main.component';
 import LoginForm from '../components/loginform/loginform.component';
+import Axios from 'axios';
 
 const electron = window.require('electron');
 const Store = electron.remote.require('./storage/store.js');
@@ -32,22 +33,18 @@ class AppContainer extends React.Component {
   }
 
   isUserLoggedIn() {
-    if (userAuthStore.has("authToken")) {
-			Axios.post('https://api.verseapp.co/v1/users/verify', {
-				email,
-				password
-			}).then((result) => {
-				if (result.data.success) {
-					userAuthStore.set("authToken", result.data.authToken)
-					const app = electron.remote.app
-					app.relaunch();
-					app.exit();
-				} else {
-					this.setState({hasError: true, error: "Login credentials are invalid"})
-				}
-			}).catch((error) => {
-				this.setState({hasError: true, error: error.result});
-			})
+    if (userAuthStore.has("authToken") && userAuthStore.has("userId")) {
+      let authToken = userAuthStore.get('authToken'), userId = userAuthStore.get("userId");
+      console.log("A: " + userAuthStore.get("authToken"));
+      Axios.post('https://api.palaceinteractive.com/users/verify', {
+        userId
+      }, {
+        headers: {
+          "Authorization": `Bearer ${authToken}`
+        }
+      }).then((response) => {
+        console.log(response);
+      });
       return true;
     }
     return false;
