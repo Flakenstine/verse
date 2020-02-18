@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 import axios from "axios";
-import { faTrafficLightSlow } from "@fortawesome/pro-regular-svg-icons";
-
 
 class RegistrationForm extends Component {
 
