@@ -52,7 +52,7 @@ function createMainWindow() {
   }
 
   if (process.platform == 'darwin') {
-    mainWindow.setWindowButtonVisibility(false);;
+    mainWindow.setWindowButtonVisibility(false);
   }
 
   mainWindow.loadURL(
@@ -64,41 +64,20 @@ function createMainWindow() {
   );
 
   mainWindow.webContents.on('did-finish-load', () => {
-    if (!loadingScreen.isDestroyed()) {
-      loadingScreen.setResizable(true);
-      if (center) {
-        loadingScreen.setBounds({
-          width,
-          height
-        });
-        loadingScreen.center();
-      } else {
-        loadingScreen.setBounds({
-          x,
-          y,
-          width,
-          height,
-          center: false
-        });
-      }
-    }
-    
-    setTimeout(() => {
-      mainWindow.setBounds({
-        width,
-        height,
-        title: 'Connect',
-        center: true,
-        show: true,
-        frame: false,
-        autoHideMenuBar: true,
-        alwaysOnTop: false,
-        icon: '../src/images/AppIcon.icns',
-        titleBarStyle: 'hidden'
-      });
-      if (!loadingScreen.isDestroyed()) loadingScreen.close();
-      mainWindow.show();
-    }, 1000);
+    mainWindow.setBounds({
+      width,
+      height,
+      title: 'Connect',
+      center: true,
+      show: true,
+      frame: false,
+      autoHideMenuBar: true,
+      alwaysOnTop: false,
+      icon: '../src/images/AppIcon.icns',
+      titleBarStyle: 'hidden'
+    });
+    if (!loadingScreen.isDestroyed()) loadingScreen.close();
+    mainWindow.show();
   });
 
   mainWindow.on('close', (event) => {
