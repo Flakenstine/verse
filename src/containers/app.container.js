@@ -3,8 +3,8 @@ import React from 'react'
 import Axios from 'axios';
 import WindowsBar from '../components/windowsbar/windowsbar.component';
 import MainApp from '../components/main/main.component';
-import LoginForm from '../components/loginform/loginform.component';
 import FullSpinner from '../components/fullspinner/fullspinner.component';
+import LoginComponent from '../pages/login/login.component';
 
 const electron = window.require('electron');
 const apiUtil = require('../utils/apiUtil');
@@ -18,31 +18,21 @@ class AppContainer extends React.Component {
     this.isUserLoggedIn = this.checkUserCredentials.bind(this);
     this.logUserIn = this.logUserIn.bind(this);
 
-    this.state = {
-      userLoggedIn: false,
-      loading: true,
-      checked: false
-    };
+    this.checkUserCredentials(true);
   }
 
   render() {
-    if (!this.state.checked) {
-      this.checkUserCredentials();
-      this.setState({
-        checked: true
-      });
-    }
     return (
       <div className="container-fluid">
         <WindowsBar />
         <FullSpinner visible={this.state.loading} />
         <MainApp visible={this.state.userLoggedIn && !this.state.loading} />
-        <LoginForm visible={!this.state.userLoggedIn && !this.state.loading} logUserIn={this.logUserIn} />
+        <LoginComponent visible={!this.state.userLoggedIn && !this.state.loading} logUserIn={this.logUserIn} />
       </div>
     );
   }
 
-  checkUserCredentials() {
+  checkUserCredentials(init) {
     if (authUtil.getAuthStore().has("authToken") && authUtil.getAuthStore().has("userId")) {
       let authToken = authUtil.getAuthStore().get('authToken'), userId = authUtil.getAuthStore().get("userId");
       apiUtil.verifyCredentials(authToken, userId, (error, response) => {
@@ -58,15 +48,29 @@ class AppContainer extends React.Component {
           });
         }
       });
+      if (init) {
+        this.state = {
+          userLoggedIn: false,
+          loading: true
+        };
+      }
     } else {
-      this.setState({
-        userLoggedIn: false,
-        loading: false
-      });
+      if (init) {
+        this.state = {
+          userLoggedIn: false,
+          loading: false
+        }
+      } else {
+        this.setState({
+          userLoggedIn: false,
+          loading: false
+        });
+      }
     }
   }
 
   logUserIn(authToken, userId) {
+    console.log("AYY " + authToken + " " + userId);
     authUtil.getAuthStore().set("authToken", authToken);
     authUtil.getAuthStore().set("userId", userId);
     if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);

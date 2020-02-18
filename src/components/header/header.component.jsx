@@ -35,7 +35,7 @@ const Header = () => {
 
   useEffect(() => {
     getAuthedUser()
-  }, [])
+  }, []);
 
   const Avatar = (props) => {
     return (
@@ -88,8 +88,9 @@ const Header = () => {
         <button type="button">
           <NavLink to="/"><FontAwesomeIcon icon={faBell} /></NavLink>
         </button>
-        </div>
-        <User user={authedUser} />
+      </div>
+      <span className="separator"></span>
+      <User user={authedUser} />
     </header>
   );
 }
