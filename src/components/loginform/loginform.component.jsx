@@ -3,12 +3,7 @@ import FormField from '../FormField';
 import EmailField from './EmailField';
 import Axios from 'axios';
 
-import './loginform.component.scss';
-
-const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
-const userAuthStore = new Store({ configName: 'auth' });
-
+const apiUtil = require('../../utils/apiUtil');
 
 class LoginForm extends Component {
 
@@ -26,25 +21,23 @@ class LoginForm extends Component {
 		const password = this.state.password;
 
 		if (email.length !== 0 || password.length !== 0) {
-			Axios.post('https://api.verseapp.co/v1/users/login', {
-				email,
-				password
-			})
-			.then((response) => {
-				const app = electron.remote.app;
-				userAuthStore.set("authToken", response.data.authToken);
-				app.relaunch();
-				app.exit();
-			}, (error) => {
-				const errorMessage = error.response.data.errors[0].message;
-				this.setState({ hasError: true, error: errorMessage });
+			apiUtil.handleLogin(email, password, (error, response) => {
+				if (error) {
+					this.setState({hasError: true, error: response.result});
+				} else {
+					if (response.data.success) {
+						this.props.logUserIn(response.data.authToken, response.data.userId);
+					} else {
+						this.setState({hasError: true, error: "Login credentials are invalid"})
+					}
+				}
 			});
 		} else {
 			this.setState({hasError: true, error: "Email and Password are required!"});
 		}
 	}
 
-	render () {
+	render() {
 		return (
 			<div>
 				<div className="form-container d-table-cell position-relative align-middle login-form">
