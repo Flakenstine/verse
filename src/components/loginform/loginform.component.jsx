@@ -17,7 +17,8 @@ class LoginForm extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="loginArea">
+                <div className="bg-image"></div>
                 <div className="login--wrapper">
                     <div className="card">
                         <div className="card-header">
