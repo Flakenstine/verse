@@ -20,7 +20,7 @@ const Header = () => {
   const getAuthedUser = () => {
     let username = "flakenstine";
 
-    setName('username');
+    setName('');
 
     setAuthedUser({
       name: name,
