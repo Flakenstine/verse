@@ -1,81 +1,85 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react'
-import PropTypes from 'prop-types'
-import { withRouter, Route, Switch } from 'react-router-dom'
-/* Main Window */
-import Header from '../components/header/header.component'
-import Chat from '../pages/chat/chat.component'
-import Communities from '../pages/communities/communities.component';
-import Friends from '../pages/friends/friends.component'
-import ServerBrowser from '../components/serverbrowser/serverbrowser.component'
-import Footer from '../components/footer/footer.component'
-import Profile from '../pages/profile/profile.component'
 /* Login Form */
 import LoginForm from '../components/loginform/loginform.component';
-import { faLightbulbDollar } from '@fortawesome/pro-solid-svg-icons'
+import { faLightbulbDollar } from '@fortawesome/pro-solid-svg-icons';
+import Axios from 'axios';
+import WindowsBar from '../components/windowsbar/windowsbar.component';
+import MainApp from '../components/main/main.component';
+import FullSpinner from '../components/fullspinner/fullspinner.component';
+import LoginComponent from '../pages/login/login.component';
 
 const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
-const userAuthStore = new Store({ configName: 'auth' });
+const apiUtil = require('../utils/apiUtil');
+const authUtil = require('../utils/authUtil');
 
 class AppContainer extends React.Component {
+
+  constructor(props, context){
+    super(props, context);
+
+    this.isUserLoggedIn = this.checkUserCredentials.bind(this);
+    this.logUserIn = this.logUserIn.bind(this);
+
+    this.checkUserCredentials(true);
+  }
+
   render() {
-    if (userAuthStore.has("authToken")) {
-      return getMainRender();
+    return (
+      <div className="container-fluid">
+        <WindowsBar />
+        <FullSpinner visible={this.state.loading} />
+        <MainApp visible={this.state.userLoggedIn && !this.state.loading} />
+        <LoginComponent visible={!this.state.userLoggedIn && !this.state.loading} logUserIn={this.logUserIn} />
+      </div>
+    );
+  }
+
+  checkUserCredentials(init) {
+    if (authUtil.getAuthStore().has("authToken") && authUtil.getAuthStore().has("userId")) {
+      let authToken = authUtil.getAuthStore().get('authToken'), userId = authUtil.getAuthStore().get("userId");
+      apiUtil.verifyCredentials(authToken, userId, (error, response) => {
+        if (error) {
+          this.setState({
+            userLoggedIn: false,
+            loading: false
+          });
+        } else {
+          this.setState({
+            userLoggedIn: response.data.success,
+            loading: false
+          });
+        }
+      });
+      if (init) {
+        this.state = {
+          userLoggedIn: false,
+          loading: true
+        };
+      }
     } else {
-      const BrowserWindow  = window.require('electron').remote.getCurrentWindow();
-      BrowserWindow.setWindowButtonVisibility(true);
-      return getLoginRender();
+      if (init) {
+        this.state = {
+          userLoggedIn: false,
+          loading: false
+        }
+      } else {
+        this.setState({
+          userLoggedIn: false,
+          loading: false
+        });
+      }
     }
+  }
+
+  logUserIn(authToken, userId) {
+    console.log("AYY " + authToken + " " + userId);
+    authUtil.getAuthStore().set("authToken", authToken);
+    authUtil.getAuthStore().set("userId", userId);
+    if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
+    this.setState({
+      userLoggedIn: true
+    });
   }
 }
 
-function getMainRender() {
-  const routes = [
-    { path: '/', component: Chat, exact: true },
-    { path: '/discover', component: Communities },
-    { path: '/friends', component: Friends },
-    { path: '/profile', component: Profile },
-  ]
-
-  return (
-    <div className="container-fluid">
-      <div className="draggableTop" />
-      <div className="row flex-nowrap">
-        <div className={`col-sm-4 clearfix app__sidebarLeft`}>
-          <ServerBrowser />
-        </div>
-        <div className="col app__main">
-          <Header />
-          <div class="mainContainer">
-            <Switch>
-              {routes.map((route) => (
-                <Route
-                  key={route}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.component}
-                />
-              ))}
-            </Switch>
-          </div>
-        </div>
-      </div>
-      <Footer />
-    </div>
-  );
-}
-
-function getLoginRender() {
-  return (
-        <div className="container-fluid">
-          <LoginForm />
-        </div> 
-  );
-}
-
-AppContainer.propTypes = {
-  location: PropTypes.object.isRequired,
-}
-
-export default withRouter(AppContainer)
+export default AppContainer

@@ -10,11 +10,11 @@ class SocialNavigation extends React.Component {
     const friends = ['Flakenstine', 'Legobuilder0813', 'JustPlatinum', 'Gatario', 'Vidsify']
     return (
       <div className="socialMenu">
-        <div className="socialMenu__icon">
+        {/* <div className="socialMenu__icon">
           <span>
             <FontAwesomeIcon icon={faUsers} />
           </span>
-        </div>
+        </div> */}
         <div className="socialMenu__friendslist">
           {friends.map((_value) => <div key={_value} className="friend" />)}
         </div>

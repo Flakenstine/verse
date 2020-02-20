@@ -4,15 +4,40 @@ import './loginform.component.scss'
 import '../../styles/_theme.scss'
 
 import verseLogo from '../../images/verse-logo-gold.png'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUsers } from '@fortawesome/pro-solid-svg-icons'
-import { Label } from 'react-bootstrap'
 
-const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
-const userAuthStore = new Store({ configName: 'auth' });
+const apiUtil = require('../../utils/apiUtil');
 
 class LoginForm extends React.Component {
+	
+	state = { email: "", password: "", hasError: false, error: "" }
+
+	fieldValueChanged = (field) => state => this.setState({ [field]: state.value });
+
+	emailChanged = this.fieldValueChanged('email');
+	passwordChanged = this.fieldValueChanged('password');
+
+	handleLogin = (e) => {
+		e.preventDefault();
+
+		const email = this.state.email;
+		const password = this.state.password;
+
+		if (email.length !== 0 || password.length !== 0) {
+			apiUtil.handleLogin(email, password, (error, response) => {
+				if (error) {
+					this.setState({hasError: true, error: response.result});
+				} else {
+					if (response.data.success) {
+						this.props.logUserIn(response.data.authToken, response.data.userId);
+					} else {
+						this.setState({hasError: true, error: "Login credentials are invalid"})
+					}
+				}
+			});
+		} else {
+			this.setState({hasError: true, error: "Email and Password are required!"});
+		}
+	}
 
     render() {
 
@@ -42,7 +67,7 @@ class LoginForm extends React.Component {
                                 <p className="createAccount">Need an account?<a> Click here!</a></p>
                             </form>
                         </div>
-                    </div>{/* CLOSE CARD */}
+                    </div>
                 </div>
             </div>
         )

@@ -39,6 +39,63 @@ body {
         outline: 0;
     }
 }
+.windowsTitlebar {
+    display: inline-flex;
+    width: 100%;
+    z-index: 999;
+    position: relative !important;
+    padding: 0px !important;
+    height: 30px;
+    background-color: rgb(29, 19, 68);
+    -webkit-app-region: drag;
+    .windowControls {
+        margin-left: auto;
+        display: inline-flex;
+        -webkit-app-region: no-drag;
+        .controlButton {
+            padding: 4px 15px;
+            font-size: 15px;
+            background-color: transparent;
+            border-color: transparent;
+            color: rgb(150, 150, 150);
+            &:hover {
+                background-color: rgb(44, 30, 100);
+                color: #fff;
+            }
+            &:nth-child(3) {
+                &:hover {
+                    background-color: rgb(255, 66, 66);
+                    color: #fff;
+                }
+            }
+        }
+    }
+    // .windowControls {
+    //     margin-left: auto;
+    //     ul {
+    //         display: inline-flex;
+    //         li {
+    //             list-style-type: none;
+    //             padding: 4px 15px;
+    //             font-size: 15px;
+    //             &:hover {
+    //                 background-color: rgb(35, 33, 49);
+    //             }
+    //             &:nth-child(3) {
+    //                 &:hover {
+    //                     background-color: rgb(255, 66, 66);
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}
+.wrapper {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
 // .app__wrapper {
 //     position: absolute;
 //     top: 0;
@@ -121,4 +178,132 @@ body {
 .mainContainer {
     height: 100%;
 }
-// TODO: Make the search bar responsive
+
+
+$primary: #007bff;
+
+// Password strength meter color for the different levels
+$strength-colors: (darkred, orangered, orange, yellowgreen, green);
+
+// Gap width between strength meter bars
+$strength-gap: 6px;
+
+// body {
+//   font-size: 62.5%;
+// }
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+}
+
+.form-container {
+  bottom: 100px;
+}
+
+legend.form-label {
+  font-size: 1.5rem;
+  color: desaturate(darken($primary, 10%), 60%);
+}
+
+.control-label {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: desaturate(darken($primary, 10%), 80%);
+}
+
+.form-control {
+  font-size: 1rem;
+}
+
+.form-hint {
+  font-size: 0.6rem;
+  line-height: 1.4;
+  margin: -5px auto 5px;
+  color: #999;
+
+  &.error {
+    color: #C00;
+    font-size: 0.8rem;
+  }
+}
+
+button.btn {
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.password-count {
+  bottom: 16px;
+  right: 10px;
+  font-size: 1rem;
+}
+
+.strength-meter {
+  position: relative;
+  height: 3px;
+  background: #DDD;
+  margin: 7px 0;
+  border-radius: 2px;
+
+  // Dynamically create the gap effect
+  &:before,
+  &:after {
+    content: '';
+    height: inherit;
+    background: transparent;
+    display: block;
+    border-color: #FFF;
+    border-style: solid;
+    border-width: 0 $strength-gap 0;
+    position: absolute;
+    width: calc(20% + #{$strength-gap});
+    z-index: 10;
+  }
+
+  // Dynamically create the gap effect
+  &:before {
+    left: calc(20% - #{($strength-gap / 2)});
+  }
+
+  // Dynamically create the gap effect
+  &:after {
+    right: calc(20% - #{($strength-gap / 2)});
+  }
+}
+
+.strength-meter-fill {
+  background: transparent;
+  height: inherit;
+  position: absolute;
+  width: 0;
+  border-radius: inherit;
+  transition: width 0.5s ease-in-out, background 0.25s;
+
+  // Dynamically generate strength meter color styles
+  @for $i from 1 through 5 {
+    &[data-strength='#{$i - 1}'] {
+      width: (20% * $i);
+      background: nth($strength-colors, $i);
+    }
+  }
+}
+
+.separator {
+  position: relative;
+  margin-top: 15px;
+  height: 30px;
+  border-left:1px solid #38304F;
+}
+.separator--horizontal {
+  &::before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #38305F;
+  }
+}
