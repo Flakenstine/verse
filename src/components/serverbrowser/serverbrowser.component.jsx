@@ -46,9 +46,9 @@ class ServerBrowser extends Component {
         "Authorization": `Bearer ${authToken}`
       }
     }).then((response) => {
-      console.log(response);
-      this.setState({ servers: [ response.servers ]});
-      console.log(this.state.servers);
+      console.log(response.data.servers);
+      // this.setState({ servers: [ response.servers ]});
+      // console.log(this.state.servers);
     }, (error) => {
       console.log(error.response);
     });
