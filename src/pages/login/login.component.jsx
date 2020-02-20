@@ -10,14 +10,11 @@ const LoginComponent = (props) => {
     if (!props.visible) return '';
     return (
         <div className="loginContainer">
-            <div style={{margin: "5px"}}>
-                { loginHidden ? <RegistrationFormComponent /> : <LoginForm logUserIn={props.logUserIn} />}
-                { loginHidden ? 
-                    <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={showLogin}>Already have an account?</button> : 
-                    <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={hideLogin}>Create an account </button> 
-                }
-            </div>
-           
+            { loginHidden ? <RegistrationFormComponent /> : <LoginForm logUserIn={props.logUserIn} />}
+            { loginHidden ? 
+                <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={showLogin}>Already have an account?</button> : 
+                <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={hideLogin}>Create an account </button> 
+            }
         </div>
     );
 

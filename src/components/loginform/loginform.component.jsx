@@ -2,6 +2,8 @@ import React from 'react'
 
 import './loginform.component.scss'
 import '../../styles/_theme.scss'
+import EmailField from './EmailField';
+import FormField from '../FormField';
 
 import verseLogo from '../../images/verse-logo-gold.png'
 
@@ -40,7 +42,6 @@ class LoginForm extends React.Component {
 	}
 
     render() {
-
         return (
             <div className="loginArea">
                 <div className="bg-image"></div>
@@ -51,15 +52,15 @@ class LoginForm extends React.Component {
                             <p>Sign in or create an account</p>
                         </div>
                         <div className="card-body">
-                            <form>
+                            <form noValidate onSubmit={this.handleLogin}>
                                 <div className="emailArea">
                                     <label htmlFor="email">Email</label>
-                                    <input type="email" id="email" className="email"></input>
+                                    <EmailField fieldId="email" label="Email" placeholder="" onStateChanged={this.emailChanged} required />
                                 </div>
 
                                 <div className="passwordArea">
                                     <label htmlFor="password">Password</label>
-                                    <input type="password" id="password" className="password"></input>
+                                    <FormField type="password" fieldId="password" label="Password" placeholder="" onStateChanged={this.passwordChanged} required />
                                 </div>
                                 <p className="forgotp">Forgotten Password?</p>
 
@@ -70,7 +71,7 @@ class LoginForm extends React.Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
