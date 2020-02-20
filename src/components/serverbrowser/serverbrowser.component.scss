@@ -22,10 +22,10 @@
             font-size: 30px;
             transform: scaleX(-1);
             text-align: center;
-            color: $typography-1;
+            color: #a6aaad;
         }
     }
-    .serverBrowser__serverlist {
+    .serverBrowser__server-list {
         display: block;
         margin: 0px auto;
         height: 100%;
@@ -41,15 +41,36 @@
                 img {
                     position: relative;
                     top: 0px;
-                    right: 12px;
+                    right: 17px;
                     height: 38px;
                     width: 48px;
                 }
             }
             &:hover {
+                padding: 1px 9px;
                 border: 1px solid $palace-gold;
                 box-shadow: 0px 1px 10px rgb(255, 232, 36);
             }
+        }
+        .add-server-button {
+            text-align: center;
+            font-size: 20px;
+            padding: 6px 10px;
+            &:hover {
+                padding: 7px 10px;
+            }
+        }
+    }
+    .serverBrowser__foot-menu {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 5px 22px;
+        a {
+            font-size: 25px;
+            color: #a6aaad;
         }
     }
 }

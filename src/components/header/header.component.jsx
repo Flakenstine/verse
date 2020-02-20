@@ -18,6 +18,7 @@ const Header = () => {
   const getAuthedUser = () => {
     const authToken = authUtil.getAuthStore().get("authToken");
     apiUtil.getUsername(authToken, (error, response) => {
+
       var name, avatar;
       if (error) {
         name = "Unknown";
