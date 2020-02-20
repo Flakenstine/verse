@@ -23,6 +23,17 @@ function getUsername(authToken, callback) {
     });
 }
 
+const getAvatar = (authToken, callback) => {
+    // temp for testing
+    Axios.get('http://localhost:3200/users/me/avatar', {
+        headers: getAuthHeaders(authToken)
+    }).then((response) => {
+        callback(false, response);
+    }, (error) => {
+        callback(true, error);
+    });
+}
+
 function handleLogin(email, password, callback) {
     Axios.post(API_URL + 'users/login', {
         email,
@@ -40,4 +51,4 @@ function getAuthHeaders(authToken) {
     };
 }
 
-export { verifyCredentials, getUsername, handleLogin };
+export { verifyCredentials, getUsername, handleLogin, getAvatar };

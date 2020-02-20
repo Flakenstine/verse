@@ -4,37 +4,90 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faStore, faUserPlus, faChevronDown } from '@fortawesome/pro-light-svg-icons'
 import { faBell } from '@fortawesome/pro-solid-svg-icons'
 
-import { NavLink } from 'react-router-dom';
-import './header.component.scss';
-import Axios from 'axios';
+import { getUsername, getAvatar } from '../../utils/apiUtil'
+import { getAuthStore } from '../../utils/authUtil'
 
-const authUtil = require('../../utils/authUtil');
-const apiUtil = require('../../utils/apiUtil');
+import { NavLink } from 'react-router-dom'
+import './header.component.scss'
 
 const Header = () => {
 
-  const [authedUser, setAuthedUser] = useState({name: 'null', avatarUrl: '../../images/unknown-profile.png'});
+  const [authedUser, setAuthedUser] = useState({name: 'unknown', avatarUrl: ''});
+  const [name, setName] = useState('');
+  const [avatar, setAvatar] = useState('');
+  
 
   const getAuthedUser = () => {
-    const authToken = authUtil.getAuthStore().get("authToken");
-    apiUtil.getUsername(authToken, (error, response) => {
-      var name, avatar;
-      if (error) {
-        name = "Unknown";
-        avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
-      } else {
-        name = response.data.username;
-        avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
-      }
-      setAuthedUser({
-        name,
-        avatarUrl: avatar
-      });
+    let username = "flakenstine";
+
+    setName('username');
+
+    setAuthedUser({
+      name: name,
+      avatarUrl: avatar
     });
   }
 
+
+
+
+  // const getAuthedUser = () => {
+
+  //   const authToken = getAuthStore().get("authToken");
+
+  //   getUsername(authToken, (error, response) => {
+  //     let username = "";
+
+  //     if (error) {
+  //       username = "Unknown";
+  //       console.log("Failed to get username from API");
+  //     } else {
+  //       username = response.data.username;
+  //     }
+
+  //     setName(username);
+  //   });
+
+  //   getAvatar(authToken, (error, response) => {
+  //     let avatar = "";
+
+  //     if (error) {
+  //       console.log("Failed to get avatar from API");
+  //     } else {
+  //       avatar = response.data.avatar;
+  //     }
+  //     setAvatar(avatar);
+  //   });
+
+
+  //   setAuthedUser({
+  //     name,
+  //     avatarUrl: avatar
+  //   });
+
+
+  // }
+
+  // const getAuthedUser = () => {
+  //   const authToken = authUtil.getAuthStore().get("authToken");
+  //   apiUtil.getUsername(authToken, (error, response) => {
+  //     var name, avatar;
+  //     if (error) {
+  //       name = "Unknown";
+  //       avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
+  //     } else {
+  //       name = response.data.username;
+  //       avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
+  //     }
+  //     setAuthedUser({
+  //       name,
+  //       avatarUrl: avatar
+  //     });
+  //   });
+  // }
+
   useEffect(() => {
-    getAuthedUser()
+    getAuthedUser();
   }, []);
 
   const Avatar = (props) => {
@@ -63,13 +116,10 @@ const Header = () => {
             <NavLink className="nav-link" exact to="/">Chat</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link" to="/communities">Discovery</NavLink>
+            <NavLink className="nav-link" to="/communities">Communities</NavLink>
           </li>
           <li className="nav-item">
             <NavLink className="nav-link" to="/friends">Friends</NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/profile">Profile</NavLink>
           </li>
         </ul>
       </nav>
@@ -90,6 +140,7 @@ const Header = () => {
         </button>
       </div>
       <span className="separator"></span>
+      <span>{authedUser.name}</span>
       <User user={authedUser} />
     </header>
   );
