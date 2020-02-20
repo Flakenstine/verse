@@ -3,7 +3,7 @@ import React from 'react'
 import './loginform.component.scss'
 import '../../styles/_theme.scss'
 
-import verseLogo from '../../images/verse-logo.png'
+import verseLogo from '../../images/verse-logo-gold.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUsers } from '@fortawesome/pro-solid-svg-icons'
 import { Label } from 'react-bootstrap'
@@ -17,44 +17,31 @@ class LoginForm extends React.Component {
     render() {
 
         return (
-            <div className="login">
-                <div className="user-login">
-                    <div className="row bs-reset">
-                        <div className="col-md-6 login-container bs-reset">
-                            <img className="login-logo login-logo-alt" src={verseLogo} />
-                            <div className="login-content">
-                                {/* TEXT CAN GO HERE IF NEEDED */}
-                                <form action="FORM-ACTION" className="login-form">
-                                    <div className="row">
-                                        <div className="user-input col-xs-6">
-                                            <input className="form-control form-group" type="email" placeholder="Email Address" required />
-                                        </div>
-                                        <div className="user-input left-padding col-xs-6">
-                                            <input className="form-control form-group" type="password" placeholder="Password" required />
-                                        </div>
-                                    </div>
-                                    <div className="forget-remember row">
-                                        <div className="col-sm-4">
-                                            <label className="rememberme mt-checkbox mt-checkbox-outline">
-                                                <input type="checkbox" /> Remember Me
-                                                <span></span>
-                                            </label>
-                                        </div>
-                                        <div className="col-sm-8 text-right">
-                                            <div className="forgot-password">
-                                                <a href="#" className="forgot-password">Forgot Password?</a>
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Sign in</button>
-                                        </div>
-                                    </div>
-                                    <br/>
-                                </form>
-                            </div>
+            <div>
+                <div className="d-flex justify-content-center">
+                    <div className="card">
+                        <div className="card-header">
+                            <img className="verseLogo" src={verseLogo}></img>
+                            <p>Sign in or create an account</p>
                         </div>
-                        <div className="col-md-6 bs-reset">
-                            <div className="login-bg"></div>
+                        <div className="card-body">
+                            <form>
+                                <div className="emailArea">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="email" id="email" className="email"></input>
+                                </div>
+
+                                <div className="passwordArea">
+                                    <label htmlFor="password">Password</label>
+                                    <input type="password" id="password" className="password"></input>
+                                </div>
+                                <p className="forgotp">Forgotten Password?</p>
+
+                                <input type="submit" value="Login" />
+                                <p className="createAccount">Need an account?<a> Click here!</a></p>
+                            </form>
                         </div>
-                    </div>
+                    </div>{/* CLOSE CARD */}
                 </div>
             </div>
         )

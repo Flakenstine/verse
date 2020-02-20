@@ -12,6 +12,7 @@ import Footer from '../components/footer/footer.component'
 import Profile from '../pages/profile/profile.component'
 /* Login Form */
 import LoginForm from '../components/loginform/loginform.component';
+import { faLightbulbDollar } from '@fortawesome/pro-solid-svg-icons'
 
 const electron = window.require('electron');
 const Store = electron.remote.require('./storage/store.js');
@@ -67,7 +68,9 @@ function getMainRender() {
 
 function getLoginRender() {
   return (
+        <div className="container-fluid">
           <LoginForm />
+        </div> 
   );
 }
 
