@@ -1,84 +1,78 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
-import './serverbrowser.component.scss';
-import '../../styles/_theme.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faComments } from '@fortawesome/pro-solid-svg-icons';
+import { faComments, faPlus, faCog, faQuestionCircle } from '@fortawesome/pro-light-svg-icons';
+import { getUserServers } from '../../utils/apiUtil';
+import { getAuthStore } from '../../utils/authUtil';
 
-import axios from 'axios';
-
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Tooltip from 'react-bootstrap/Tooltip'
-import palacelogo from '../../images/palace-logo.png'
+import palacelogo from '../../images/palace-logo.png';
+import './serverbrowser.component.scss';
+import { Tooltip } from 'react-bootstrap';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
-const userAuthStore = new Store({ configName: 'auth' });
 
-class ServerBrowser extends Component {
+const ServerBrowser = () => {
 
-  state = { servers: [] }
+  const [servers, setServerList] = useState([]);
 
-  componentDidMount() {
-    this.loadServers();
+  const macButtonsMinimize = () => {
+    electron.remote.getCurrentWindow().minimize()
   }
 
-  macButtonsMinimize = () => {
-    electron.remote.getCurrentWindow().minimize();
-  }
-
-  macButtonsMaximize = () => {
-    const currentWindow = electron.remote.getCurrentWindow()
+  const macButtonsMaximize = () => {
+    const currentWindow = electron.remote.currentWindow();
     currentWindow.setFullScreen(!currentWindow.isFullScreen());
   }
 
-  macButtonsClose = () => {
-    electron.remote.app.hide()
-    //add a double click to quit()
+  const macButtonsClose = () => {
+    electron.remote.app.hide();
   }
 
-  loadServers = () => {
-    const authToken = userAuthStore.get("authToken");
 
-    axios.get('https://api.verseapp.co/v1/users/me/servers', {
-      headers: {
-        "Authorization": `Bearer ${authToken}`
+  const getServers = () => {
+    let authToken = getAuthStore().get("authToken");
+  
+    getUserServers(authToken, (error, response) => {
+      if (error) {
+        console.log("There was an error attempting to fetch user servers");
+      } else {
+        setServerList(response.data.servers);
       }
-    }).then((response) => {
-      console.log(response.data.servers);
-      // this.setState({ servers: [ response.servers ]});
-      // console.log(this.state.servers);
-    }, (error) => {
-      console.log(error.response);
     });
-  } 
+  }
+
+  useEffect(() => {
+    getServers();
+  }, []);
 
 
-  render() {
-    return (
-      <div className="serverBrowser">
-        {/* these will be moved */}
-        <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
+  return (
+    <div className="serverBrowser">
+      <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
           <div className="traffic-lights">
-            <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
-            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
-            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximize}></button>
-          </div>
-        </div>
-        <div className="serverBrowser__icon" style={{ marginTop: window.navigator.platform === 'Win32' ? '7px' : '-16px' }}>
-          <span>
-            <FontAwesomeIcon icon={faComments} />
-          </span>
-        </div>
-        {/* <span className="separator--horizontal"></span> */}
-        <div className="serverBrowser__serverlist">
-          {/* need to load servers from api first */}
-        {/* {this.state.servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip>}><div className="server"><Link to="/"><img src={palacelogo} alt="Server Logo" /></Link></div></OverlayTrigger>)} */}
+            <button className="traffic-light traffic-light-close" id="close" onClick={macButtonsClose}></button>
+            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={macButtonsMinimize}></button>
+            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={macButtonsMaximize}></button>
         </div>
       </div>
-    );
-  }
+      <div className="serverBrowser__icon" style={{ display: window.navigator.platform === 'Win32' ? '7px': '-16px' }}>
+        <span>
+          <FontAwesomeIcon icon={faComments} />
+        </span>
+      </div>
+      <div className="serverBrowser__server-list">
+        { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><div className="server"><Link to="/"></Link></div></OverlayTrigger>)}
+        <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button"><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
+        {/* <div className="server add-server-button"><OverlayTrigger key="add-server" placement="right"></OverlayTrigger></div> */}
+      </div>
+      <div className="serverBrowser__foot-menu">
+        <Link to="/"><FontAwesomeIcon icon={faQuestionCircle} /></Link>
+        <Link to="/"><FontAwesomeIcon icon={faCog} /></Link>
+      </div>
+    </div>
+  );
 }
 
 export default ServerBrowser;
