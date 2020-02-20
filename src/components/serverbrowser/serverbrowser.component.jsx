@@ -71,6 +71,7 @@ class ServerBrowser extends Component {
             <FontAwesomeIcon icon={faComments} />
           </span>
         </div>
+        {/* <span className="separator--horizontal"></span> */}
         <div className="serverBrowser__serverlist">
           {/* need to load servers from api first */}
         {/* {this.state.servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip>}><div className="server"><Link to="/"><img src={palacelogo} alt="Server Logo" /></Link></div></OverlayTrigger>)} */}

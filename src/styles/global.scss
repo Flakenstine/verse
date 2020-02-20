@@ -192,7 +192,7 @@ $strength-gap: 6px;
 //   font-size: 62.5%;
 // }
 
-.main-container {
+.loginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -297,5 +297,19 @@ button.btn {
       width: (20% * $i);
       background: nth($strength-colors, $i);
     }
+  }
+}
+
+.separator {
+  position: relative;
+  margin-top: 15px;
+  height: 30px;
+  border-left:1px solid #38304F;
+}
+.separator--horizontal {
+  &::before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #38305F;
   }
 }

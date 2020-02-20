@@ -8,34 +8,35 @@ import { NavLink } from 'react-router-dom';
 import './header.component.scss';
 import Axios from 'axios';
 
-const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
-const userAuthStore = new Store({ configName: 'auth' });
+const authUtil = require('../../utils/authUtil');
+const apiUtil = require('../../utils/apiUtil');
 
 const Header = () => {
 
   const [authedUser, setAuthedUser] = useState({name: 'null', avatarUrl: '../../images/unknown-profile.png'});
 
   const getAuthedUser = () => {
-    const authToken = userAuthStore.get("authToken");
+    const authToken = authUtil.getAuthStore().get("authToken");
+    apiUtil.getUsername(authToken, (error, response) => {
 
-    Axios.get(
-      'https://api.verseapp.co/v1/users/me', 
-        { headers: {
-          "Authorization": `Bearer ${authToken}`
-        }
+      var name, avatar;
+      if (error) {
+        name = "Unknown";
+        avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
+      } else {
+        name = response.data.username;
+        avatar = "https://iupac.org/wp-content/uploads/2018/05/default-avatar.png";
       }
-    ).then((response) => {
       setAuthedUser({
-        name: `${response.data.username}`,
-        avatarUrl: 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png'
-      })
+        name,
+        avatarUrl: avatar
+      });
     });
   }
 
   useEffect(() => {
     getAuthedUser()
-  }, [])
+  }, []);
 
   const Avatar = (props) => {
     return (
@@ -88,8 +89,9 @@ const Header = () => {
         <button type="button">
           <NavLink to="/"><FontAwesomeIcon icon={faBell} /></NavLink>
         </button>
-        </div>
-        <User user={authedUser} />
+      </div>
+      <span className="separator"></span>
+      <User user={authedUser} />
     </header>
   );
 }

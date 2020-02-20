@@ -21,7 +21,7 @@ class MainApp extends React.Component {
             { path: '/', component: Chat, exact: true },
             { path: '/discover', component: Communities },
             { path: '/friends', component: Friends },
-            { path: '/profile', component: Profile },
+            { path: '/profile', component: Profile }
         ]
 
         return (
@@ -31,7 +31,7 @@ class MainApp extends React.Component {
                 </div>
                 <div className="col app__main">
                     <Header />
-                    <div class="mainContainer">
+                    <div className="mainContainer">
                     <Switch>
                         {routes.map((route) => (
                         <Route
