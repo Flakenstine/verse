@@ -1,75 +1,82 @@
 @import '../../styles/theme';
 
 body{
-background-image: url('../../images/login-background.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-font-size: 13px;
-.card{
-  height: 450px;
-  margin-top: auto;
-  margin-bottom: auto;
-  width: 425px;
-  background-color: rgba(45, 31, 86, 0.9);
-  .card-header {
-    text-align: center;
-    border: none;
-    padding: 0;
-    .verseLogo {
-      max-width: 75%;
-      height: auto;
+  background-image: url('../../images/login-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 13px;
+  .login--wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  .card {
+    height: 450px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 425px;
+    background-color: rgba(45, 31, 86, 0.9);
+    .card-header {
+      text-align: center;
+      border: none;
+      padding: 0;
+      .verseLogo {
+        max-width: 75%;
+        height: auto;
+      }
+      p {
+        text-transform: uppercase;
+      }
     }
-    p {
-      text-transform: uppercase;
+    .card-body {
+      label {
+        margin: 0;
+        text-transform: uppercase;
+      }
+      input[type=submit] {
+        width: 100%;
+        background: linear-gradient(90deg, rgba(243,212,87,1) 0%, rgba(255,223,99,1) 100%);
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+      input[type=email], input[type=password] {
+        width: 100%;
+        height: 30px;
+        padding-top: 0;
+        padding-bottom: 12px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 0;
+        border-bottom: 1px solid #c2cad8;
+        border-radius: 0;
+        background: none;
+        color: white;
+        &:focus {
+          box-shadow: none;
+          outline: none;
+        }
+      }
+      .forgotp, .createAccount {
+        text-transform: uppercase;
+        float: right;
+        font-size: 10px;
+        padding: 0;
+        margin: 0;
+        margin-bottom: 10px;
+      }
     }
-  }
-  .card-body {
-    label {
-  margin: 0;
-  text-transform: uppercase;
-  input[type=submit] {
-    width: 100%;
-    background: linear-gradient(90deg, rgba(243,212,87,1) 0%, rgba(255,223,99,1) 100%);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    text-transform: uppercase;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    &:hover {
-      background-color: #45a049;
-    }
-  }
-  input[type=email], input[type=password] {
-    width: 100%;
-    height: 30px;
-    padding-top: 0;
-    padding-bottom: 12px;
-    padding-left: 20px;
-    padding-right: 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 0;
-    border-bottom: 1px solid #c2cad8;
-    border-radius: 0;
-    background: none;
-    color: white;
-    &:focus {
-      box-shadow: none;
-      outline: none;
-    }
-  }
-  .forgotp, .createAccount {
-    text-transform: uppercase;
-    float: right;
-    font-size: 10px;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 10px;
   }
 }
-  }
-  }
 }
 

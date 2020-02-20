@@ -18,7 +18,7 @@ class LoginForm extends React.Component {
 
         return (
             <div>
-                <div className="d-flex justify-content-center">
+                <div className="login--wrapper">
                     <div className="card">
                         <div className="card-header">
                             <img className="verseLogo" src={verseLogo}></img>
