@@ -22,7 +22,7 @@ const ServerBrowser = () => {
   }
 
   const macButtonsMaximize = () => {
-    const currentWindow = electron.remote.currentWindow();
+    const currentWindow = electron.remote.currentWindow;
     currentWindow.setFullScreen(!currentWindow.isFullScreen());
   }
 
