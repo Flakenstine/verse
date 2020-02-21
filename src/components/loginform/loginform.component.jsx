@@ -54,13 +54,11 @@ class LoginForm extends React.Component {
                         <div className="card-body">
                             <form noValidate onSubmit={this.handleLogin}>
                                 <div className="emailArea">
-                                    <label htmlFor="email">Email</label>
-                                    <EmailField className="user-input" fieldId="email" placeholder="" onStateChanged={this.emailChanged} required />
+                                    <EmailField className="user-input" label="Email" fieldId="email" placeholder="" onStateChanged={this.emailChanged} required />
                                 </div>
 
                                 <div className="passwordArea">
-                                    <label htmlFor="password">Password</label>
-                                    <FormField className="user-input" type="password" fieldId="password" placeholder="" onStateChanged={this.passwordChanged} required />
+                                    <FormField className="user-input" type="password" label="Password" fieldId="password" placeholder="" onStateChanged={this.passwordChanged} required />
                                 </div>
                                 <p className="forgotp">Forgotten Password?</p>
 

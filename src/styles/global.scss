@@ -211,9 +211,12 @@ legend.form-label {
 }
 
 .control-label {
-  font-size: 0.8rem;
+  margin: 0;
+  text-transform: uppercase;
   font-weight: bold;
-  color: desaturate(darken($primary, 10%), 80%);
+  text-align: left;
+  padding-left: 0;
+  font-size: 0.8125em;
 }
 
 .form-control {

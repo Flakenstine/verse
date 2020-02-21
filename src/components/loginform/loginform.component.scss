@@ -50,14 +50,6 @@
     .card-body {
       .emailArea, .passwordArea {
         text-align: left;
-        label {
-          margin: 0;
-          text-transform: uppercase;
-          font-weight: bold;
-          text-align: left;
-          padding-left: 16px;
-          font-size: 13px;
-        }
         .form-group {
           margin: 0;
         input[type=email], input[type=password] {
