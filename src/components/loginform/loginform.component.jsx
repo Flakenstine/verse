@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
                     <div className="card">
                         <div className="card-header">
                             <img className="verseLogo" src={verseLogo}></img>
-                            <p className="signInText">Sign in or create an account</p>
+                            <legend className="form-label mb-0">Sign in or Create an Account</legend>
                         </div>
                         <div className="card-body">
                             <form noValidate onSubmit={this.handleLogin}>
