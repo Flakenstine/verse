@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/pro-light-svg-icons';
@@ -63,7 +63,7 @@ const ServerBrowser = () => {
         </span>
       </div>
       <div className="serverBrowser__server-list">
-        { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><div className="server"><Link to={`/server/${value}`}>S</Link></div></OverlayTrigger>)}
+        { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><div className="server"><NavLink exact to={`/server/${value}`}>S</NavLink></div></OverlayTrigger>)}
         <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button"><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
       </div>
       <div className="serverBrowser__foot-menu">

@@ -21,7 +21,7 @@ class ServerNavigation extends React.Component {
       <div className="serverNavigation">
         <div className="serverNavigation__header">
           {this.props.server}
-          <FontAwesomeIcon icon={faCheckCircle} />
+          {/* <FontAwesomeIcon icon={faCheckCircle} /> */}
           <span><FontAwesomeIcon icon={faChevronDown} /></span>
         </div>
       </div>

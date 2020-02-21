@@ -60,6 +60,9 @@
                 border: 1px solid $palace-gold;
                 box-shadow: 0px 1px 10px rgb(255, 232, 36);
             }
+            .active {
+                color: $palace-gold;
+            }
         }
         .add-server-button {
             text-align: center;

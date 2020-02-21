@@ -3,15 +3,17 @@
     float: left;
     border-right: 1px solid $color-borders-main;
     height: 100vh;
-    width: 200px;
+    width: 250px;
     .serverNavigation__header {
         margin: 0 auto;
-        height: 60px;
+        height: 50px;
         border-bottom: 1px solid $color-borders-main;
+        // box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         color: $typography-1;
-        padding: 20px 35px;
-        font-weight: 300;
-        font-size: 13px;
+        padding: 15px 10px;
+        font-weight: bold;
+        text-align: center;
+        font-size: 14px;
         span {
             position: relative;
             top: -2px;
