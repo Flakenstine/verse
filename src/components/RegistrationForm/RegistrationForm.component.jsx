@@ -68,17 +68,18 @@ class RegistrationForm extends Component {
                         <div className="card-body">
                             <form onSubmit={this.handleRegister} noValidate>
                                 <div className="emailArea">
-                                    <label htmlFor="email">Email</label>
-                                    <EmailField fieldId="email" placeholder="" onStateChanged={this.emailStateChanged} required />
+                                    <EmailField fieldId="email" label="Email" placeholder="" onStateChanged={this.emailStateChanged} required />
                                 </div>
 
                                 <div className="passwordArea">
-                                    <label htmlFor="password">Password</label>
-                                    <PasswordField fieldId="password" placeholder="" onStateChanged={this.passwordStateChanged} thresholdLength={7} minStrength={3} required />
+                                    <PasswordField fieldId="password" label="Password" placeholder="" onStateChanged={this.passwordStateChanged} thresholdLength={7} minStrength={3} required />
                                 </div>
 
                                 <div className="registerButton">
                                     <button type="submit" disabled={!formValidated} className="btn">Register</button>
+                                </div>
+                                <div className="accountPresent">
+                                    <legend className="form-label">Already have an account?<a href="#"> Click here</a></legend>
                                 </div>
                             </form>
                         </div>

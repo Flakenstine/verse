@@ -6,7 +6,6 @@
     background-image: url('../../images/register-background.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    font-size: 13px;
     position: fixed;
     left: 0;
     right: 0;
@@ -43,21 +42,13 @@
       }
       .form-label {
         text-transform: uppercase;
-        font-size: 15px;
+        font-size: 0.9375em;
         color: white;
       }
     }
     .card-body {
       .emailArea, .passwordArea {
         text-align: left;
-        label {
-          margin: 0;
-          text-transform: uppercase;
-          font-weight: bold;
-          text-align: left;
-          padding-left: 16px;
-          font-size: 13px;
-        }
         .form-group {
           margin: 0;
         input[type=text], input[type=password] {
@@ -89,7 +80,15 @@
           border: none;
           border-radius: 2px;
           font-weight: bold;
-          font-size: 14px;
+          font-size: 0.875em;
+        }
+      }
+      .accountPresent {
+        text-align: center;
+        .form-label {
+          text-transform: uppercase;
+          font-size: 0.625em;
+          color: white;
         }
       }
     }
