@@ -2,7 +2,7 @@ import React from 'react'
 import { withRouter, Route, Switch } from 'react-router-dom'
 /* Main Window */
 import Header from '../header/header.component';
-import Chat from '../../pages/chat/chat.component';
+import Chat, { Server } from '../../pages/chat/chat.component';
 import Communities from '../../pages/communities/communities.component';
 import Friends from '../../pages/friends/friends.component';
 import ServerBrowser from '../serverbrowser/serverbrowser.component';
@@ -11,6 +11,7 @@ import Profile from '../../pages/profile/profile.component';
 
 import './main.component.scss';
 import '../../styles/_theme.scss';
+import ServerView from '../ServerView/ServerView.component';
 
 class MainApp extends React.Component {
 
@@ -21,7 +22,8 @@ class MainApp extends React.Component {
             { path: '/', component: Chat, exact: true },
             { path: '/discover', component: Communities },
             { path: '/friends', component: Friends },
-            { path: '/profile', component: Profile }
+            { path: '/profile', component: Profile },
+            { path: '/server/:id', component: ServerView }
         ]
 
         return (

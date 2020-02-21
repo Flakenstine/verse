@@ -20,7 +20,7 @@ class ServerNavigation extends React.Component {
     return (
       <div className="serverNavigation">
         <div className="serverNavigation__header">
-          {this.state.server}
+          {this.props.server}
           <FontAwesomeIcon icon={faCheckCircle} />
           <span><FontAwesomeIcon icon={faChevronDown} /></span>
         </div>
