@@ -25,7 +25,7 @@ const getUsername = (authToken, callback) => {
 
 const getAvatar = (authToken, callback) => {
     // temp for testing
-    Axios.get('http://localhost:3200/users/me/avatar', {
+    Axios.get(API_URL + 'users/me/avatar', {
         headers: getAuthHeaders(authToken)
     }).then((response) => {
         callback(false, response);
