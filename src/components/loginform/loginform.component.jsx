@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
                                 <p className="forgotp">Forgotten Password?</p>
 
                                 <div className="loginButton">
-                                    <input type="submit" value="Login"/>
+                                    <button type="submit" value="Login">Login</button>
                                 </div>
 
                                 <p className="createAccount">Need an account?<a> Click here!</a></p>
