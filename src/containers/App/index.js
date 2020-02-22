@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-import WindowsBar from '../../components/windowsbar/windowsbar.component';
-import FullSpinner from '../../components/fullspinner/fullspinner.component';
-import LoginComponent from '../../pages/login/login.component';
+import LoadSpinner from '../../components/LoadSpinner';
+import LoginComponent from '../Login'
+
+
+import { getAuthStore } from '../../utils/authUtil';
+import { verifyCredentials } from '../../utils/apiUtil';
+import WindowsTitleBar from '../../components/WindowsTitleBar';
+import Main from '../../components/Main';
+
+const electron = window.require('electron');
 
 class App extends Component {
 
@@ -10,16 +17,70 @@ class App extends Component {
         loading: true
     }
 
-    componentWillMount () {
-        checkUserCredentials(true);
-    }
+    componentDidMount () {
+      this.checkUserCredentials(true);
+		}
+		
+		checkUserCredentials(init) {
+			if (getAuthStore().has("authToken") && getAuthStore().has("userId")) {
+				let authToken = getAuthStore().get("authToken");
+				let userId = getAuthStore().get("userId");
+
+				verifyCredentials(authToken, userId, (error, response) => {
+					if (error) {
+						this.setState({
+							userAuthed: false,
+							loading: false
+						});
+					} else {
+						this.setState({
+							userAuthed: response.data.success,
+							loading: false
+						});
+					}
+				});
+
+				if (init) {
+					this.setState({
+						userAuthed: false,
+						loading: true
+					});
+				}
+			} else {
+				if (init) {
+					this.setState({
+						userAuthed: false,
+						loading: false
+					});
+				} else {
+					this.setState({
+						userAuthed: false,
+						loading: false
+					});
+				}
+			}
+		}
+
+		logUserIn (authToken, userId) {
+			getAuthStore().set("authToken", authToken);
+			getAuthStore().set("userId", userId);
+			if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
+			this.setState({
+				userAuthed: true
+			});
+		}
+
+
+
     render() {
-        <div className="container-fluid">
-            <WindowsBar />
-            <FullSpinner visible={this.state.loading} />
-            <MainApp visible={this.state.userLoggedIn && !this.state.loading} />
-            <LoginComponent visible={!this.state.userLoggedIn && !this.state.loading} />
-         </div>
+			return (
+				<div className="container-fluid">
+					<WindowsTitleBar />
+					<LoadSpinner visible={this.state.loading} />
+					<Main visible={this.state.userAuthed && !this.state.loading} />
+					<LoginComponent visible={!this.state.userAuthed && !this.state.loading} logUserIn={this.userAuthed} />
+				</div>
+			);
     }
 }
 
