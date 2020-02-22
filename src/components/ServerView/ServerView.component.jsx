@@ -7,7 +7,7 @@ const ServerView = ({match}) => {
 
 	return (
 		<div className="chat">
-			<ServerNavigation server={match.params.id}/>
+			<ServerNavigation server={serverID}/>
 			<SocialNavigation />
 		</div>
 	)

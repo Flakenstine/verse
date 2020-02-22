@@ -7,7 +7,7 @@ import { getUserServers } from '../../utils/apiUtil';
 import { getAuthStore } from '../../utils/authUtil';
 
 import './serverbrowser.component.scss';
-import { Tooltip } from 'react-bootstrap';
+import { Tooltip, Modal, Button } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { faQuestionCircle, faCog, faComments } from '@fortawesome/pro-solid-svg-icons';
 
@@ -16,6 +16,10 @@ const electron = window.require('electron');
 const ServerBrowser = () => {
 
   const [servers, setServerList] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleDisplay = () => setShow(true);
 
   const macButtonsMinimize = () => {
     electron.remote.getCurrentWindow().minimize()
@@ -64,12 +68,28 @@ const ServerBrowser = () => {
       </div>
       <div className="serverBrowser__server-list">
         { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><div className="server"><NavLink exact to={`/server/${value}`}>S</NavLink></div></OverlayTrigger>)}
-        <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button"><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
+        <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
       </div>
       <div className="serverBrowser__foot-menu">
         <OverlayTrigger key="user-support" placement="right" overlay={<Tooltip id="tooltip-right">Support Center</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faQuestionCircle} /></Link></OverlayTrigger>
         <OverlayTrigger key="user-settings" placement="right" overlay={<Tooltip id="tooltip-right">User Settings</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faCog} /></Link></OverlayTrigger>
       </div>
+
+      <Modal className="addServerModal" style={{color: "#000"}} show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Join a Server</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          To join a new server, please provide the invite token for that server below
+          <form>
+            <input id="inviteCode" type="text" onChange={e => e.preventDefault} />
+            <label htmlFor="inviteCode">Enter an invite token</label>
+          </form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="success" onClick={handleClose}>Join</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

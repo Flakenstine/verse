@@ -18,11 +18,12 @@ class ServerNavigation extends React.Component {
 
   render() {
     return (
-      <div className="serverNavigation">
-        <div className="serverNavigation__header">
-          {this.props.server}
-          {/* <FontAwesomeIcon icon={faCheckCircle} /> */}
-          <span><FontAwesomeIcon icon={faChevronDown} /></span>
+      <div className="server-navigation">
+        <div className="server-navigation-header">
+          <h4>
+            {this.props.server}
+            <span><FontAwesomeIcon icon={faChevronDown} /></span>
+          </h4>
         </div>
       </div>
     )
