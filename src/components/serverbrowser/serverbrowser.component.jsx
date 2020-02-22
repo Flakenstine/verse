@@ -67,7 +67,9 @@ const ServerBrowser = () => {
         </span>
       </div>
       <div className="serverBrowser__server-list">
-        { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><div className="server"><NavLink exact to={`/server/${value}`}>S</NavLink></div></OverlayTrigger>)}
+        { servers.map((value) => <OverlayTrigger key={value} placement="right" overlay={<Tooltip id="tooltip-right">{value}</Tooltip> }><NavLink className="server" exact to={`/server/${value}`}>S</NavLink></OverlayTrigger>)}
+
+
         <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
       </div>
       <div className="serverBrowser__foot-menu">
