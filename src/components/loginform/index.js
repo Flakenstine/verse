@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FormField from './FormField';
 import EmailField from './EmailField';
-import Axios from 'axios';
 
 const apiUtil = require('../../utils/apiUtil');
 

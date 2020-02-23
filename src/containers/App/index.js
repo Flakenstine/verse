@@ -18,7 +18,8 @@ class App extends Component {
     }
 
     componentDidMount () {
-      this.checkUserCredentials(true);
+			this.checkUserCredentials(true);
+			this.logUserIn = this.logUserIn.bind(this);
 		}
 		
 		checkUserCredentials(init) {
@@ -78,7 +79,7 @@ class App extends Component {
 					<WindowsTitleBar />
 					<LoadSpinner visible={this.state.loading} />
 					<Main visible={this.state.userAuthed && !this.state.loading} />
-					<LoginComponent visible={!this.state.userAuthed && !this.state.loading} logUserIn={this.userAuthed} />
+					<LoginComponent visible={!this.state.userAuthed && !this.state.loading} logUserIn={this.logUserIn} />
 				</div>
 			);
     }
