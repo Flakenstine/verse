@@ -247,12 +247,13 @@ legend.form-label {
 .form-hint {
   font-size: 0.6rem;
   line-height: 1.4;
-  margin: -5px auto 5px;
+  margin: 0 auto;
   color: #999;
 
   &.error {
     color: #C00;
     font-size: 0.8rem;
+    margin: 0;
   }
 }
 
