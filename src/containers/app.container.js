@@ -70,7 +70,7 @@ class AppContainer extends React.Component {
   }
 
   logUserIn(authToken, userId) {
-    console.log("AYY " + authToken + " " + userId);
+    // console.log("AYY " + authToken + " " + userId);
     authUtil.getAuthStore().set("authToken", authToken);
     authUtil.getAuthStore().set("userId", userId);
     if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);

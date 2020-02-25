@@ -1,50 +1,4 @@
 @import '../../styles/theme';
-/** Header Styling **/
-
-// .header {
-// 	display: inline-flex;
-// 	float: right;
-// 	flex-direction: row;
-// 	margin: 0 auto;
-// 	background-color: #666;
-// 	height: 60px;
-// 	width: 100%;
-// 	border-bottom: 2px solid $color-borders-main;
-// 	nav {
-// 		position: relative;
-// 		margin-top: 9px;
-// 		max-width: 100%;
-// 		ul {
-// 			display: inline-flex;
-// 			li {
-// 				list-style-type: none;
-// 				text-align: center;
-// 				font-size: 15px;
-// 				font-weight: bold;
-// 				a {
-// 					text-decoration: none;
-// 					color: $typography-1;
-// 					cursor: pointer;
-// 					&:hover {
-// 						color: $palace-gold;
-// 						text-shadow: 1px 1px 4px $palace-gold;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// 	.active {
-// 		color: $palace-gold;
-// 		text-shadow: 1px 0.5px 5px $palace-gold;
-// 	}
-// 	.header__search {
-// 		position: relative;
-// 		margin: 15px auto;
-// 		height: 30px;
-// 		border: 2px solid #38304F;
-// 		width: 400px;
-// 	}
-// }
 .header {
     display: inline-flex;
     margin: 0 auto;
@@ -113,17 +67,13 @@
             width: 55px;
             background: transparent;
             border-top: transparent; border-bottom: transparent; border-left: transparent; border-right: transparent;
-            // border-left: 1px solid $color-borders-main; border-right: 1px solid $color-borders-main;
             a {
                 font-size: 17px;
-                color: #a6aaad;
+                color: $typography-2;
             }
-            // &:nth-child(n+2) {
-            //     margin-left: -1px;
-            // }
         }
     }
-    .header__currentUser {
+    .header__authed-user {
         display: inline-flex;
         position: relative;
         padding: 10px 4px;
@@ -132,14 +82,14 @@
             position: relative;
             top: 8px;
             left: 14px;
-            height: 30px;
-            width: 30px;
+            height: 32px;
+            width: 32px;
             border-radius: 50%;
-            border: 1px solid $color-borders-alt;
         }
         .username {
             margin: 15px 22px;
-            font-size: 11px;
+            font-size: 13px;
+            color: #c9d0d6;
             span {
                 font-weight: bold;
             }
