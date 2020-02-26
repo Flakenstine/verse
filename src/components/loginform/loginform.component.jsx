@@ -69,7 +69,7 @@ class LoginForm extends React.Component {
                                 </div>
 
                                 <div className="createAccount">
-                                    <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Create an account</button>
+                                    <button class="btn btn-link createAccountButton" type="button" onClick={this.props.toggleLogin}>Create an account</button>
                                 </div>
                             </form>
                         </div>

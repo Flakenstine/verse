@@ -78,7 +78,7 @@ class RegistrationForm extends Component {
                                 </div>
 
                                 <div className="accountPresent">
-                                    <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
+                                    <button class="btn btn-link accountPresentButton" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
                                 </div>
                             </form>
                         </div>
