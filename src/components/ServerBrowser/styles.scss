@@ -1,0 +1,253 @@
+ @import '../../styles/theme';
+
+.serverBrowser {
+    position: relative;
+    float: left;
+    max-height: 100%;
+    height: 100vh;
+    width: 70px;
+    border-right: 1px solid #3b2f61;
+    background-color: #2A1C47;
+    //background-color: rgba(100, 79, 139, 0.25);
+    .serverBrowser__icon {
+        margin: 0 auto;
+        margin-top: -16px;
+        height: 60px;
+        width: 100%;
+        padding: 7px 7px;
+        border-bottom: 1px solid #38304F;
+        span {
+            margin-left: 11px;
+            margin-bottom: 11px;
+            font-size: 30px;
+            transform: scaleX(-1);
+            text-align: center;
+            color: #a6aaad;
+        }
+    }
+    .serverBrowser__server-list {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+
+        .server {
+            margin: 6px auto;
+            padding: 10px 13px;
+            height: 45px;
+            width: 45px;
+            background-color: #342a54;
+            border-radius: 50%;
+            text-align: center;
+            text-decoration: none;
+            color: #a6aaad;
+            text-shadow: none;
+            &:hover {
+                padding: 9px 13px;
+                border: 1px solid $palace-gold;
+                box-shadow: 0px 1px 10px rgb(255, 232, 36);
+            }
+        }
+        .active {
+            padding: 9px 13px;
+            border: 1px solid $palace-gold !important;
+            box-shadow: 0px 1px 10px rgb(255, 232, 36);
+        }
+        // .server {
+        //     margin: 10px auto;
+        //     padding: 8px 9px;
+        //     height: 45px;
+        //     width: 45px;
+        //     background-color: #342a54;
+        //     border-radius: 50%;
+        //     border: 2px solid $color-borders-main;
+        //     a {
+        //         position: relative;
+        //         text-align: center;
+        //         padding: 4px 7px;
+        //         color: #a6aaad;
+        //         img {
+        //             position: relative;
+        //             top: 0px;
+        //             right: 17px;
+        //             height: 38px;
+        //             width: 48px;
+        //         }
+        //         &:hover {
+        //             padding: 5px 7px;
+        //             text-decoration: none;
+        //             text-shadow: none;
+        //         }
+        //     }
+        //     &:hover {
+        //         padding: 9px 10px;
+        //         border: 1px solid $palace-gold;
+        //         box-shadow: 0px 1px 10px rgb(255, 232, 36);
+        //     }
+        //     .active {
+        //         color: $palace-gold;
+        //     }
+        // }
+        // .add-server-button {
+        //     text-align: center;
+        //     font-size: 20px;
+        //     padding: 6px 10px;
+        //     &:hover {
+        //         padding: 7px 10px;
+        //     }
+        // }
+    }
+    .serverBrowser__foot-menu {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        padding: 5px 22px;
+        a {
+            font-size: 25px;
+            color: #a6aaad;
+        }
+    }
+}
+
+.traffic-lights {
+    margin-left: 10px;
+    margin-top: -1px;
+
+    .macButtons &, &:hover, &:active {
+        > .traffic-light-close {
+            background-color: $close-red;
+
+            &:active:hover {
+                background-color: $close-red-active;
+            }
+        }
+        > .traffic-light-minimize {
+            background-color: $minimize-yellow;
+
+            &:active:hover {
+                background-color: $minimize-yellow-active;
+            }
+        }
+        > .traffic-light-maximize {
+            background-color: $maximize-green;
+
+            &:active:hover {
+                background-color: $maximize-green-active;
+            }
+        }
+    }
+
+    > .traffic-light {
+        &:before, &:after {
+            visibility: hidden;
+        }
+    }
+
+    &:hover, &:active {
+        > .traffic-light {
+            &:before, &:after {
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.traffic-light {
+    border-radius: 100%;
+    padding: 0;
+    height: 12px;
+    width: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+    margin-right: 4.5px;
+    background-color: $disabled-gray;
+    position: relative;
+    outline: none;
+
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        border-radius: 1px;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    &-close {
+        &:before, &:after {
+            background-color: $close-red-icon;
+            width: 8px;
+            height: 1px;
+        }
+        &:before {
+            transform: rotate(45deg);
+        }
+        &:after {
+            transform: rotate(-45deg);
+        }
+        &:active:hover:before, &:active:hover:after {
+            background-color: $close-red-icon-active;
+        }
+    }
+
+    &-minimize {
+        &:before {
+            background-color: $minimize-yellow-icon;
+            width: 8px;
+            height: 1px;
+        }
+        &:active:hover:before {
+            background-color: $minimize-yellow-icon-active;
+        }
+    }
+
+    &-maximize {
+        &:before {
+            background-color: $maximize-green-icon;
+            width: 6px;
+            height: 6px;
+        }
+        &:after {
+            background-color: $maximize-green;
+            width: 10px;
+            height: 2px;
+            transform: rotate(45deg);
+        }
+        &:active:hover:before {
+            background-color: $maximize-green-icon-active;
+        }
+        &:active:hover:after {
+            background-color: $maximize-green-active;
+        }
+    }
+}
+.addServerModal {
+    margin-top: 15em;
+    form {
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        margin: auto;
+        width: 400px;
+        input {
+            outline: 0;
+            border-top: none; border-left: none; border-right: none;
+            border-bottom: 1px solid #d8d1ec;
+            width: inherit;
+        }
+        label {
+            font-size: 12px;
+            color: #b3b1bb;
+        }
+    }
+    // input {
+    //     outline: 0;
+    //     border-top: none; border-left: none; border-right: none;
+    //     border-bottom: 1px solid $color-borders-main;
+    //     width: 400px;
+    // }
+}

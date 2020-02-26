@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
 import zxcvbn from 'zxcvbn';
-import FormField from '../FormField';
+import FormField from './FormField';
 
 class PasswordField extends Component {
 
