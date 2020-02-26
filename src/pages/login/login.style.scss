@@ -16,17 +16,14 @@
     }
     .accountPresent {
         text-align: center;
-        bottom: 0;
-        padding-top: 575px;
+        top: 575px;
         z-index: 9999;
         position: relative;
         font-size: 0.8125em;
         button[type=button] {
-            text-align: right;
             margin: 0 auto;
-            display: flex;
-            align-items: center;
             color: white;
+            text-decoration: none;
             text-transform: uppercase;
         }  
     }
