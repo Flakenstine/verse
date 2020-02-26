@@ -18,7 +18,6 @@ class RegistrationForm extends Component {
         this.setState({ passwordValid: field.errors.length === 0, passwordValue: field.value });
     }
 
-
     handleRegister = (e) => {
         e.preventDefault();
         this.setState({ hasError: false });
@@ -77,9 +76,8 @@ class RegistrationForm extends Component {
                                 <div className="registerButton">
                                     <button type="submit" disabled={!formValidated} className="btn">Register</button>
                                 </div>
-                                {/* <div className="accountPresent">
-                                    <legend className="form-label">Already have an account?<a href="#"> Click here</a></legend>
-        </div> */}
+                                
+                                <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
                             </form>
                         </div>
                     </div>

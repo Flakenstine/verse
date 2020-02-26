@@ -7,28 +7,17 @@ import './login.style.scss'
 const LoginComponent = (props) => {
     const [loginHidden, setLoginHidden] = useState(false);
 
-    const hideLogin = () => setLoginHidden(true)
-    const showLogin = () => setLoginHidden(false)
+    const toggleLogin = () => setLoginHidden(!loginHidden)
+
     if (!props.visible) return '';
     return (
         <div className="loginContainer">
             <div className="bg-image"></div>
             <div className="mainArea">
-                {loginHidden ? <RegistrationFormComponent /> : <LoginForm logUserIn={props.logUserIn} />}
-
-                <div className="accountPresent">
-                    {loginHidden ?
-                        <button className="btn btn-link" type="button" onClick={showLogin}>Already have an account?</button> :
-                        <button className="btn btn-link" type="button" onClick={hideLogin}>Create an account </button>
-                    }
-                </div>
-
+                {loginHidden ? <RegistrationFormComponent toggleLogin={toggleLogin} /> : <LoginForm logUserIn={props.logUserIn} toggleLogin={toggleLogin} />}
             </div>
-
-
         </div>
     );
-
 }
 
 export default LoginComponent;
