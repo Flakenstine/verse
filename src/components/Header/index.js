@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from './node_modules/react'
-import { FontAwesomeIcon } from './node_modules/@fortawesome/react-fontawesome'
-import { faSearch, faStore, faUserPlus, faChevronDown } from './node_modules/@fortawesome/pro-light-svg-icons'
-import { faBell } from './node_modules/@fortawesome/pro-solid-svg-icons'
+import React, { useState, useEffect } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSearch, faStore, faUserPlus, faChevronDown } from '@fortawesome/pro-light-svg-icons'
+import { faBell } from '@fortawesome/pro-solid-svg-icons'
 
-import { getUsername, getAvatar } from '../../utils/apiUtil'
+import { getProfile } from '../../utils/apiUtil'
 import { getAuthStore } from '../../utils/authUtil'
-import { NavLink } from './node_modules/react-router-dom'
+import { NavLink } from 'react-router-dom'
 import './styles.scss'
-
-import { NavLink } from './node_modules/react-router-dom'
-import './header.component.scss'
 
 const Header = () => {
 
@@ -19,29 +16,20 @@ const Header = () => {
   const getAuthedUser = () => {
     let authToken = getAuthStore().get("authToken");
 
-    getUsername(authToken, (error, response) => {
+    getProfile(authToken, (error, response) => {
       let username;
+      let avatar;
 
       if (error) {
         console.log("Failed to fetch username from API");
       } else {
         username = response.data.username;
+        avatar = response.data.avatar;
+        // username = response.data.username;
       }
 
       setUsername(username);
-    });
-
-    getAvatar(authToken, (error, response) => {
-      let avatar;
-
-      if (error) {
-        console.log("Failed to fetch avatar from API");
-      } else {
-        avatar = response.data.avatar;
-      }
-
       setAvatar(avatar);
-
     });
   }
 
