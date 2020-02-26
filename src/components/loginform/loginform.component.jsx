@@ -59,13 +59,18 @@ class LoginForm extends React.Component {
                                 <div className="passwordArea">
                                     <FormField type="password" label="Password" fieldId="password" placeholder="" onStateChanged={this.passwordChanged} required />
                                 </div>
-                                <p className="forgotp">Forgotten Password?</p>
+                                
+                                <div className="forgotp">
+                                    <button class="btn btn-link" type="button">Forgotten Password?</button>
+                                </div>
 
                                 <div className="loginButton">
                                     <button type="submit" value="Login">Login</button>
                                 </div>
 
-                                <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Create an account</button>
+                                <div className="createAccount">
+                                    <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Create an account</button>
+                                </div>
                             </form>
                         </div>
                     </div>

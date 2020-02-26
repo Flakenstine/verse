@@ -76,8 +76,10 @@ class RegistrationForm extends Component {
                                 <div className="registerButton">
                                     <button type="submit" disabled={!formValidated} className="btn">Register</button>
                                 </div>
-                                
-                                <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
+
+                                <div className="accountPresent">
+                                    <button class="btn btn-link" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
+                                </div>
                             </form>
                         </div>
                     </div>
