@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
                                     <button type="submit" value="Login">Login</button>
                                 </div>
 
-                                <p className="createAccount">Need an account?<a> Click here!</a></p>
+                                {/* <p className="createAccount">Need an account?<a> Click here!</a></p> */}
                             </form>
                         </div>
                     </div>

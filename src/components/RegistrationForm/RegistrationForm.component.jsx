@@ -55,11 +55,10 @@ class RegistrationForm extends Component {
         const formValidated = emailValid && passwordValid;
 
         return (
-            <div className="registerArea">
-                <div className="bg-image"></div>
+            <div>
                 {this.state.hasError && <div className="alert alert-danger">{this.state.error}</div>}
                 {this.state.hasSuccess && "You have successfully created a verse account! In order to use verse, we will need to verify your account. Please check your registered email for further instructions!"}
-                <div className="register--wrapper">
+                <div className="login--wrapper">
                     <div className="card">
                         <div className="card-header">
                             <img className="verseLogo" src={verseLogo}></img>
@@ -78,14 +77,13 @@ class RegistrationForm extends Component {
                                 <div className="registerButton">
                                     <button type="submit" disabled={!formValidated} className="btn">Register</button>
                                 </div>
-                                <div className="accountPresent">
+                                {/* <div className="accountPresent">
                                     <legend className="form-label">Already have an account?<a href="#"> Click here</a></legend>
-                                </div>
+        </div> */}
                             </form>
                         </div>
                     </div>
                 </div>
-
             </div>
         );
 
