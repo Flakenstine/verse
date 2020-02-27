@@ -26,7 +26,7 @@ class AppContainer extends React.Component {
     return (
       <div className="container-fluid">
         <WindowsBar />
-        <MacOSBar />
+        <MacOSBar visible={!this.state.loading}/>
         <FullSpinner visible={this.state.loading} />
         <MainApp visible={this.state.userLoggedIn && !this.state.loading} />
         <LoginComponent visible={!this.state.userLoggedIn && !this.state.loading} logUserIn={this.logUserIn} />

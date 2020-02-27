@@ -20,6 +20,8 @@ class MacOSBar extends React.Component {
     }
 
     render() {
+        if (!this.props.visible) return '';
+
         if (window.navigator.platform === 'MacIntel') {
             return (
                 <div>
