@@ -1,26 +1,23 @@
 import React, { useState } from 'react';
-import LoginFormComponent from '../../components/LoginForm';
-import RegistrationForm from '../../components/RegistrationForm';
+import LoginForm from '../../components/loginform/loginform.component'
+import RegistrationFormComponent from '../../components/RegistrationForm/RegistrationForm.component';
+
+import './styles.scss';
 
 const LoginComponent = (props) => {
-    const [ loginHidden, setLoginHidden ] = useState(false);
+    const [loginHidden, setLoginHidden] = useState(false);
 
-    const hideLogin = () => setLoginHidden(true)
-    const showLogin = () => setLoginHidden(false)
+    const toggleLogin = () => setLoginHidden(!loginHidden)
+
     if (!props.visible) return '';
     return (
         <div className="loginContainer">
-            <div style={{margin: "5px"}}>
-                { loginHidden ? <RegistrationForm /> : <LoginFormComponent logUserIn={props.logUserIn} />}
-                { loginHidden ? 
-                    <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={showLogin}>Already have an account?</button> : 
-                    <button style={{textAlign: "center", margin: "0 auto", display: "flex", alignItems: "center"}} className="btn btn-link" type="button" onClick={hideLogin}>Create an account </button> 
-                }
+            <div className="bg-image"></div>
+            <div className="mainArea">
+                {loginHidden ? <RegistrationFormComponent toggleLogin={toggleLogin} /> : <LoginForm logUserIn={props.logUserIn} toggleLogin={toggleLogin} />}
             </div>
-           
         </div>
     );
-
 }
 
 export default LoginComponent;

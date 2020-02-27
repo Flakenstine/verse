@@ -13,7 +13,7 @@ const EmailField = (props) => {
 		if (!validate(value)) throw new Error('Email is invalid');
 	}
 	
-	return <FormField type="text" validator={validateEmail} {...restProps} />
+	return <FormField type="email" validator={validateEmail} {...restProps} />
 }
 
 EmailField.propTypes = {
