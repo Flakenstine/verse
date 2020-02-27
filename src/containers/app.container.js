@@ -2,6 +2,7 @@ import React from 'react'
 /* Login Form */
 import Axios from 'axios';
 import WindowsBar from '../components/windowsbar/windowsbar.component';
+import MacOSBar from '../components/macosbar/macosbar.component';
 import MainApp from '../components/main/main.component';
 import FullSpinner from '../components/fullspinner/fullspinner.component';
 import LoginComponent from '../pages/login/login.component';
@@ -25,6 +26,7 @@ class AppContainer extends React.Component {
     return (
       <div className="container-fluid">
         <WindowsBar />
+        <MacOSBar />
         <FullSpinner visible={this.state.loading} />
         <MainApp visible={this.state.userLoggedIn && !this.state.loading} />
         <LoginComponent visible={!this.state.userLoggedIn && !this.state.loading} logUserIn={this.logUserIn} />

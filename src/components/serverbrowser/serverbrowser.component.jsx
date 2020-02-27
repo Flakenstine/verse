@@ -11,25 +11,9 @@ import { Tooltip } from 'react-bootstrap';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { faQuestionCircle, faCog, faComments } from '@fortawesome/pro-solid-svg-icons';
 
-const electron = window.require('electron');
-
 const ServerBrowser = () => {
 
   const [servers, setServerList] = useState([]);
-
-  const macButtonsMinimize = () => {
-    electron.remote.getCurrentWindow().minimize()
-  }
-
-  const macButtonsMaximize = () => {
-    const currentWindow = electron.remote.currentWindow;
-    currentWindow.setFullScreen(!currentWindow.isFullScreen());
-  }
-
-  const macButtonsClose = () => {
-    electron.remote.app.hide();
-  }
-
 
   const getServers = () => {
     let authToken = getAuthStore().get("authToken");
@@ -50,14 +34,7 @@ const ServerBrowser = () => {
 
   return (
     <div className="serverBrowser">
-      <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
-          <div className="traffic-lights">
-            <button className="traffic-light traffic-light-close" id="close" onClick={macButtonsClose}></button>
-            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={macButtonsMinimize}></button>
-            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={macButtonsMaximize}></button>
-        </div>
-      </div>
-      <div className="serverBrowser__icon" style={{ display: window.navigator.platform === 'Win32' ? '7px': '-16px' }}>
+      <div className="serverBrowser__icon">
         <span>
           <FontAwesomeIcon icon={faComments} />
         </span>
