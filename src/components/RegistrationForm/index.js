@@ -4,7 +4,7 @@ import PasswordField from "./PasswordField";
 import axios from "axios";
 
 import verseLogo from '../../images/verse-logo-gold.png'
-import './RegistrationForm.component.scss'
+import './styles.scss'
 
 class RegistrationForm extends Component {
 

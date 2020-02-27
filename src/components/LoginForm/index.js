@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import FormField from './FormField';
 import EmailField from './EmailField';
-import React from 'react'
 
 import './styles.scss';
 
@@ -9,7 +8,7 @@ import verseLogo from '../../images/verse-logo-gold.png'
 
 const apiUtil = require('../../utils/apiUtil');
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
 
     state = { email: "", password: "", hasError: false, error: "" }
 
