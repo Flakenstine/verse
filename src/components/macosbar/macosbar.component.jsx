@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import '../../styles/_theme.scss';
 import '../macosbar/macosbar.component.scss'
 const electron = window.require('electron');

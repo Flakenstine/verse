@@ -5,15 +5,14 @@ body {
 }
 
 .macButtons {
-    width: 100%;
+    width: 60px;
     height: 100%;
 }
 
 .traffic-lights {
     position: absolute;
     z-index: 100;
-    left: 10px;
-    right: 0;
+    left: 12px;
 
     .macButtons &, &:hover, &:active {
         > .traffic-light-close {
