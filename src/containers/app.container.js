@@ -1,5 +1,7 @@
 import React from 'react'
 /* Login Form */
+import LoginForm from '../components/loginform/loginform.component';
+import { faLightbulbDollar } from '@fortawesome/pro-solid-svg-icons';
 import Axios from 'axios';
 import WindowsBar from '../components/windowsbar/windowsbar.component';
 import MainApp from '../components/main/main.component';
