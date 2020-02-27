@@ -7,6 +7,7 @@ import { getAuthStore } from '../../utils/authUtil';
 import { verifyCredentials } from '../../utils/apiUtil';
 import WindowsTitleBar from '../../components/WindowsTitleBar';
 import Main from '../../components/Main';
+import { MacOSBar } from '../../components';
 
 const electron = window.require('electron');
 
@@ -75,6 +76,7 @@ class App extends Component {
 		return (
 			<div className="container-fluid">
 				<WindowsTitleBar />
+				<MacOSBar visible={!this.state.loading}/>
 				<LoadSpinner visible={this.state.loading} />
 				<Main visible={this.state.userAuthed && !this.state.loading} />
 				<LoginComponent visible={!this.state.userAuthed && !this.state.loading} logUserIn={this.logUserIn} />

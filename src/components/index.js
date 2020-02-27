@@ -9,6 +9,7 @@ import ServerNavigation from './ServerNavigation'
 import ServerView from './ServerView'
 import SocialNavigation from './SocialNavigation'
 import WindowsTitleBar from './WindowsTitleBar'
+import MacOSBar from './MacOSBar'
 
 export {
     ChatMenu,
@@ -21,5 +22,6 @@ export {
     ServerNavigation,
     ServerView,
     SocialNavigation,
-    WindowsTitleBar
+    WindowsTitleBar,
+    MacOSBar
 }

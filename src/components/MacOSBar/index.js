@@ -4,7 +4,7 @@ import '../../styles/_theme.scss';
 import './styles.scss'
 const electron = window.require('electron');
 
-class MacOSBar extends Component {
+class MacOSBar extends React.Component {
 
     macButtonsMinimize = () => {
         electron.remote.getCurrentWindow().minimize()
