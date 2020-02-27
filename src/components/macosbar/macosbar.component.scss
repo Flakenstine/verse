@@ -12,7 +12,7 @@ body {
 .traffic-lights {
     position: absolute;
     z-index: 100;
-    left: 12px;
+    left: 8px;
 
     .macButtons &, &:hover, &:active {
         > .traffic-light-close {
@@ -31,9 +31,11 @@ body {
         }
         > .traffic-light-maximize {
             background-color: $maximize-green;
+            margin: 0;
 
             &:active:hover {
                 background-color: $maximize-green-active;
+                margin: 0;
             }
         }
     }
@@ -60,7 +62,7 @@ body {
     width: 12px;
     border: 1px solid rgba(0, 0, 0, 0.06);
     box-sizing: border-box;
-    margin-right: 4.5px;
+    margin-right: 8px;
     background-color: $disabled-gray;
     position: relative;
     outline: none;
