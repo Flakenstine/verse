@@ -13,15 +13,15 @@ const verifyCredentials = (authToken, userId, callback) => {
     });
 }
 
-const getProfile = (authToken, callback) => {
-    Axios.get(API_URL + 'users/me/profile', {
-        headers: getAuthHeaders(authToken)
-    }).then((response) => {
-        callback(false, response);
-    }, (error) => {
-        callback(true, error);
-    });
-}
+// const getProfile = (authToken, callback) => {
+//     Axios.get(API_URL + 'users/me/profile', {
+//         headers: getAuthHeaders(authToken)
+//     }).then((response) => {
+//         callback(false, response);
+//     }, (error) => {
+//         callback(true, error);
+//     });
+// }
 
 // const getAvatar = (authToken, callback) => {
 //     // temp for testing
@@ -61,4 +61,6 @@ const getAuthHeaders = (authToken) => {
     }
 }
 
-export { verifyCredentials, getProfile, handleLogin, getUserServers };
+export { verifyCredentials, handleLogin, getUserServers, getAuthHeaders };
+
+export const apiURL = API_URL;
