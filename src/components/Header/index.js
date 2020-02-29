@@ -5,7 +5,7 @@ import { fetchUser } from '../../actions/user';
 import { NavLink } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faStore, faUserPlus, faChevronDown } from '@fortawesome/pro-light-svg-icons'
+import { faSearch, faStore, faUserPlus } from '@fortawesome/pro-light-svg-icons'
 import { faBell } from '@fortawesome/pro-solid-svg-icons'
 
 import './styles.scss';
