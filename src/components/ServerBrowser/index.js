@@ -31,34 +31,13 @@ class ServerBrowser extends Component {
   
 
   render() {
-
     const { servers } = this.props;
 
     const handleClose = () => this.setState({show: false});
     const handleDisplay = () => this.setState({show: true});
 
-    const macButtonsMinimize = () => {
-      electron.remote.getCurrentWindow().minimize()
-    }
-
-    const macButtonsMaximize = () => {
-      const currentWindow = electron.remote.currentWindow;
-      currentWindow.setFullScreen(!currentWindow.isFullScreen());
-    }
-
-    const macButtonsClose = () => {
-      electron.remote.app.hide();
-    }
-
     return (
       <div className="serverBrowser">
-        <div className="macButtons" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none' }}>
-          <div className="traffic-lights">
-            <button className="traffic-light traffic-light-close" id="close" onClick={macButtonsClose}></button>
-            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={macButtonsMinimize}></button>
-            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={macButtonsMaximize}></button>
-         </div>
-        </div>
         <div className="serverBrowser__icon" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none'}}><span><FontAwesomeIcon icon={faComments} /></span></div>
         <div className="serverBrowser__server-list">
           {servers.map((s) => <OverlayTrigger key={s.id} placement="right" overlay={<Tooltip id="tooltip-right">{s.displayName}</Tooltip>}><NavLink className="server" key={s.id} exact to={`/server/${s.id}`}>{s.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
