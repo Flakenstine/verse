@@ -5,10 +5,9 @@ import { apiURL } from '../utils/apiUtil';
 import { getAuthHeaders } from '../utils/apiUtil';
 import { getAuthStore } from '../utils/authUtil';
 
-let authToken = getAuthStore().get("authToken");
-
 export const fetchUser = () => async dispatch => {
 	try {
+		let authToken = getAuthStore().get("authToken");
 		const response = await axios
 			.get(`${apiURL}users/me/profile`, {
 				headers: getAuthHeaders(authToken)
@@ -25,13 +24,14 @@ export const fetchUser = () => async dispatch => {
 
 export const fetchServers = () => async dispatch => {
 	try {
+		let authToken = getAuthStore().get("authToken");
 		const response = await axios
 			.get(`${apiURL}/users/me/servers`, {
 				headers: getAuthHeaders(authToken)
 			});
 		return dispatch({
 			type: types.FETCH_SERVERS,
-			payload: response.data
+			payload: response.data.servers
 		});
 	}
 	catch (error) {
