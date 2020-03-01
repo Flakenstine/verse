@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { fetchServers } from '../../actions/user';
@@ -11,8 +11,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle, faCog, faComments } from '@fortawesome/pro-solid-svg-icons';
 import { faPlus } from '@fortawesome/pro-light-svg-icons';
 
-const electron = window.require('electron');
-
 class ServerBrowser extends Component {
 
   static propTypes = {
@@ -21,14 +19,30 @@ class ServerBrowser extends Component {
   }
 
   state = {
-    show: false
+    show: false,
+    serverName: ''
   }
 
   componentDidMount() {
     this.props.fetchServers();
   }
 
-  
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.serverName);
+  }
+
+  handleReset = () => {
+    this.setState({
+      serverName: ''
+    });
+  }
 
   render() {
     const { servers } = this.props;
@@ -52,13 +66,13 @@ class ServerBrowser extends Component {
 
         <Modal className="addServerModal" style={{color: "#000"}} show={this.state.show} onHide={handleClose}>
           <Modal.Header>
-            <Modal.Title>Join a Server</Modal.Title>
+            <Modal.Title>Create a Server</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            To join a new server, please provide the invite token for that server below
-            <form>
-              <input id="inviteCode" type="text" onChange={e => e.preventDefault} />
-              <label htmlFor="inviteCode">Enter an invite token</label>
+            To create a server, please enter the name for your server below.
+            <form onSubmit={ this.handleSubmit }>
+              <input id="serverName" type="text" onChange={ this.handleInputChange } />
+              <label htmlFor="serverName">Enter your server name</label>
             </form>
           </Modal.Body>
           <Modal.Footer>
