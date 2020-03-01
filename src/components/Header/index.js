@@ -1,43 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { fetchUser } from '../../actions/user';
+import { NavLink } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faStore, faUserPlus, faChevronDown } from '@fortawesome/pro-light-svg-icons'
+import { faSearch, faStore, faUserPlus } from '@fortawesome/pro-light-svg-icons'
 import { faBell } from '@fortawesome/pro-solid-svg-icons'
 
-import { getProfile } from '../../utils/apiUtil'
-import { getAuthStore } from '../../utils/authUtil'
-import { NavLink } from 'react-router-dom'
-import './styles.scss'
+import './styles.scss';
+import User from './User';
 
-const Header = () => {
-
-  const [username, setUsername] = useState('');
-  const [avatar, setAvatar] = useState('');
-
-  const getAuthedUser = () => {
-    let authToken = getAuthStore().get("authToken");
-
-    getProfile(authToken, (error, response) => {
-      let username;
-      let avatar;
-
-      if (error) {
-        console.log("Failed to fetch username from API");
-      } else {
-        username = response.data.username;
-        avatar = response.data.avatar;
-        // username = response.data.username;
-      }
-
-      setUsername(username);
-      setAvatar(avatar);
-    });
+class Header extends Component {
+  
+  static propTypes = {
+    fetchUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
   }
 
-  useEffect(() => {
-    getAuthedUser();
-  }, []);
+  componentDidMount() {
+    this.props.fetchUser();
+  }
 
-  return (
+  render() {
+
+    const { user } = this.props;
+
+    return (
     <header className="header">
       <nav>
         <ul>
@@ -69,15 +58,19 @@ const Header = () => {
         </button>
       </div>
       <span className="separator"></span>
-      <div className="header__authed-user">
-        <img className="avatar" src={avatar} alt={username} />
-        <div className="username">
-          {username}
-          <span className="dropdown_selector"><FontAwesomeIcon icon={faChevronDown} /></span>
-        </div>
-      </div>
+      <User user={user}></User>
     </header>
-  );
+    )
+  }
+
+
 }
 
-export default Header;
+const mapStateToProps = (state) => ({
+  user: state.user.user
+});
+
+export default connect(
+  mapStateToProps,
+  { fetchUser }
+) (Header);
