@@ -1,5 +1,9 @@
 @import '../../styles/theme';
 
 .chatMenu {
-    display: inline-block;
+    flex: 1 1 auto;
+}
+
+.chatMenu p {
+    position: inherit;
 }
