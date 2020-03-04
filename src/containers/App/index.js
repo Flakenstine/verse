@@ -66,6 +66,7 @@ class App extends Component {
 	logUserIn (authToken, userId) {
 		getAuthStore().set("authToken", authToken);
 		getAuthStore().set("userId", userId);
+		console.log(getAuthStore().get("authToken"));
 		if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
 		this.setState({
 			userAuthed: true

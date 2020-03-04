@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { fetchServers } from '../../actions/user';
+import { createServer } from '../../actions/user';
 import { Link, NavLink } from 'react-router-dom';
 
 import './styles.scss';
@@ -35,7 +36,7 @@ class ServerBrowser extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.serverName);
+    this.props.createServer(this.state.serverName);
   }
 
   handleReset = () => {
@@ -90,5 +91,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchServers }
+  { fetchServers, createServer }
 ) (ServerBrowser);

@@ -22,6 +22,33 @@ export const fetchUser = () => async dispatch => {
 	}
 }
 
+export const createServer = ({serverName}) => {
+	let authToken = getAuthStore().get("authToken");
+	return axios
+		.post(`${apiURL}/server/create`, {serverName}, {
+			headers: getAuthHeaders(authToken)
+		})
+		.then((response) => {
+			return dispatch({
+				type: types.ADD_SERVER,
+				payload: console.log(response.data);
+			})
+		});
+}
+
+// export const createServer = ({serverName}) => async dispatch => {
+// 	try {
+// 		let authToken = getAuthStore().get("authToken");
+// 		const response = await axios
+// 			.post(`${apiURL}/server/create`, {serverName}, {
+// 				headers: getAuthHeaders(authToken)
+// 			});
+// 		return dispatch(fetchServers())
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// }
+
 export const fetchServers = () => async dispatch => {
 	try {
 		let authToken = getAuthStore().get("authToken");
