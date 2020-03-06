@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { fetchServers } from '../../actions/user';
-import { createServer } from '../../actions/user';
 import { Link, NavLink } from 'react-router-dom';
 
 import './styles.scss';
@@ -11,6 +10,10 @@ import { Tooltip, Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle, faCog, faComments } from '@fortawesome/pro-solid-svg-icons';
 import { faPlus } from '@fortawesome/pro-light-svg-icons';
+import Axios from 'axios';
+import { apiURL } from '../../utils/apiUtil';
+import { getAuthStore } from '../../utils/authUtil';
+import { getAuthHeaders } from '../../utils/authUtil';
 
 class ServerBrowser extends Component {
 
@@ -36,13 +39,32 @@ class ServerBrowser extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createServer(this.state.serverName);
+    let serverName = this.state.serverName;
+    this.addServer(serverName);
+    this.handleReset();
+    this.setState({
+      show: false
+    })
   }
 
   handleReset = () => {
     this.setState({
       serverName: ''
     });
+  }
+
+  addServer = (serverName) => {
+    let authToken = getAuthStore().get("authToken");
+    Axios.post(`${apiURL}/server/create`, { serverName }, {
+      headers: {
+        "Authorization": `Bearer ${authToken}`
+      }
+    }).then((response) => {
+      console.log(response.data)
+      this.props.fetchServers();
+    }, (error) => {
+      console.log(error);
+    })
   }
 
   render() {
@@ -74,11 +96,9 @@ class ServerBrowser extends Component {
             <form onSubmit={ this.handleSubmit }>
               <input id="serverName" type="text" onChange={ this.handleInputChange } />
               <label htmlFor="serverName">Enter your server name</label>
+              <Button variant="success" type="button">Create Server</Button>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="success" onClick={handleClose}>Join</Button>
-          </Modal.Footer>
         </Modal>
       </div>
     );
@@ -91,5 +111,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { fetchServers, createServer }
+  { fetchServers }
 ) (ServerBrowser);

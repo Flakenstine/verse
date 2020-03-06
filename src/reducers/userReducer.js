@@ -12,11 +12,6 @@ export default function (state = INITIAL_STATE, action) {
 				...state,
 				user: action.payload
 			}
-		case types.ADD_SERVER:
-			return {
-				...state,
-				servers: action.payload
-			}
 		case types.FETCH_SERVERS:
 			return {
 				...state,
