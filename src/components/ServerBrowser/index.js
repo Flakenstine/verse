@@ -28,7 +28,7 @@ class ServerBrowser extends Component {
     this.props.fetchServers();
   }
 
-  
+
 
   render() {
     const { servers } = this.props;

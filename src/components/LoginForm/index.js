@@ -58,7 +58,7 @@ class LoginForm extends Component {
                                 <div className="passwordArea">
                                     <FormField type="password" label="Password" fieldId="password" placeholder="" onStateChanged={this.passwordChanged} required />
                                 </div>
-                                
+
                                 <div className="forgotp">
                                     <button class="btn btn-link" type="button">Forgotten Password?</button>
                                 </div>

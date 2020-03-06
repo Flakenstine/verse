@@ -12,6 +12,6 @@ const ServerView = ({match}) => {
 			<SocialNavigation />
 		</div>
 	)
-} 
+}
 
 export default ServerView
