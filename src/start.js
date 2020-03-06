@@ -34,7 +34,7 @@ function createMainWindow() {
     height,
     minHeight: 500,
     minWidth: 1200,
-    title: 'Connect',
+    title: 'Verse',
     center,
     show: false,
     frame: false,
@@ -67,7 +67,7 @@ function createMainWindow() {
     mainWindow.setBounds({
       width,
       height,
-      title: 'Connect',
+      title: 'Verse',
       center: true,
       show: true,
       frame: false,
@@ -95,7 +95,7 @@ function createLoadingWindow() {
   loadingScreen = new BrowserWindow({
     width: 300,
     height: 300,
-    title: 'Connect',
+    title: 'Verse',
     center: true,
     show: true,
     frame: false,
