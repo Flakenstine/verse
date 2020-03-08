@@ -1,5 +1,5 @@
 {
-  "name": "palace-connect",
+  "name": "verse",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -44,8 +44,8 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "build": {
-    "appId": "app.palaceconnect.palaceconnectapp",
-    "productName": "Palace Connect",
+    "appId": "app.verse.versedesktopapp",
+    "productName": "Verse",
     "dmg": {
       "background": "./src/images/installer.png",
       "iconSize": 50,
