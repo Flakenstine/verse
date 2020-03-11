@@ -1,15 +1,16 @@
 .chat {
+    display: flex;
     height: 100%;
     width: 100%;
 }
 
-.chatBox {
-    position: relative;
-    border-top: 2px solid red;
-    margin: 0 auto;
-    max-width: 1700px;
-    width: 1700px;
-    bottom: 0;
-    left: 76px;
-    right: -116px;
-}
+// .chatBox {
+//     position: relative;
+//     border-top: 2px solid red;
+//     margin: 0 auto;
+//     max-width: 1700px;
+//     width: 1700px;
+//     bottom: 0;
+//     left: 76px;
+//     right: -116px;
+// }

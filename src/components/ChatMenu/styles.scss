@@ -1,5 +1,44 @@
 @import '../../styles/theme';
 
 .chatMenu {
+<<<<<<< HEAD
     display: inline-block;
 }
+=======
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    flex: 1 1 auto;
+}
+
+.chatMenu p {
+    height: 20px;
+    position: inherit;
+}
+
+.placeholder {
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+.messageView {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    min-height: 0;
+    min-width: 0;
+    z-index: 0;
+}
+
+.notebook {
+    border: white;
+    // position: absolute;
+    // bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+>>>>>>> 63441cf352140d1e441f0315193ec544b16159e5
