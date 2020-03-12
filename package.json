@@ -72,7 +72,6 @@
     },
     "win": {
       "target": "NSIS",
-      "icon": "./build/favicon.ico"
     },
     "files": [
       "./build/**/*",
