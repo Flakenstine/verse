@@ -24,7 +24,7 @@ class MacOSBar extends React.Component {
 
         return (
             <div>
-                <div className="macButtons">
+                <div className="macButtons" style={{display: window.navigator.platform === 'MacIntel' ? 'display' : 'none'}}>
                     <div className="traffic-lights">
                         <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
                         <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
