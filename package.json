@@ -70,8 +70,13 @@
       "category": "your.app.category.type",
       "icon": "./src/images/AppIcon.icns"
     },
+    "win": {
+      "target": "NSIS",
+      "icon": "./build/favicon.ico"
+    },
     "files": [
       "./build/**/*",
+      "./public/electron.js",
       "./node_modules/**/*"
     ],
     "directories": {
