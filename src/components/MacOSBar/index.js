@@ -22,21 +22,17 @@ class MacOSBar extends React.Component {
     render() {
         if (!this.props.visible) return '';
 
-        if (window.navigator.platform === 'MacIntel') {
-            return (
-                <div>
-                    <div className="macButtons">
-                        <div className="traffic-lights">
-                            <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
-                            <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
-                            <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximize}></button>
-                        </div>
+        return (
+            <div>
+                <div className="macButtons">
+                    <div className="traffic-lights">
+                        <button className="traffic-light traffic-light-close" id="close" onClick={this.macButtonsClose}></button>
+                        <button className="traffic-light traffic-light-minimize" id="minimize" onClick={this.macButtonsMinimize}></button>
+                        <button className="traffic-light traffic-light-maximize" id="maximize" onClick={this.macButtonsMaximize}></button>
                     </div>
                 </div>
-            );
-        } else {
-            return <div className="draggableTop" />
-        }
+            </div>
+        );
     }
 }
 

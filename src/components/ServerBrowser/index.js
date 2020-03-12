@@ -38,14 +38,14 @@ class ServerBrowser extends Component {
 
     return (
       <div className="serverBrowser">
-        <div className="serverBrowser__icon" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none'}}><span><FontAwesomeIcon icon={faComments} /></span></div>
+        <div className="serverBrowser__icon"><span><FontAwesomeIcon icon={faComments} /></span></div>
         <div className="serverBrowser__server-list">
           {servers.map((s) => <OverlayTrigger key={s.id} placement="right" overlay={<Tooltip id="tooltip-right">{s.displayName}</Tooltip>}><NavLink className="server" key={s.id} exact to={`/server/${s.id}`}>{s.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
 
           <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
         </div>
 
-        <div className="serverBrowser__foot-menu">
+        <div className="serverBrowser__foot-menu" style={{ padding: window.navigator.platform === 'Win32' ? '43px 16px' : '5px 16px'}}>
           <OverlayTrigger key="user-support" placement="right" overlay={<Tooltip id="tooltip-right">Support Center</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faQuestionCircle} /></Link></OverlayTrigger>
           <OverlayTrigger key="user-settings" placement="right" overlay={<Tooltip id="tooltip-right">User Settings</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faCog} /></Link></OverlayTrigger>
         </div>

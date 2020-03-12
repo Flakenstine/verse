@@ -71,7 +71,7 @@
       "icon": "./src/images/AppIcon.icns"
     },
     "win": {
-      "target": "NSIS",
+      "target": "NSIS"
     },
     "files": [
       "./build/**/*",
