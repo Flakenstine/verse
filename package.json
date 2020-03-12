@@ -71,11 +71,11 @@
       "icon": "./src/images/AppIcon.icns"
     },
     "win": {
-      "target": "NSIS"
+      "target": "NSIS",
+      "icon": "./src/images/AppIcon.icns"
     },
     "files": [
       "./build/**/*",
-      "./public/electron.js",
       "./node_modules/**/*"
     ],
     "directories": {
