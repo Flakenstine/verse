@@ -5,7 +5,7 @@ import Friends from './Friends';
 import Login from './Login';
 import Profile from './Profile';
 
-export { 
+export {
 	App,
 	Chat,
 	Communities,
