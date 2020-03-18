@@ -34,6 +34,8 @@ class MacOSBar extends React.Component {
                     </div>
                 </div>
             );
+        } else {
+            return null;
         }
     }
 }
