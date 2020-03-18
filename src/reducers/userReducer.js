@@ -2,7 +2,8 @@ import * as types from '../constants/types';
 
 const INITIAL_STATE = {
 	user: {},
-	servers: []
+	servers: [],
+	modalToggled: false
 }
 
 export default function (state = INITIAL_STATE, action) {
@@ -16,6 +17,16 @@ export default function (state = INITIAL_STATE, action) {
 			return {
 				...state,
 				servers: action.payload
+			}
+		case types.OPEN_JCMODAL:
+			return {
+				...state,
+				modalToggled: action.payload
+			}
+		case types.CLOSE_JCMODAL:
+			return {
+				...state,
+				modalToggled: action.payload
 			}
 		default:
 			return state;

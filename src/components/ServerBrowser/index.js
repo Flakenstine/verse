@@ -55,7 +55,7 @@ class ServerBrowser extends Component {
 
   addServer = (serverName) => {
     let authToken = getAuthStore().get("authToken");
-    Axios.post(`${apiURL}/server/create`, { serverName }, {
+    Axios.post(`${apiURL}communities/create`, { serverName }, {
       headers: {
         "Authorization": `Bearer ${authToken}`
       }
