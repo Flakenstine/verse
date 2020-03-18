@@ -70,6 +70,10 @@
       "category": "your.app.category.type",
       "icon": "./src/images/AppIcon.icns"
     },
+    "win": {
+      "target": "NSIS",
+      "icon": "./src/images/AppIcon.icns"
+    },
     "files": [
       "./build/**/*",
       "./node_modules/**/*"
