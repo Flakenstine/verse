@@ -4,9 +4,9 @@ import LoadSpinner from './LoadSpinner'
 import Main from './Main'
 import LoginForm from './LoginForm'
 import RegistrationForm from './RegistrationForm'
-import ServerBrowser from './ServerBrowser'
-import ServerNavigation from './ServerNavigation'
-import ServerView from './ServerView'
+import CommunityBrowser from './CommunityBrowser'
+import CommunityNavigation from './CommunityNavigation'
+import CommunityView from './CommunityView'
 import SocialNavigation from './SocialNavigation'
 import WindowsTitleBar from './WindowsTitleBar'
 import MacOSBar from './MacOSBar'
@@ -18,9 +18,9 @@ export {
     Main,
     LoginForm,
     RegistrationForm,
-    ServerBrowser,
-    ServerNavigation,
-    ServerView,
+    CommunityBrowser,
+    CommunityNavigation,
+    CommunityView,
     SocialNavigation,
     WindowsTitleBar,
     MacOSBar

@@ -1,19 +1,19 @@
 import React from 'react';
-import ServerNavigation from '../ServerNavigation';
+import CommunityNavigation from '../CommunityNavigation';
 import ChatMenu from '../ChatMenu';
 import SocialNavigation from '../SocialNavigation';
 import './styles.scss';
 
-const ServerView = ({match}) => {
-	let serverID = match.params.id;
+const CommunityView = ({match}) => {
+	let communityID = match.params.id;
 
 	return (
 		<div className="chat">
-			<ServerNavigation server={serverID} />
+			<CommunityNavigation community={communityID} />
 			<ChatMenu />
 			<SocialNavigation />
 		</div>
 	)
 }
 
-export default ServerView
+export default CommunityView
