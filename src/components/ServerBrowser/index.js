@@ -28,7 +28,6 @@ class ServerBrowser extends Component {
 
   componentDidMount() {
     this.props.fetchServers();
-    console.log(this.props.communities);
   }
 
   handleInputChange = (e) => {
@@ -38,13 +37,13 @@ class ServerBrowser extends Component {
   }
 
   handleSubmit = (e) => {
+    this.setState({
+      show: false
+    })
     e.preventDefault();
     let communityName = this.state.communityName;
     this.addServer(communityName);
     this.handleReset();
-    this.setState({
-      show: false
-    })
   }
 
   handleReset = () => {
@@ -95,7 +94,7 @@ class ServerBrowser extends Component {
             <form onSubmit={ this.handleSubmit }>
               <input id="communityName" type="text" onChange={ this.handleInputChange } />
               <label htmlFor="communityName">Enter your commnity name</label>
-              <Button variant="success" type="button">Create Community</Button>
+              <Button variant="success" type="submit">Create Community</Button>
             </form>
           </Modal.Body>
         </Modal>
