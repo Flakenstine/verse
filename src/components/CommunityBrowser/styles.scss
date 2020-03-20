@@ -1,14 +1,14 @@
 @import '../../styles/theme';
 
 
-.communityBrowser {
+.CommunityBrowser {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 70px;
     border-right: 1px solid $color-borders-main;
     background-color: #2A1C47;
-    .communityBrowser__icon {
+    .CommunityBrowser__icon {
         margin: 7px auto;
         height: 60px;
         width: 100%;
@@ -23,11 +23,11 @@
             color: $typography-2;
         }
     }
-    .communityBrowser__community-list {
+    .CommunityBrowser__Community-list {
         display: flex;
         height: 100%;
         flex-direction: column;
-        .community {
+        .Community {
             margin: 6px auto;
             padding: 10px 13px;
             height: 45px;
@@ -51,7 +51,7 @@
             box-shadow: 0px 1px 10px rgb(255, 232, 36);
         }
     }
-    .communityBrowser__foot-menu {
+    .CommunityBrowser__foot-menu {
         position: absolute;
         bottom: 0;
         left: 0;

@@ -70,7 +70,7 @@ class CommunityBrowser extends Component {
         "Authorization": `Bearer ${authToken}`
       }
     }).then(() => {
-      this.props.fetchcommunitys();
+      this.props.fetchCommunities();
     }, (error) => {
       console.log(error);
     })
@@ -83,15 +83,15 @@ class CommunityBrowser extends Component {
     const handleDisplay = () => this.setState({show: true});
 
     return (
-      <div className="communityBrowser">
-        <div className="communityBrowser__icon"><span><FontAwesomeIcon icon={faComments} /></span></div>
-        <div className="communityBrowser__community-list">
-          {communities.map((c) => <OverlayTrigger key={c.id} placement="right" overlay={<Tooltip id="tooltip-right">{c.displayName}</Tooltip>}><NavLink className="community" key={c.id} exact to={`/community/${c.id}`}>{c.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
+      <div className="CommunityBrowser">
+        <div className="CommunityBrowser__icon"><span><FontAwesomeIcon icon={faComments} /></span></div>
+        <div className="CommunityBrowser__Community-list">
+          {communities.map((c) => <OverlayTrigger key={c.id} placement="right" overlay={<Tooltip id="tooltip-right">{c.displayName}</Tooltip>}><NavLink className="Community" key={c.id} exact to={`/community/${c.id}`}>{c.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
 
-          <OverlayTrigger key="add-community" placement="right" overlay={<Tooltip id="tooltip-right">Add a community</Tooltip>}><div className="community add-community-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
+          <OverlayTrigger key="add-Community" placement="right" overlay={<Tooltip id="tooltip-right">Add a Community</Tooltip>}><div className="Community add-Community-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
         </div>
 
-        <div className="communityBrowser__foot-menu" style={{ padding: window.navigator.platform === 'Win32' ? '43px 16px' : '5px 16px'}}>
+        <div className="CommunityBrowser__foot-menu" style={{ padding: window.navigator.platform === 'Win32' ? '43px 16px' : '5px 16px'}}>
           <OverlayTrigger key="user-support" placement="right" overlay={<Tooltip id="tooltip-right">Support Center</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faQuestionCircle} /></Link></OverlayTrigger>
           <OverlayTrigger key="user-settings" placement="right" overlay={<Tooltip id="tooltip-right">User Settings</Tooltip>}><Link to="/"><FontAwesomeIcon icon={faCog} /></Link></OverlayTrigger>
         </div>
