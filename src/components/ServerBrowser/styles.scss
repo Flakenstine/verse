@@ -200,6 +200,11 @@
             font-size: 12px;
             color: #b3b1bb;
         }
+        button {
+          &:focus {
+            outline: none;
+          }
+        }
     }
     // input {
     //     outline: 0;

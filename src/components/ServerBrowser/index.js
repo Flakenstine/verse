@@ -13,6 +13,7 @@ import { faPlus } from '@fortawesome/pro-light-svg-icons';
 import Axios from 'axios';
 import { apiURL } from '../../utils/apiUtil';
 import { getAuthStore } from '../../utils/authUtil';
+import { Alert } from 'react-bootstrap';
 
 class ServerBrowser extends Component {
 
@@ -23,7 +24,8 @@ class ServerBrowser extends Component {
 
   state = {
     show: false,
-    communityName: ''
+    communityName: '',
+    addCommunityHasError: false
   }
 
   componentDidMount() {
@@ -37,13 +39,30 @@ class ServerBrowser extends Component {
   }
 
   handleSubmit = (e) => {
-    this.setState({
-      show: false
-    })
     e.preventDefault();
+    this.setState({
+      addCommunityHasError: false
+    })
     let communityName = this.state.communityName;
-    this.addServer(communityName);
-    this.handleReset();
+    if (communityName.length !== 0) {
+      this.addServer(communityName);
+      this.handleReset();
+      this.setState({
+        show: false,
+      });
+    } else {
+      this.setState({
+        addCommunityHasError: true
+      })
+    }
+
+
+    // let communityName = this.state.communityName;
+    // this.addServer(communityName);
+    // this.handleReset();
+    // this.setState({
+    //   show: false
+    // })
   }
 
   handleReset = () => {
@@ -90,6 +109,7 @@ class ServerBrowser extends Component {
             <Modal.Title>Create a Community</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {this.state.addCommunityHasError && <Alert variant="danger">Please enter a community name to continue!</Alert>}
             To create a community, please your desired name below.
             <form onSubmit={ this.handleSubmit }>
               <input id="communityName" type="text" onChange={ this.handleInputChange } />
