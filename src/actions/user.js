@@ -30,8 +30,8 @@ export const fetchServers = () => async dispatch => {
 				headers: getAuthHeaders(authToken)
 			});
 		return dispatch({
-			type: types.FETCH_SERVERS,
-			payload: response.data.servers
+			type: types.FETCH_COMMUNITIES,
+			payload: response.data.communities
 		});
 	}
 	catch (error) {

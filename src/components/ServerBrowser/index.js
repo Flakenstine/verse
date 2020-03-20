@@ -19,16 +19,17 @@ class ServerBrowser extends Component {
 
   static propTypes = {
     fetchServers: PropTypes.func.isRequired,
-    servers: PropTypes.array.isRequired
+    communities: PropTypes.array.isRequired
   }
 
   state = {
     show: false,
-    serverName: ''
+    communityName: ''
   }
 
   componentDidMount() {
     this.props.fetchServers();
+    console.log(this.props.communities);
   }
 
   handleInputChange = (e) => {
@@ -39,8 +40,8 @@ class ServerBrowser extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let serverName = this.state.serverName;
-    this.addServer(serverName);
+    let communityName = this.state.communityName;
+    this.addServer(communityName);
     this.handleReset();
     this.setState({
       show: false
@@ -49,18 +50,17 @@ class ServerBrowser extends Component {
 
   handleReset = () => {
     this.setState({
-      serverName: ''
+      communityName: ''
     });
   }
 
-  addServer = (serverName) => {
+  addServer = (communityName) => {
     let authToken = getAuthStore().get("authToken");
-    Axios.post(`${apiURL}communities/create`, { serverName }, {
+    Axios.post(`${apiURL}communities/create`, { communityName }, {
       headers: {
         "Authorization": `Bearer ${authToken}`
       }
-    }).then((response) => {
-      console.log(response.data)
+    }).then(() => {
       this.props.fetchServers();
     }, (error) => {
       console.log(error);
@@ -68,7 +68,7 @@ class ServerBrowser extends Component {
   }
 
   render() {
-    const { servers } = this.props;
+    const { communities } = this.props;
 
     const handleClose = () => this.setState({show: false});
     const handleDisplay = () => this.setState({show: true});
@@ -77,7 +77,7 @@ class ServerBrowser extends Component {
       <div className="serverBrowser">
         <div className="serverBrowser__icon" style={{ display: window.navigator.platform === 'MacIntel' ? 'block' : 'none'}}><span><FontAwesomeIcon icon={faComments} /></span></div>
         <div className="serverBrowser__server-list">
-          {servers.map((s) => <OverlayTrigger key={s.id} placement="right" overlay={<Tooltip id="tooltip-right">{s.displayName}</Tooltip>}><NavLink className="server" key={s.id} exact to={`/server/${s.id}`}>{s.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
+          {communities.map((c) => <OverlayTrigger key={c.id} placement="right" overlay={<Tooltip id="tooltip-right">{c.displayName}</Tooltip>}><NavLink className="server" key={c.id} exact to={`/server/${c.id}`}>{c.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
 
           <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
         </div>
@@ -89,14 +89,14 @@ class ServerBrowser extends Component {
 
         <Modal className="addServerModal" style={{color: "#000"}} show={this.state.show} onHide={handleClose}>
           <Modal.Header>
-            <Modal.Title>Create a Server</Modal.Title>
+            <Modal.Title>Create a Community</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            To create a server, please enter the name for your server below.
+            To create a community, please your desired name below.
             <form onSubmit={ this.handleSubmit }>
-              <input id="serverName" type="text" onChange={ this.handleInputChange } />
-              <label htmlFor="serverName">Enter your server name</label>
-              <Button variant="success" type="button">Create Server</Button>
+              <input id="communityName" type="text" onChange={ this.handleInputChange } />
+              <label htmlFor="communityName">Enter your commnity name</label>
+              <Button variant="success" type="button">Create Community</Button>
             </form>
           </Modal.Body>
         </Modal>
@@ -106,7 +106,7 @@ class ServerBrowser extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  servers: state.user.servers
+  communities: state.user.communities
 })
 
 export default connect(
