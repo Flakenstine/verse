@@ -44,7 +44,7 @@ class FormField extends Component {
                         { hasErrors && <div className="error form-hint font-weight-bold text-right m-0 mb-2">{ errors[0] }</div> }
                     </div>
                     {children}
-                    <input type={type} className={controlClass} id={fieldId} placeholder={placeholder} value={value} onChange={this.hasChanged} /> 
+                    <input type={type} className={controlClass} id={fieldId} placeholder={placeholder} value={value} onChange={this.hasChanged} />
                 </div>
             </Fragment>
         )

@@ -19,7 +19,7 @@ class WindowsTitleBar extends React.Component {
         const currentWindow = electron.remote.getCurrentWindow();
         if (currentWindow.isMaximized()) {
             currentWindow.unmaximize();
-        } else { 
+        } else {
             currentWindow.maximize();
         }
     }

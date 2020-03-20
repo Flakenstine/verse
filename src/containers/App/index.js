@@ -22,7 +22,7 @@ class App extends Component {
 		this.checkUserCredentials(true);
 		this.logUserIn = this.logUserIn.bind(this);
 	}
-	
+
 	checkUserCredentials(init) {
 		if (getAuthStore().has("authToken") && getAuthStore().has("userId")) {
 			let authToken = getAuthStore().get("authToken");

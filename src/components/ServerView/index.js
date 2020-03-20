@@ -1,5 +1,6 @@
 import React from 'react';
 import ServerNavigation from '../ServerNavigation';
+import ChatMenu from '../ChatMenu';
 import SocialNavigation from '../SocialNavigation';
 import './styles.scss';
 
@@ -9,9 +10,10 @@ const ServerView = ({match}) => {
 	return (
 		<div className="chat">
 			<ServerNavigation server={serverID} />
+			<ChatMenu />
 			<SocialNavigation />
 		</div>
 	)
-} 
+}
 
 export default ServerView

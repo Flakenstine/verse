@@ -12,7 +12,7 @@ import './styles.scss';
 import User from './User';
 
 class Header extends Component {
-  
+
   static propTypes = {
     fetchUser: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,

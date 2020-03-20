@@ -22,7 +22,7 @@ class MacOSBar extends React.Component {
     render() {
         if (!this.props.visible) return '';
 
-        if (window.navigator.platform === 'MacIntel') {
+        if (window.navigator.platform === "MacIntel") {
             return (
                 <div>
                     <div className="macButtons">
@@ -35,7 +35,7 @@ class MacOSBar extends React.Component {
                 </div>
             );
         } else {
-            return <div className="draggableTop" />
+            return null;
         }
     }
 }
