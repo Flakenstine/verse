@@ -4,13 +4,13 @@ import { withRouter, Route, Switch } from 'react-router-dom'
 import Header from '../Header';
 import Communities from '../../containers/Communities';
 import Friends from '../../containers/Friends';
-import ServerBrowser from '../ServerBrowser';
+import CommunityBrowser from '../CommunityBrowser';
 import Profile from '../../containers/Profile';
 import Chat from '../../containers/Chat';
 
 import './styles.scss';
 import '../../styles/_theme.scss';
-import ServerView from '../ServerView';
+import CommunityView from '../CommunityView';
 
 class MainApp extends React.Component {
 
@@ -22,13 +22,13 @@ class MainApp extends React.Component {
             { path: '/discover', component: Communities },
             { path: '/friends', component: Friends },
             { path: '/profile', component: Profile },
-            { path: '/server/:id', component: ServerView }
+            { path: '/community/:id', component: CommunityView }
         ]
 
         return (
             <div className="row flex-nowrap">
                 <div className={`col-sm-4 clearfix app__sidebarLeft`}>
-                    <ServerBrowser />
+                    <CommunityBrowser />
                 </div>
                 <div className="col app__main">
                     <Header />

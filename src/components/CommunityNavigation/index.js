@@ -4,12 +4,12 @@ import { faChevronDown } from '@fortawesome/pro-light-svg-icons'
 
 import './styles.scss'
 
-const ServerNavigation = (props) => {
+const CommunityNavigation = (props) => {
   return (
     <div className="server-navigation">
       <div className="server-navigation-header">
         <h4>
-          {props.server}
+          {props.community}
           <span><FontAwesomeIcon icon={faChevronDown} /></span>
         </h4>
       </div>
@@ -17,4 +17,4 @@ const ServerNavigation = (props) => {
   )
 }
 
-export default ServerNavigation;
+export default CommunityNavigation;
