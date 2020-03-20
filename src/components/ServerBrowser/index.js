@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { fetchServers } from '../../actions/user';
@@ -10,28 +10,82 @@ import { Tooltip, Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle, faCog, faComments } from '@fortawesome/pro-solid-svg-icons';
 import { faPlus } from '@fortawesome/pro-light-svg-icons';
-
-const electron = window.require('electron');
+import Axios from 'axios';
+import { apiURL } from '../../utils/apiUtil';
+import { getAuthStore } from '../../utils/authUtil';
+import { Alert } from 'react-bootstrap';
 
 class ServerBrowser extends Component {
 
   static propTypes = {
     fetchServers: PropTypes.func.isRequired,
-    servers: PropTypes.array.isRequired
+    communities: PropTypes.array.isRequired
   }
 
   state = {
-    show: false
+    show: false,
+    communityName: '',
+    addCommunityHasError: false
   }
 
   componentDidMount() {
     this.props.fetchServers();
   }
 
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  }
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.setState({
+      addCommunityHasError: false
+    })
+    let communityName = this.state.communityName;
+    if (communityName.length !== 0) {
+      this.addServer(communityName);
+      this.handleReset();
+      this.setState({
+        show: false,
+      });
+    } else {
+      this.setState({
+        addCommunityHasError: true
+      })
+    }
+
+
+    // let communityName = this.state.communityName;
+    // this.addServer(communityName);
+    // this.handleReset();
+    // this.setState({
+    //   show: false
+    // })
+  }
+
+  handleReset = () => {
+    this.setState({
+      communityName: ''
+    });
+  }
+
+  addServer = (communityName) => {
+    let authToken = getAuthStore().get("authToken");
+    Axios.post(`${apiURL}communities/create`, { communityName }, {
+      headers: {
+        "Authorization": `Bearer ${authToken}`
+      }
+    }).then(() => {
+      this.props.fetchServers();
+    }, (error) => {
+      console.log(error);
+    })
+  }
 
   render() {
-    const { servers } = this.props;
+    const { communities } = this.props;
 
     const handleClose = () => this.setState({show: false});
     const handleDisplay = () => this.setState({show: true});
@@ -40,7 +94,7 @@ class ServerBrowser extends Component {
       <div className="serverBrowser">
         <div className="serverBrowser__icon"><span><FontAwesomeIcon icon={faComments} /></span></div>
         <div className="serverBrowser__server-list">
-          {servers.map((s) => <OverlayTrigger key={s.id} placement="right" overlay={<Tooltip id="tooltip-right">{s.displayName}</Tooltip>}><NavLink className="server" key={s.id} exact to={`/server/${s.id}`}>{s.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
+          {communities.map((c) => <OverlayTrigger key={c.id} placement="right" overlay={<Tooltip id="tooltip-right">{c.displayName}</Tooltip>}><NavLink className="server" key={c.id} exact to={`/server/${c.id}`}>{c.displayName.charAt(0)}</NavLink></OverlayTrigger>)}
 
           <OverlayTrigger key="add-server" placement="right" overlay={<Tooltip id="tooltip-right">Add a Server</Tooltip>}><div className="server add-server-button" onClick={handleDisplay}><FontAwesomeIcon icon={faPlus} /></div></OverlayTrigger>
         </div>
@@ -52,18 +106,17 @@ class ServerBrowser extends Component {
 
         <Modal className="addServerModal" style={{color: "#000"}} show={this.state.show} onHide={handleClose}>
           <Modal.Header>
-            <Modal.Title>Join a Server</Modal.Title>
+            <Modal.Title>Create a Community</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            To join a new server, please provide the invite token for that server below
-            <form>
-              <input id="inviteCode" type="text" onChange={e => e.preventDefault} />
-              <label htmlFor="inviteCode">Enter an invite token</label>
+            {this.state.addCommunityHasError && <Alert variant="danger">Please enter a community name to continue!</Alert>}
+            To create a community, please your desired name below.
+            <form onSubmit={ this.handleSubmit }>
+              <input id="communityName" type="text" onChange={ this.handleInputChange } />
+              <label htmlFor="communityName">Enter your commnity name</label>
+              <Button variant="success" type="submit">Create Community</Button>
             </form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="success" onClick={handleClose}>Join</Button>
-          </Modal.Footer>
         </Modal>
       </div>
     );
@@ -71,7 +124,7 @@ class ServerBrowser extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  servers: state.user.servers
+  communities: state.user.communities
 })
 
 export default connect(
