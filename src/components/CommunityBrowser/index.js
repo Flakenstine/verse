@@ -70,7 +70,7 @@ class CommunityBrowser extends Component {
         "Authorization": `Bearer ${authToken}`
       }
     }).then(() => {
-      this.props.fetchcommunitys();
+      this.props.fetchCommunities();
     }, (error) => {
       console.log(error);
     })
