@@ -6,8 +6,8 @@ import './styles.scss'
 
 const CommunityNavigation = (props) => {
   return (
-    <div className="server-navigation">
-      <div className="server-navigation-header">
+    <div className="community-navigation">
+      <div className="community-navigation-header">
         <h4>
           {props.community}
           <span><FontAwesomeIcon icon={faChevronDown} /></span>
