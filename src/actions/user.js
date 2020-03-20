@@ -22,7 +22,7 @@ export const fetchUser = () => async dispatch => {
 	}
 }
 
-export const fetchServers = () => async dispatch => {
+export const fetchCommunities = () => async dispatch => {
 	try {
 		let authToken = getAuthStore().get("authToken");
 		const response = await axios
