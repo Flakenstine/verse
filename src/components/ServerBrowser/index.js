@@ -13,7 +13,6 @@ import { faPlus } from '@fortawesome/pro-light-svg-icons';
 import Axios from 'axios';
 import { apiURL } from '../../utils/apiUtil';
 import { getAuthStore } from '../../utils/authUtil';
-import { getAuthHeaders } from '../../utils/authUtil';
 
 class ServerBrowser extends Component {
 
