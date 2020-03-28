@@ -24,10 +24,18 @@ class CommunityNavigation extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.community !== this.props.community) {
+    if (this.props.community !== prevProps.community) {
       this.props.fetchCommunity(this.props.selectedCommunity);
     }
   }
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.community.community !== this.props.community) {
+  //     this.props.fetchCommunity(this.props.selectedCommunity);
+  //   }
+  //   // if (prevProps.community != this.props.community) {
+  //   //   this.props.fetchCommunity(this.props.selectedCommunity);
+  //   // }
+  // }
 
 
   render() {
