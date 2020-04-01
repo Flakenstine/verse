@@ -30,7 +30,7 @@ export const fetchCommunityChannels = (id) => async dispatch => {
       });
     return dispatch({
       type: types.FETCH_COMMUNITY_CHANNELS,
-      payload: response.data
+      payload: response.data.channels
     });
   } catch (error) {
     console.log("There was an issue fetching channel data");

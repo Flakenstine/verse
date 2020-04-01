@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/pro-light-svg-icons';
 import { faCommentAltLines } from '@fortawesome/pro-light-svg-icons'
 import { fetchCommunity } from '../../actions/community';
+import { fetchCommunityChannels } from '../../actions/community';
 
 
 import PropTypes from 'prop-types';
@@ -16,16 +17,20 @@ class CommunityNavigation extends Component {
 
   static propTypes = {
     fetchCommunity: PropTypes.func.isRequired,
+    fetchCommunityChannels: PropTypes.func.isRequired,
     community: PropTypes.object.isRequired,
+    channels: PropTypes.array.isRequired
   }
 
   componentDidMount() {
     this.props.fetchCommunity(this.props.selectedCommunity);
+    this.props.fetchCommunityChannels(this.props.selectedCommunity);
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.selectedCommunity !== this.props.selectedCommunity) {
       this.props.fetchCommunity(this.props.selectedCommunity);
+      this.props.fetchCommunityChannels(this.props.selectedCommunity);
     } 
   }
 
@@ -33,6 +38,7 @@ class CommunityNavigation extends Component {
   render() {
 
   const { community } = this.props;
+  const { channels } = this.props;
 
 
 
@@ -43,13 +49,7 @@ class CommunityNavigation extends Component {
           <h4>{community.name}<span><FontAwesomeIcon icon={faChevronDown} /></span></h4>
         </div>
         <div className="community-navigation-chlist">
-          <ul>
-            {/* {channels.map((c) => <li>{c.name}</li>)} */}
-            <li><a href=""><span><FontAwesomeIcon icon={faCommentAltLines} /></span> General Chat 1</a></li>
-						<li><a href=""><span><FontAwesomeIcon icon={faCommentAltLines} /></span> General Chat 2</a></li>
-						<li><a href=""><span><FontAwesomeIcon icon={faCommentAltLines} /></span> General Chat 3</a></li>
-						<li><a href=""><span><FontAwesomeIcon icon={faCommentAltLines} /></span> General Chat 4</a></li>
-					</ul>
+          {channels.map((c) => <button className="channel-btn" key={c.id}><span><FontAwesomeIcon icon={faCommentAltLines} /></span> {c.name}</button>)}
 				</div>
       </div>
     );
@@ -57,10 +57,11 @@ class CommunityNavigation extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  community: state.community.community
+  community: state.community.community,
+  channels: state.community.channels
 })
 
 export default connect (
   mapStateToProps,
-  { fetchCommunity }
+  { fetchCommunity, fetchCommunityChannels }
  ) (CommunityNavigation);

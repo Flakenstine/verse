@@ -1,8 +1,7 @@
 import * as types from '../constants/types';
 
 const INITIAL_STATE = {
-  community: {
-  },
+  community: {},
   channels: []
 }
 
