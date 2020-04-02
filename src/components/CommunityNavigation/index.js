@@ -12,6 +12,7 @@ import { fetchCommunityChannels } from '../../actions/community';
 import PropTypes from 'prop-types';
 
 import './styles.scss';
+import { faAngleDown } from '@fortawesome/pro-solid-svg-icons';
 
 class CommunityNavigation extends Component {
 
@@ -48,7 +49,7 @@ class CommunityNavigation extends Component {
         <div className="community-navigation-header">
           <h4>{community.name}<span><FontAwesomeIcon icon={faChevronDown} /></span></h4>
         </div>
-        <div className="community-navigation-chlist">
+        <div className="community-navigation-channel-list">
           {channels.map((c) => <button className="channel-btn" key={c.id}><span><FontAwesomeIcon icon={faCommentAltLines} /></span> {c.name}</button>)}
 				</div>
       </div>
