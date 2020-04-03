@@ -46,6 +46,7 @@ class CommunityBrowser extends Component {
     let communityName = this.state.communityName;
     if (communityName.length !== 0) {
       this.addCommunity(communityName);
+      this.props.fetchCommunities();
       this.handleReset();
       this.setState({
         show: false,
@@ -69,11 +70,12 @@ class CommunityBrowser extends Component {
       headers: {
         "Authorization": `Bearer ${authToken}`
       }
-    }).then(() => {
-      this.props.fetchCommunities();
     }, (error) => {
-      console.log(error);
-    })
+      console.log(error)
+      this.setState({
+        addCommunityHasError: true
+      });
+    });
   }
 
   render() {

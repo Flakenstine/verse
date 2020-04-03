@@ -1,5 +1,10 @@
+// user types
 export const FETCH_USER = 'FETCH_USER';
 export const FETCH_COMMUNITIES = 'FETCH_COMMUNITIES';
 export const FETCH_FRIENDS = 'FETCH_FRIENDS';
 export const OPEN_JCMODAL = 'OPEN_JCMODAL';
 export const CLOSE_JCMODAL = 'CLOSE_JCMODAL';
+
+// community types
+export const FETCH_COMMUNITY = 'FETCH_COMMUNITY';
+export const FETCH_COMMUNITY_CHANNELS = 'FETCH_COMMUNITY_CHANNELS';

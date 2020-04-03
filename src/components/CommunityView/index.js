@@ -9,7 +9,7 @@ const CommunityView = ({match}) => {
 
 	return (
 		<div className="chat">
-			<CommunityNavigation community={communityID} />
+			<CommunityNavigation selectedCommunity={communityID} />
 			<ChatMenu />
 			<SocialNavigation />
 		</div>
