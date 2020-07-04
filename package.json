@@ -37,11 +37,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "electron-start": "node src/start-react",
-    "react-start": "react-scripts start",
-    "pack": "electron-builder --dir",
-    "dist": "npm run build && electron-builder",
-    "postinstall": "electron-builder install-app-deps"
+    "react-start": "react-scripts start"
   },
   "build": {
     "appId": "app.verse.versedesktopapp",
@@ -98,8 +94,6 @@
     ]
   },
   "devDependencies": {
-    "@fortawesome/fontawesome-pro": "^5.10.1",
-    "electron": "8.0.2",
-    "electron-builder": "22.3.2"
+    "@fortawesome/fontawesome-pro": "^5.10.1"
   }
 }
