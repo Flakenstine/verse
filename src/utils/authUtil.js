@@ -1,5 +1,4 @@
-const electron = window.require('electron');
-const Store = electron.remote.require('./storage/store.js');
+const Store = require('../storage/store.js').default;
 const userAuthStore = new Store({ configName: 'auth' });
 
 function getAuthStore() {
