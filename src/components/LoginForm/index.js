@@ -60,7 +60,7 @@ class LoginForm extends Component {
                                 </div>
 
                                 <div className="forgotp">
-                                    <button class="btn btn-link" type="button">Forgotten Password?</button>
+                                    <button className="btn btn-link" type="button">Forgotten Password?</button>
                                 </div>
 
                                 <div className="loginButton">
@@ -68,7 +68,7 @@ class LoginForm extends Component {
                                 </div>
 
                                 <div className="createAccount">
-                                    <button class="btn btn-link createAccountButton" type="button" onClick={this.props.toggleLogin}>Create an account</button>
+                                    <button className="btn btn-link createAccountButton" type="button" onClick={this.props.toggleLogin}>Create an account</button>
                                 </div>
                             </form>
                         </div>
