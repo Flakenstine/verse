@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import LoadSpinner from '../../components/LoadSpinner';
 import LoginComponent from '../Login'
 
-
 import { getAuthStore } from '../../utils/authUtil';
 import { verifyCredentials } from '../../utils/apiUtil';
-// import WindowsTitleBar from '../../components/WindowsTitleBar';
 import Main from '../../components/Main';
-// import { MacOSBar } from '../../components';
-
-// const electron = window.require('electron');
 
 class App extends Component {
 
@@ -66,8 +61,6 @@ class App extends Component {
   logUserIn(authToken, userId) {
     getAuthStore().set("authToken", authToken);
     getAuthStore().set("userId", userId);
-    console.log(getAuthStore().get("authToken"));
-    // if (window.navigator.platform === 'MacIntel') electron.remote.getCurrentWindow().setWindowButtonVisibility(false);
     this.setState({
       userAuthed: true
     });
@@ -76,8 +69,6 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
-        {/* <WindowsTitleBar />
-        <MacOSBar visible={!this.state.loading} /> */}
         <LoadSpinner visible={this.state.loading} />
         <Main visible={this.state.userAuthed && !this.state.loading} />
         <LoginComponent visible={!this.state.userAuthed && !this.state.loading} logUserIn={this.logUserIn} />
