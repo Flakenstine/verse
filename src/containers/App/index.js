@@ -34,6 +34,7 @@ class App extends Component {
             userAuthed: false,
             loading: false
           });
+          this.invalidateCredentials();
         } else {
           this.setState({
             userAuthed: response.data.success,
@@ -49,18 +50,17 @@ class App extends Component {
         });
       }
     } else {
-      if (init) {
-        this.setState({
-          userAuthed: false,
-          loading: false
-        });
-      } else {
-        this.setState({
-          userAuthed: false,
-          loading: false
-        });
-      }
+      this.setState({
+        userAuthed: false,
+        loading: false
+      });
+      this.invalidateCredentials();
     }
+  }
+
+  invalidateCredentials() {
+    getAuthStore().set("authToken", null);
+    getAuthStore().set("userId", null);
   }
 
   logUserIn(authToken, userId) {
