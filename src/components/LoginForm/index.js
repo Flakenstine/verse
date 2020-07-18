@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import FormField from './FormField';
 import EmailField from './EmailField';
 
@@ -68,7 +69,7 @@ class LoginForm extends Component {
                                 </div>
 
                                 <div className="createAccount">
-                                    <button className="btn btn-link createAccountButton" type="button" onClick={this.props.toggleLogin}>Create an account</button>
+                                    <NavLink className="nav-link" to="/register"><button className="btn btn-link createAccountButton" type="button">Create an account</button></NavLink>
                                 </div>
                             </form>
                         </div>

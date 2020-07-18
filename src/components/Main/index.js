@@ -33,16 +33,16 @@ class MainApp extends React.Component {
                 <div className="col app__main">
                     <Header />
                     <div className="mainContainer">
-                    <Switch>
-                        {routes.map((route) => (
-                        <Route
-                            key={route}
-                            path={route.path}
-                            exact={route.exact}
-                            component={route.component}
-                        />
-                        ))}
-                    </Switch>
+                        <Switch>
+                            {routes.map((route) => (
+                                <Route
+                                    key={route}
+                                    path={route.path}
+                                    exact={route.exact}
+                                    component={route.component}
+                                />
+                            ))}
+                        </Switch>
                     </div>
                 </div>
             </div>
