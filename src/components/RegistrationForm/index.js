@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from 'react-router-dom';
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
 import axios from "axios";
@@ -78,7 +79,7 @@ class RegistrationForm extends Component {
                                 </div>
 
                                 <div className="accountPresent">
-                                    <button class="btn btn-link accountPresentButton" type="button" onClick={this.props.toggleLogin}>Already have an account?</button>
+                                    <NavLink className="nav-link" to="/login"><button class="btn btn-link accountPresentButton" type="button">Already have an account?</button></NavLink>
                                 </div>
                             </form>
                         </div>

@@ -1,20 +1,27 @@
 import React, { useState } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom'
 import LoginForm from '../../components/LoginForm/'
 import RegistrationForm from '../../components/RegistrationForm';
 
 import './styles.scss';
 
-const LoginComponent = (props) => {
-    const [loginHidden, setLoginHidden] = useState(false);
+const RedirectForm = () => {
+    return <Redirect to='/login' />;
+}
 
-    const toggleLogin = () => setLoginHidden(!loginHidden)
+const LoginComponent = (props) => {
+    const loginFunction = props.logUserIn;
 
     if (!props.visible) return '';
     return (
         <div className="loginContainer">
             <div className="bg-image"></div>
             <div className="mainArea">
-                {loginHidden ? <RegistrationForm toggleLogin={toggleLogin} /> : <LoginForm logUserIn={props.logUserIn} toggleLogin={toggleLogin} />}
+                <Switch>
+                    <Route key={'redirect'} path='/' exact component={RedirectForm} />
+                    <Route key={'login'} path='/login' exact render={(props) => <LoginForm {...props} logUserIn={loginFunction} />} />
+                    <Route key={'register'} path='/register' exact component={RegistrationForm} />
+                </Switch>
             </div>
         </div>
     );
