@@ -1,3 +1,4 @@
+#Test and make sure the app builds
 name: Build Test
 
 on:
@@ -26,3 +27,5 @@ jobs:
           cmd: build
         env:
           CI: ""
+
+  
